@@ -4,6 +4,8 @@
 # To copy ~/.vimrc to .vimrc (current folder)
 # To copy coffee.vim (preferred colour scheme for markdown) to /usr/share/vim/vim$$/syntax/ - according to version
 
+# use chmod u+x script to make it executable.
+
 # copying the .vimrc
 cp ~/.vimrc .vimrc
 
