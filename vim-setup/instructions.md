@@ -1,5 +1,7 @@
 # Instructions to implement a good vim experience.
 
+A good resource to read: https://www.reddit.com/r/vim/wiki/vimrctips
+
 While I had thought that just keeping a `.vimrc` would be enough, doesn't seem like it.
 
 But, I'm lucky it's actually not much more than that.
