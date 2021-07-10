@@ -114,6 +114,9 @@ augroup END
 " copied a command from a reddit comment to invoke the help command with an
 " argument, but vertically
 
+" mapped keys to map cursor movements to display lines, when wrap is switched
+" on.
+
 " mapped keys to move around windows
 
 
@@ -123,7 +126,25 @@ cnoremap <Leader>q :q!<CR>
 cnoremap <Leader>wq :wq<CR>
 cnoremap <Leader>t :vertical terminal<CR>
 cnoremap <Leader>vh :vert help<CR>
+
 command! -nargs=? -complete=help Vh vert help <args>
+
+function ToggleWrap()
+    if no &wrap
+        echo "Wrap ON"
+        setlocal wrap linebreak nolist
+        set virtualedit=
+        setlocal display+=lastline
+        noremap  <buffer> <silent> <Up>   gk
+        noremap  <buffer> <silent> <Down> gj
+        noremap  <buffer> <silent> <Home> g<Home>
+        noremap  <buffer> <silent> <End>  g<End>
+        inoremap <buffer> <silent> <Up>   <C-o>gk
+        inoremap <buffer> <silent> <Down> <C-o>gj
+        inoremap <buffer> <silent> <Home> <C-o>g<Home>
+        inoremap <buffer> <silent> <End>  <C-o>g<End>
+    endif
+endfunction
 
 nnoremap <C-H> <C-W>h
 nnoremap <C-J> <C-W>j
