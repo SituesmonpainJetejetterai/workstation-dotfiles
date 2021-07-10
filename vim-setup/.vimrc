@@ -110,6 +110,10 @@ augroup END
 " mapped :wq to ,wq
 " mapped :vertical terminal to ,t
 " mapped the action to open :help in a vertical tab to ,vh
+
+" copied a command from a reddit comment to invoke the help command with an
+" argument, but vertically
+
 " mapped keys to move around windows
 
 
@@ -119,6 +123,7 @@ cnoremap <Leader>q :q!<CR>
 cnoremap <Leader>wq :wq<CR>
 cnoremap <Leader>t :vertical terminal<CR>
 cnoremap <Leader>vh :vert help<CR>
+command! -nargs=? -complete=help Vh vert help <args>
 
 nnoremap <C-H> <C-W>h
 nnoremap <C-J> <C-W>j
