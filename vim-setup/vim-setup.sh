@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Vim setup script. This sript will be used to set up vim for programming in any new machine.
 # The .vim/ directory is already created and is ready to be copied into $HOME
@@ -8,18 +8,28 @@
 
 # use chmod u+x script to make it executable.
 
-DEST="$HOME/.vim/"
-
-if ! [[ -d $DEST ]]; then
-  cp -r "./.vim/" "$HOME/"
+if [[ $PWD == ~ ]]; then
+    echo 'Running this script from your home dir is pointless.' && exit 1;
 fi
 
-SRC=".vim/"
-
-read -n 1 -p "Copy changes from ~/.vim to .vim? [Y/N] " reply;
-if [ "$reply" != "" ]; then echo; fi
-if [ "$reply" = "${reply#[Nn]}" ]; then echo; fi
-if [ "$reply" = "${reply#[Yy]}" ]; then 
-    rm -rf .vim/ && mkdir .vim/ && cp -r $HOME/.vim/* .vim/
+# Actual logic
+if ! [[ -d ~/vim ]]; then
+    rsync -anv .vim/ ~/.vim
+    echo "copied .vim/ into ~/.vim for first time setup"
 fi
 
+read -rn1 -p 'To copy .vim/ into ~/.vim, press 1. To copy ~/vim/ into .vim, press 2: '
+if [[ $REPLY == [1] ]]; then
+    rsync -anv .vim/ ~/.vim
+if [[ $REPLY == [2] ]]; then
+    rysnc -anv ~/.vim/ .vim
+else
+    echo "shut up" && exit 1;
+fi
+
+# read -rn1 -p 'Sync ~/.vim into ./.vim? [y/n]: '
+#  [[ -z $REPLY ]] || echo
+
+# if [[ $REPLY == [yY] ]]; then
+#     rsync -anv ~/.vim/ .vim
+# fi
