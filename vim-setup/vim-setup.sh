@@ -1,18 +1,25 @@
 #!/bin/bash
 
-# Vim setup script. This has 2 functions;
-# To copy ~/.vimrc to .vimrc (current folder)
-# To copy coffee.vim (preferred colour scheme for markdown) to /usr/share/vim/vim$$/syntax/ - according to version
+# Vim setup script. This sript will be used to set up vim for programming in any new machine.
+# The .vim/ directory is already created and is ready to be copied into $HOME
+# If not present, it will copy the entire folder, essentially making vim workable, with the required config.
+
+# While using vim on the machine, I might make chanes. Instead of copying each file by hand, I'll just copy everything inside $HOME/.vim here, and push. Easy.
 
 # use chmod u+x script to make it executable.
 
-# copying the .vimrc
-cp ~/.vimrc .vimrc
+DEST=$HOME/.vim
 
-# copying coffee.vim
-
-DEST_FILE=/usr/share/vim/vim81/syntax/coffee.vim
-
-if ! [[ -f $DEST_FILE ]]; then
-  sudo cp coffee.vim $DEST_FILE
+if ! [[ -f $DEST ]]; then
+  cp .vim ~/.
 fi
+
+SRC=./
+
+read -n 1 -p "Copy changes from ~/.vim to .vim? [Y/N] " reply;
+if [ "$reply" != "" ]; then echo; fi
+if [ "$reply" = "${reply#[Nn]}" ]; then echo; fi
+if [ "$reply" = "${reply#[Yy]}" ]; 
+    rm -rf .vim && cp -r $HOME/.vim 
+fi
+
