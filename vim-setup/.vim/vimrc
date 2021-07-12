@@ -1,5 +1,8 @@
 " BASIC SETUP:
 
+" setting up colours (unwanted change, but whatever)
+set t_Co=256
+
 " enter the current millenium
 set nocompatible
 
@@ -98,4 +101,3 @@ cnoremap <Leader>vt :vert term<CR>
 cnoremap <Leader>vh :vert help<CR>
 
 command! -nargs=? -complete=help Vh vert help <args>
-command Hid  echo synIDattr(synID(line("."), col("."), 1), "name")
