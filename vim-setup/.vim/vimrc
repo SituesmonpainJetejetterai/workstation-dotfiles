@@ -71,22 +71,31 @@ set linebreak
 " Gives Vim access to a broader range of colours
 set termguicolors
 
+" set dark colours for the terminal
+hi Terminal ctermbg=black ctermfg=white guibg=black guifg=white
+
 " KEY MAPPINGS
 " In order,
-" mapped , as the <Leader>
-" mapped :q! to ,q
-" mapped :wq to ,wq
-" mapped :vertical terminal to ,t
-" mapped the action to open :help in a vertical tab to ,vh
+" mapped <SPACE> as the <Leader>
+" mapped :q!<CR> to <Leader>q
+" mapped :wq<CR> to <Leader>wq
+" mapped :w<CR> to <Leader>w
+" mapped :vert term<CR> to <Leader>t
+" mapped :vert help<CR> to <Leader>vh
 
 " copied a command from a reddit comment to invoke the help command with an
 " argument, but vertically
+
+" copied a command from stack overflow: https://vi.stackexchange.com/a/18455
+" to check higlighting group for a word
 
 let g:mapleader=" "
 
 cnoremap <Leader>q :q!<CR>
 cnoremap <Leader>wq :wq<CR>
-cnoremap <Leader>t :vertical terminal<CR>
+cnoremap <Leader>w :w<CR>
+cnoremap <Leader>vt :vert term<CR>
 cnoremap <Leader>vh :vert help<CR>
 
 command! -nargs=? -complete=help Vh vert help <args>
+command Hid  echo synIDattr(synID(line("."), col("."), 1), "name")
