@@ -2,20 +2,6 @@
 
 A good resource to read: https://www.reddit.com/r/vim/wiki/vimrctips
 
-While I had thought that just keeping a `.vimrc` would be enough, doesn't seem like it.
-
-But, I'm lucky it's actually not much more than that.
-
-I'm going to write a bash script, which will do two things:
-- Copy `~/.vimrc` to the `.vimrc` in this folder, which will then be backed up with version control.
-- Copy `coffee.vim` to `/usr/share/vim/vim81/syntax/` (using vim81 at the time of writing, change according to version).
-
-This should be enough to get me started on editing Python and Markdown files from the command line, which is my main intention of using vim.
-
-Edit: 
-
-Link for coffee.vim: https://github.com/duythinht/inori/blob/master/colors/inori.vim (don't worry about the name).
-
 ## How to reach the end of lines in vim? Even when wrapped?
 
 Answer: https://stackoverflow.com/questions/105721/how-do-i-move-to-end-of-line-in-vim
@@ -47,3 +33,13 @@ Link: https://stackoverflow.com/questions/235839/indent-multiple-lines-quickly-i
 >>i{  Increase inner block indent
 >><i{  Decrease inner block indent
 
+## Comparing two files in Vim
+
+Link: https://unix.stackexchange.com/questions/1386/comparing-two-files-in-vim
+
+>```
+>:vs otherfile (open otherfile in vertical split screen)
+>:diffthis (turn on diff mode in original file)
+>Ctrl+w l  (swap to newly opened file)
+>:diffthis (turn on diff mode in opened file)
+>```
