@@ -13,12 +13,13 @@ if [[ $PWD == ~ ]]; then
 fi
 
 # Actual logic
-if ! [[ -d ~/vim ]]; then
-    rsync -anv .vim/ ~/.vim
+
+if ! [[ -d ~/.vim/ ]]; then
+    rsync -anv ./.vim/ ~/.vim
     echo "copied .vim/ into ~/.vim for first time setup"
 fi
 
-read -rn1 -p 'To copy .vim/ into ~/.vim, press 1. To copy ~/vim/ into .vim, press 2: '
+read -rn1 -p 'To copy .vim/ into ~/.vim, press 1. To copy ~/.vim/ into .vim, press 2: '
 if [[ $REPLY == [1] ]]; then
     rsync -anv .vim/ ~/.vim
 if [[ $REPLY == [2] ]]; then
