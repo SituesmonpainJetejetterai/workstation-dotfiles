@@ -8,8 +8,11 @@ let g:markdown_fenced_languages = ['javascript', 'python', 'c', 'ruby', 'sh', 'y
 " Spellcheck in British English
 setlocal spell spelllang=en_gb
 
+" Hide and format markdown elements like **bold** and *italics*
+setlocal conceallevel=2
+
 " set wrapping
-set wrap
+setlocal wrap
 
 " Live word count: https://vim.fandom.com/wiki/Word_count
 let g:word_count=wordcount().words
