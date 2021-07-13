@@ -74,8 +74,20 @@ set linebreak
 " Gives Vim access to a broader range of colours
 set termguicolors
 
-" set dark colours for the terminal
-hi Terminal ctermbg=black ctermfg=white guibg=black guifg=white
+" set a default colour scheme, to override, make a filetype.vim in
+" .vim/ftplugins
+set bg=dark
+let g:gruvbox_bold = '1'
+let g:gruvbox_italic = '1'
+let g:gruvbox_underline = '1'
+let g:gruvbox_undercurl = '1'
+let g:gruvbox_termcolors = '256'
+let g:gruvbox_contrast_dark = 'medium'
+let g:gruvbox_hls_cursor = 'orange'
+let g:gruvbox_italicize_comments = '1'
+let g:gruvbox_improved_strings= '1'  
+
+colorscheme gruvbox
 
 " KEY MAPPINGS
 " In order,
@@ -88,9 +100,6 @@ hi Terminal ctermbg=black ctermfg=white guibg=black guifg=white
 
 " copied a command from a reddit comment to invoke the help command with an
 " argument, but vertically
-
-" copied a command from stack overflow: https://vi.stackexchange.com/a/18455
-" to check higlighting group for a word
 
 let g:mapleader=" "
 
