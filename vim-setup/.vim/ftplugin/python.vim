@@ -14,4 +14,4 @@ autocmd BufWritePost *.py silent make! <afile> | silent redraw!
 " Automatic opening of the quickfix window
 autocmd QuickFixCmdPost [^l]* cwindow
 
-colorscheme badwolf 
+colorscheme mountaineer-grey 
