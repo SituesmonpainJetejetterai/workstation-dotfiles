@@ -12,9 +12,6 @@ augroup PythonSpecific
     autocmd QuickFixCmdPost [^l]* cwindow
 augroup END
 
-" Added the colour scheme
-colorscheme mountaineer-grey
-
 " Added a keymap to comment a bunch of lines together.
 " The way this works is, enter into visual mode by pressing 'v'
 " Move the cursor over the lines, either with arrow keys or 'h', 'j', 'k', 'l'
