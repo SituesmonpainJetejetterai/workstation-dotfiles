@@ -19,7 +19,8 @@ augroup END
 " Finally, type this super short key combination. Viola!
 
 " Unfortunately, I can only comment a set number of lines right now :(
-command! -range Cc <line1>,<line2>norm! I#<CR>
+command! -range Cc <line1>,<line2>norm I#<CR>
 
 " map <F5> to run python files
 noremap <buffer> <F5> :w<CR>:vert term python3 "%"<CR> 
+noremap <buffer> <F6> :w<CR>:vert term sudo python3 "%"<CR> 
