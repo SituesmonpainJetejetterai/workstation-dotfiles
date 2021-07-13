@@ -1,17 +1,28 @@
 " PYTHON SPECIFIC COMMANDS
 
-autocmd!
+augroup PythonSpecific
+    autocmd!
+    " Treat all .py files as python files 
+    autocmd BufNewFile,BufRead *.py set filetype=python
+    " Linting Python, the vanilla way
+    setlocal makeprg=pylint
+    " Automatic execution on :write
+    autocmd BufWritePost *.py silent make! <afile> | silent redraw!
+    " Automatic opening of the quickfix window
+    autocmd QuickFixCmdPost [^l]* cwindow
+augroup END
 
-" Treat all .py files as markdown
-autocmd BufNewFile,BufRead *.py set filetype=python
+" Added the colour scheme
+colorscheme mountaineer-grey
 
-" Linting Python, the vanilla way
-setlocal makeprg=pylint
+" Added a keymap to comment a bunch of lines together.
+" The way this works is, enter into visual mode by pressing 'v'
+" Move the cursor over the lines, either with arrow keys or 'h', 'j', 'k', 'l'
+" Then, press 'i' to enter insert mode.
+" Finally, type this super short key combination. Viola!
 
-" Automatic execution on :write
-autocmd BufWritePost *.py silent make! <afile> | silent redraw!
+" Unfortunately, I can only comment a set number of lines right now :(
+command! -range Cc 1,5norm! I#<CR>
 
-" Automatic opening of the quickfix window
-autocmd QuickFixCmdPost [^l]* cwindow
-
-colorscheme mountaineer-grey 
+" map <F5> to run python files
+noremap <buffer> <F5> :w<CR>:vert term python3 "%"<CR> 
