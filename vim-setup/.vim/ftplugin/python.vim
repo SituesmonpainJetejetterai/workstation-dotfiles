@@ -5,7 +5,7 @@ augroup PythonSpecific
     " Treat all .py files as python files 
     autocmd BufNewFile,BufRead *.py set filetype=python
     " Linting Python, the vanilla way
-    setlocal makeprg=pylint
+    setlocal makeprg=pylint/
     " Automatic execution on :write
     autocmd BufWritePost *.py silent make! <afile> | silent redraw!
     " Automatic opening of the quickfix window
@@ -22,7 +22,7 @@ colorscheme mountaineer-grey
 " Finally, type this super short key combination. Viola!
 
 " Unfortunately, I can only comment a set number of lines right now :(
-command! -range Cc 1,5norm! I#<CR>
+command! -range Cc <line1>,<line2>norm! I#<CR>
 
 " map <F5> to run python files
 noremap <buffer> <F5> :w<CR>:vert term python3 "%"<CR> 
