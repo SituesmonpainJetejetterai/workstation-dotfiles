@@ -13,9 +13,6 @@ let g:markdown_fenced_languages = ['javascript', 'python', 'c', 'ruby', 'sh', 'y
 " Spellcheck in British English
 setlocal spell spelllang=en_gb complete+=kspell
 
-" Set colour scheme
-colorscheme molokai-dark
-
 " Live word count: https://vim.fandom.com/wiki/Word_count
 let g:word_count=wordcount().words
 function WordCount()
