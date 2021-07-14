@@ -11,7 +11,7 @@ echo 'If you want to copy ~/.vim/ in .vim, press 2'
 read -p "What do you want to do?: " option
 
 case "$option" in 
-    "1") rsync -anv .vim/ ~/.vim;;
-    "2") rsync -anv ~/.vim/ .vim;;
+    "1") rsync -av .vim/ ~/.vim;;
+    "2") rsync -av ~/.vim/ .vim;;
     *) echo "You're stupid!";;
 esac
