@@ -5,3 +5,6 @@
 " Select the lines with j and/or k
 " press the key which is mapped. Viola!
 noremap <F4> :norm I" <CR>
+
+" And to uncomment
+noremap <F4> :norm xx<CR>
