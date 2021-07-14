@@ -15,12 +15,8 @@ augroup END
 " Added a keymap to comment a bunch of lines together.
 " The way this works is, enter into visual mode by pressing 'v'
 " Move the cursor over the lines, either with arrow keys or 'h', 'j', 'k', 'l'
-" Then, press 'i' to enter insert mode.
 " Finally, type this super short key combination. Viola!
-
-" Unfortunately, I can only comment a set number of lines right now :(
-command! -range Cc <line1>,<line2>norm I#<CR>
+noremap <F4> :norm I# <CR>
 
 " map <F5> to run python files
 noremap <buffer> <F5> :w<CR>:vert term python3 "%"<CR> 
-noremap <buffer> <F6> :w<CR>:vert term sudo python3 "%"<CR> 
