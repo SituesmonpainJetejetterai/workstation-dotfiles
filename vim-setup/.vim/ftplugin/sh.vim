@@ -4,7 +4,10 @@
 " Basically, enter visual mode
 " Select the lines you want to comment using j and/or k
 " Press the key. Voila!
-noremap <F4> :norm I# <CR>
+noremap <F4> :norm I#<Space><CR>
+
+" And, to uncomment
+noremap <F4> :norm xx<CR>
 
 " Key mapping to auto run bash scripts
 noremap <buffer> <F5> :w<CR>:vert term bash "%"<CR>
