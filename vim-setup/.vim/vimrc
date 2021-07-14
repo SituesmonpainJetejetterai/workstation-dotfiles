@@ -17,9 +17,6 @@ set softtabstop=4
 set shiftwidth=4
 set expandtab
 
-" omnifunc settings
-au FileType python setl ofu=pythoncomplete#CompletePython
-
 " FINDING FILES:
 
 " Search down into subfolders
@@ -95,7 +92,7 @@ colorscheme gruvbox
 " mapped :q!<CR> to <Leader>q
 " mapped :wq<CR> to <Leader>wq
 " mapped :w<CR> to <Leader>w
-" mapped :vert term<CR> to <Leader>t
+" mapped :vert term<CR> to <Leader>vt
 " mapped :vert help<CR> to <Leader>vh
 
 " copied a command from a reddit comment to invoke the help command with an
