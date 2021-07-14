@@ -1,11 +1,13 @@
 " PYTHON SPECIFIC COMMANDS
 
+" Linting python, the vanilla way
+setlocal makeprg=pylint
+
+" Python autocmds
 augroup PythonSpecific
     autocmd!
     " Treat all .py files as python files 
     autocmd BufNewFile,BufRead *.py set filetype=python
-    " Linting Python, the vanilla way
-    setlocal makeprg=pylint/
     " Automatic execution on :write
     autocmd BufWritePost *.py silent make! <afile> | silent redraw!
     " Automatic opening of the quickfix window
@@ -16,7 +18,10 @@ augroup END
 " The way this works is, enter into visual mode by pressing 'v'
 " Move the cursor over the lines, either with arrow keys or 'h', 'j', 'k', 'l'
 " Finally, type this super short key combination. Viola!
-noremap <F4> :norm I# <CR>
+noremap <F3> :norm I#<Space><CR>
+
+" And, to uncomment
+noremap <F4> :norm xx<CR>
 
 " map <F5> to run python files
 noremap <buffer> <F5> :w<CR>:vert term python3 "%"<CR> 
