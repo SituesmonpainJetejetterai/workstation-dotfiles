@@ -64,3 +64,14 @@ Link: https://unix.stackexchange.com/questions/1386/comparing-two-files-in-vim
 ```
 :p
 ```
+## To quit and save & quit a file
+
+In normal mode, to quit without saving;
+```
+ZQ
+```
+
+In normal mode, to save and quit;
+```
+ZZ
+```
