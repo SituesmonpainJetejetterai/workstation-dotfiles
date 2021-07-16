@@ -21,7 +21,7 @@ function WordCount()
 endfunction
 
 " Set the status line to show the live word count
-set statusline+=\ %f\ %=\ %w:%{WordCount()}\ \|\ On\ the\ clock:\ %{strftime('%T\ %Z')}
+set statusline+=\ %f\ %=\ %w:%{WordCount()}\ \|\ Modified\ on:\ %{strftime('%T\ %Z')}
 set laststatus=2 " show the statusline
 
 " Map k and j to work with wrapped lines
