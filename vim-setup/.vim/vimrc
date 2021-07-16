@@ -89,21 +89,25 @@ colorscheme gruvbox
 " KEY MAPPINGS
 " In order,
 " mapped <SPACE> as the <Leader>
-" mapped :q!<CR> to <Leader>q
-" mapped :wq<CR> to <Leader>wq
 " mapped :w<CR> to <Leader>w
 " mapped :vert term<CR> to <Leader>vt
 " mapped :vert help<CR> to <Leader>vh
+
+" Mapped > to resize the window by 2 units to the right.
+" Mapped < to resize the window by 2 units to the left.
+" Only for vertical windows, as I don't use (or like) the horizontal split.
+" From this link: https://vim.fandom.com/wiki/Quick_window_resizing
 
 " copied a command from a reddit comment to invoke the help command with an
 " argument, but vertically
 
 let g:mapleader=" "
 
-cnoremap <Leader>q :q!<CR>
-cnoremap <Leader>wq :wq<CR>
 cnoremap <Leader>w :w<CR>
 cnoremap <Leader>vt :vert term<CR>
 cnoremap <Leader>vh :vert help<CR>
+
+nnoremap > <C-W>><C-W>>
+nnoremap < <C-W><<C-W><
 
 command! -nargs=? -complete=help Vh vert help <args>
