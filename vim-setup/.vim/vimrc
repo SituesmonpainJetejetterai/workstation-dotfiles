@@ -89,7 +89,6 @@ colorscheme gruvbox
 " KEY MAPPINGS
 " In order,
 " mapped <SPACE> as the <Leader>
-" mapped :w<CR> to <Leader>w
 " mapped :vert term<CR> to <Leader>vt
 " mapped :vert help<CR> to <Leader>vh
 
@@ -103,7 +102,6 @@ colorscheme gruvbox
 
 let g:mapleader=" "
 
-cnoremap <Leader>w :w<CR>
 cnoremap <Leader>vt :vert term<CR>
 cnoremap <Leader>vh :vert help<CR>
 
