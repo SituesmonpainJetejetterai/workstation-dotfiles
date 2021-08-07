@@ -75,3 +75,20 @@ In normal mode, to save and quit;
 ```
 ZZ
 ```
+
+## To search and replace
+
+```
+:%s/search/replace/g
+```
+`%s`: signifies searching the entire contents of the file.
+`search`: word to search for
+`replace`: word to replace with
+`g`: replace in the entire file
+
+## To undo/redo
+
+- undo:
+`u`: to undo the changes till the last time in normal mode
+- redo:
+`cntrl+r`: redo the changes, i.e. undo the undo
