@@ -7,7 +7,7 @@
 noremap <F4> :norm I#<Space><CR>
 
 " And, to uncomment
-noremap <F4> :norm xx<CR>
+noremap <F4> :norm 0xx<CR>
 
 " Key mapping to auto run bash scripts
 noremap <buffer> <F5> :w<CR>:vert term bash "%"<CR>
