@@ -21,7 +21,7 @@ augroup END
 noremap <F3> :norm I#<Space><CR>
 
 " And, to uncomment
-noremap <F4> :norm xx<CR>
+noremap <F4> :norm 0xx<CR>
 
 " map <F5> to run python files
 noremap <buffer> <F5> :w<CR>:vert term python3 "%"<CR> 
