@@ -28,7 +28,7 @@ Link: Answer: https://stackoverflow.com/questions/105721/how-do-i-move-to-end-of
 - Enter visual mode.
 - Select lines.
 - Press <Shift>+>
-- To de-indent, press <Shift)+<
+- To de-indent, press <Shift>+<
 
 ## Comparing two files in Vim
 
