@@ -4,7 +4,7 @@
 " Basically, enter visual mode
 " Select the lines you want to comment using j and/or k
 " Press the key. Voila!
-noremap <F4> :norm I#<Space><CR>
+noremap <F3> :norm I#<Space><CR>
 
 " And, to uncomment
 noremap <F4> :norm 0xx<CR>
