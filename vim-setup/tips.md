@@ -1,3 +1,8 @@
+#### symlink the .vim directory here to a .vim directory in the $HOME directory. Only use this while in the $HOME directory,
+
+`ln -s <path/to/.vim> .vim`
+
+
 # Instructions to implement a good vim experience.
 
 A good resource to read: https://www.reddit.com/r/vim/wiki/vimrctips
