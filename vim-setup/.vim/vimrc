@@ -4,6 +4,13 @@
 set relativenumber 
 set number
 
+" Set scrolloff so I don't move around in a file, unless I'm at the top or the
+" bottom
+set scrolloff=8
+
+" Don't abandon buffers in the background even if they are unsaved
+set hidden
+
 " setting up colours (unwanted change, but whatever)
 set t_Co=256
 
@@ -90,6 +97,7 @@ let g:gruvbox_improved_strings= '1'
 colorscheme gruvbox
 
 " KEY MAPPINGS
+
 " In order,
 " mapped <SPACE> as the <Leader>
 " mapped :vert term<CR> to <Leader>vt
@@ -102,6 +110,14 @@ colorscheme gruvbox
 
 " Copied easier split navigation bindings 
 " https://thoughtbot.com/blog/vim-splits-move-faster-and-more-naturally#easier-split-navigations
+
+" Added a remap to copy the entire line from the point of the cursor
+
+" Added remaps to center the file while searching next/previous
+
+" Added a remap to undo break points (really important)
+" Instead of undoing the entire change (which can really such), undo till a
+" last recongnised mark, like a '.', ',', '!' and '?'.
 
 " Autocomplete brackets logic 
 
@@ -121,12 +137,25 @@ nnoremap <C-k> <C-W>k
 nnoremap <C-l> <C-W>l
 nnoremap <C-h> <C-W>h
 
+nnoremap Y y$
+
+nnoremap n nzz
+nnoremap N Nzz
+
+inoremap , ,<c-g>u
+inoremap . .<c-g>u
+inoremap ! !<c-g>u
+inoremap ? ?<c-g>u
+
 inoremap ( ()<ESC>hli
 inoremap { {}<ESC>hli
 inoremap [ []<ESC>hli
 inoremap ` ``<ESC>hli
 
-autocmd FileType c,javascript,python,sh inoremap <buffer> ' ''<ESC>hli
-autocmd FileType c,javascript,python,sh inoremap <buffer> " ""<ESC>hli
+augroup brackets
+    autocmd!
+    autocmd FileType c,javascript,python,sh inoremap <buffer> ' ''<ESC>hli
+    autocmd FileType c,javascript,python,sh inoremap <buffer> " ""<ESC>hli
+augroup END
 
 command! -nargs=? -complete=help Vh vert help <args>
