@@ -6,8 +6,6 @@ setlocal makeprg=pylint
 " Python autocmds
 augroup PythonSpecific
     autocmd!
-    " Treat all .py files as python files 
-    autocmd BufNewFile,BufRead *.py set filetype=python
     " Automatic execution on :write
     autocmd BufWritePost *.py silent make! <afile> | silent redraw!
     " Automatic opening of the quickfix window

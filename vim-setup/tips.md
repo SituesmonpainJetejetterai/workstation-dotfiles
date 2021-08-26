@@ -22,7 +22,10 @@ Link: Answer: https://stackoverflow.com/questions/105721/how-do-i-move-to-end-of
     ```
     ^
     ```
-
+- To get to the end of a line,
+    ```
+    $
+    ```
 ## Indent multiple lines
 
 - Enter visual mode.
@@ -52,9 +55,6 @@ Link: https://unix.stackexchange.com/questions/1386/comparing-two-files-in-vim
 ```
 :e!
 ```
-## To switch between windows
-- Press `<C-w>`
-- Press `h`, `j`, `k`, `l` to switch to the window, according to its position.
 
 ## To undo
 - This will only work if `:set nocompatible` is set in the `vimrc`.
