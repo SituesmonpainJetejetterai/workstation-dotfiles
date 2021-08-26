@@ -97,6 +97,9 @@ colorscheme gruvbox
 " Only for vertical windows, as I don't use (or like) the horizontal split.
 " From this link: https://vim.fandom.com/wiki/Quick_window_resizing
 
+" Copied easier split navigation bindings 
+" https://thoughtbot.com/blog/vim-splits-move-faster-and-more-naturally#easier-split-navigations
+
 " copied a command from a reddit comment to invoke the help command with an
 " argument, but vertically
 
@@ -107,5 +110,10 @@ cnoremap <Leader>vh :vert help<CR>
 
 nnoremap > <C-W>><C-W>>
 nnoremap < <C-W><<C-W><
+
+nnoremap <C-j> <C-W>j
+nnoremap <C-k> <C-W>k
+nnoremap <C-l> <C-W>l
+nnoremap <C-h> <C-W>h
 
 command! -nargs=? -complete=help Vh vert help <args>
