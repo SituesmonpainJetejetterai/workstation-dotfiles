@@ -100,6 +100,8 @@ colorscheme gruvbox
 " Copied easier split navigation bindings 
 " https://thoughtbot.com/blog/vim-splits-move-faster-and-more-naturally#easier-split-navigations
 
+" Autocomplete brackets logic 
+
 " copied a command from a reddit comment to invoke the help command with an
 " argument, but vertically
 
@@ -115,5 +117,12 @@ nnoremap <C-j> <C-W>j
 nnoremap <C-k> <C-W>k
 nnoremap <C-l> <C-W>l
 nnoremap <C-h> <C-W>h
+
+inoremap ( ()<ESC>hli
+inoremap { {}<ESC>hli
+inoremap [ []<ESC>hli
+inoremap ' ''<ESC>hli
+inoremap " ""<ESC>hli
+inoremap ` ``<ESC>hli
 
 command! -nargs=? -complete=help Vh vert help <args>
