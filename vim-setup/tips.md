@@ -80,6 +80,9 @@ In normal mode, to save and quit;
 ```
 ZZ
 ```
+## To search
+
+`/`, then type what you want to find
 
 ## To search and replace
 
@@ -97,3 +100,5 @@ ZZ
 `u`: to undo the changes till the last time in normal mode
 - redo:
 `cntrl+r`: redo the changes, i.e. undo the undo
+
+
