@@ -1,7 +1,9 @@
 " BASIC SETUP:
 
-" set relative numbering for lines
+" set relative and static numbering for lines
 set relativenumber 
+set number
+
 " setting up colours (unwanted change, but whatever)
 set t_Co=256
 
@@ -55,12 +57,11 @@ let g:netrw_list_hide.=',\(^\|\s\s\)\zs\.\S\+'
 " highlight matching [{()}]
 set showmatch
 
-" show line numbers
-" set number
-
 " improve text search inside a file
 set incsearch
-set hlsearch
+
+" Don't keep the higlight on after searching, it's annoying
+set nohlsearch
 
 " code folding
 set foldenable
@@ -123,8 +124,9 @@ nnoremap <C-h> <C-W>h
 inoremap ( ()<ESC>hli
 inoremap { {}<ESC>hli
 inoremap [ []<ESC>hli
-inoremap ' ''<ESC>hli
-inoremap " ""<ESC>hli
 inoremap ` ``<ESC>hli
+
+autocmd FileType c,javascript,python,sh inoremap <buffer> ' ''<ESC>hli
+autocmd FileType c,javascript,python,sh inoremap <buffer> " ""<ESC>hli
 
 command! -nargs=? -complete=help Vh vert help <args>
