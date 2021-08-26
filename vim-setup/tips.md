@@ -53,10 +53,15 @@ Link: https://unix.stackexchange.com/questions/1386/comparing-two-files-in-vim
 ```
 ## To refresh a file
 
+The best way to actually refresh changes would be `so %`. If you're working with a new file, you'll probably do `so <file>`.
+
+However these could work too. Not recommended for this purpose though.
+
 ```
 :e
 ```
 *or to be forceful*
+
 ```
 :e!
 ```
@@ -94,11 +99,22 @@ ZZ
 `replace`: word to replace with
 `g`: replace in the entire file
 
+## To go to next/previous occurence of the word
+
+- Either use the search
+    - Click <CR> after `/<string>`
+    - Use `n` to move to next occurence
+    - Use `N` to move to previous occurence
+- Sometimes, the word is too big and/or complicated
+    - Put the cursor on the word
+    - Press `*` to move to next occurence
+    - Press `#` to move to previous occurence
+
+Link for reference: https://stackoverflow.com/questions/6607630/find-next-in-vim
+
 ## To undo/redo
 
 - undo:
 `u`: to undo the changes till the last time in normal mode
 - redo:
 `cntrl+r`: redo the changes, i.e. undo the undo
-
-
