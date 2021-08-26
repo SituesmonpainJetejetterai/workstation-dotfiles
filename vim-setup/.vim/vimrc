@@ -1,5 +1,7 @@
 " BASIC SETUP:
 
+" set relative numbering for lines
+set relativenumber 
 " setting up colours (unwanted change, but whatever)
 set t_Co=256
 
@@ -54,7 +56,7 @@ let g:netrw_list_hide.=',\(^\|\s\s\)\zs\.\S\+'
 set showmatch
 
 " show line numbers
-set number
+" set number
 
 " improve text search inside a file
 set incsearch
