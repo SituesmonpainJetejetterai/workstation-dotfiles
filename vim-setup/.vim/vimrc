@@ -115,6 +115,10 @@ colorscheme gruvbox
 
 " Added remaps to center the file while searching next/previous
 
+" Added visual and normal mode remaps to enter command more easily
+
+" Added remap to paste what you yanked, not what you deleted
+
 " Added a remap to undo break points (really important)
 " Instead of undoing the entire change (which can really such), undo till a
 " last recongnised mark, like a '.', ',', '!' and '?'.
@@ -141,6 +145,12 @@ nnoremap Y y$
 
 nnoremap n nzz
 nnoremap N Nzz
+
+vnoremap ; :
+nnoremap ; :
+
+nnoremap ,p "0p
+nnoremap ,P "0P
 
 inoremap , ,<c-g>u
 inoremap . .<c-g>u
