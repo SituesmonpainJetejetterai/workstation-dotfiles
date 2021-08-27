@@ -51,6 +51,11 @@ Link: https://unix.stackexchange.com/questions/1386/comparing-two-files-in-vim
 ```
 :vs path/to/file
 ```
+
+## To open up `netrw` in a vertical pane
+
+`:Vex`
+
 ## To refresh a file
 
 The best way to actually refresh changes would be `so %`. If you're working with a new file, you'll probably do `so <file>`.
