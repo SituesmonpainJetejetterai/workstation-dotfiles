@@ -1,5 +1,8 @@
 " BASIC SETUP:
 
+" Show trailing spaces and tabs like ··
+set listchars=trail:·,tab:··
+
 " set relative and static numbering for lines
 set relativenumber 
 set number
@@ -28,6 +31,10 @@ set softtabstop=4
 set shiftwidth=4
 set expandtab
 
+
+" ---------
+
+
 " FINDING FILES:
 
 " Search down into subfolders
@@ -44,6 +51,10 @@ set wildmenu
 " THINGS TO CONSIDER:
 " - :b lets you autocomplete any open buffer
 
+
+" ---------
+
+
 " FILE BROWSING:
 
 " Tweaks for browsing
@@ -59,7 +70,21 @@ let g:netrw_list_hide.=',\(^\|\s\s\)\zs\.\S\+'
 " - <CR>/v/t to open in an h-split/v-split/tab
 " - check |netrw-browse-maps| for more mappings
 
+
+"---------
+
+
 " MISCELLANEOUS:
+
+" Return to last edit position when opening files
+" Link: https://github.com/MarcoLucidi01/dotfiles/blob/master/.vim/vimrc
+augroup RETURN_TO_POSITION
+    autocmd!
+    autocmd BufReadPost *
+        \ if line("'\"") > 0 && line("'\"") <= line("$") |
+        \   exe "normal! g`\"" |
+        \ endif
+augroup END
 
 " highlight matching [{()}]
 set showmatch
@@ -74,6 +99,9 @@ set nohlsearch
 set foldenable
 set foldlevelstart=10
 set foldmethod=syntax
+
+" Good backspace behaviour
+set backspace=indent,eol,start
 
 " Have lines wrap instead of continue off-screen
 set linebreak
@@ -96,67 +124,61 @@ let g:gruvbox_improved_strings= '1'
 
 colorscheme gruvbox
 
+
+" ---------
+
+
 " KEY MAPPINGS
 
-" In order,
 " mapped <SPACE> as the <Leader>
+let g:mapleader=" "
+
 " mapped :vert term<CR> to <Leader>vt
 " mapped :vert help<CR> to <Leader>vh
+cnoremap <Leader>vt :vert term<CR>
+cnoremap <Leader>vh :vert help<CR>
 
 " Mapped > to resize the window by 2 units to the right.
 " Mapped < to resize the window by 2 units to the left.
 " Only for vertical windows, as I don't use (or like) the horizontal split.
 " From this link: https://vim.fandom.com/wiki/Quick_window_resizing
-
-" Copied easier split navigation bindings 
-" https://thoughtbot.com/blog/vim-splits-move-faster-and-more-naturally#easier-split-navigations
-
-" Added a remap to copy the entire line from the point of the cursor
-
-" Added remaps to center the file while searching next/previous
-
-" Added visual and normal mode remaps to enter command more easily
-
-" Added remap to paste what you yanked, not what you deleted
-
-" Added a remap to undo break points (really important)
-" Instead of undoing the entire change (which can really such), undo till a
-" last recongnised mark, like a '.', ',', '!' and '?'.
-
-" Autocomplete brackets logic 
-
-" copied a command from a reddit comment to invoke the help command with an
-" argument, but vertically
-
-let g:mapleader=" "
-
-cnoremap <Leader>vt :vert term<CR>
-cnoremap <Leader>vh :vert help<CR>
-
 nnoremap > <C-W>><C-W>>
 nnoremap < <C-W><<C-W><
 
+" Copied easier split navigation bindings 
+" https://thoughtbot.com/blog/vim-splits-move-faster-and-more-naturally#easier-split-navigations
 nnoremap <C-j> <C-W>j
 nnoremap <C-k> <C-W>k
 nnoremap <C-l> <C-W>l
 nnoremap <C-h> <C-W>h
 
+" Added a remap to copy the entire line from the point of the cursor
 nnoremap Y y$
 
+" Added remaps to center the file while searching next/previous
 nnoremap n nzz
 nnoremap N Nzz
 
+" Added visual and normal mode remaps to enter command more easily
 vnoremap ; :
 nnoremap ; :
 
+" Added remap to paste what you yanked, not what you deleted
 nnoremap ,p "0p
 nnoremap ,P "0P
 
+" Added a remap to undo break points (really important)
+" Instead of undoing the entire change (which can really such), undo till a
+" last recongnised mark, like a '.', ',', '!' and '?'.
 inoremap , ,<c-g>u
 inoremap . .<c-g>u
 inoremap ! !<c-g>u
 inoremap ? ?<c-g>u
 
+" List buffers and prepare to switch
+nnoremap gb :buffers<CR>:b
+
+" Autocomplete brackets logic 
 inoremap ( ()<ESC>hli
 inoremap { {}<ESC>hli
 inoremap [ []<ESC>hli
@@ -168,4 +190,6 @@ augroup brackets
     autocmd FileType c,javascript,python,sh inoremap <buffer> " ""<ESC>hli
 augroup END
 
+" copied a command from a reddit comment to invoke the help command with an
+" argument, but vertically
 command! -nargs=? -complete=help Vh vert help <args>
