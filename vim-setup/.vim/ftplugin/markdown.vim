@@ -31,4 +31,4 @@ noremap <silent> <buffer> j gj
 " set a colour scheme
 " error detection is not working with the default gruvbox scheme
 " Neither is it working with badwolf, which I would've liked to use
-colorscheme onedark
+" colorscheme onedark
