@@ -112,6 +112,7 @@ set termguicolors
 " set a default colour scheme, to override, make a filetype.vim in
 " .vim/ftplugins
 set bg=dark
+let g:gruvbox_guisp_fallback = "bg"
 let g:gruvbox_bold = '1'
 let g:gruvbox_italic = '1'
 let g:gruvbox_underline = '1'
@@ -159,9 +160,8 @@ nnoremap Y y$
 nnoremap n nzz
 nnoremap N Nzz
 
-" Added visual and normal mode remaps to enter command more easily
-vnoremap ; :
-nnoremap ; :
+" Added a remap to save a file if updated
+nnoremap <Leader>w :update<CR>
 
 " Added remap to paste what you yanked, not what you deleted
 nnoremap ,p "0p
