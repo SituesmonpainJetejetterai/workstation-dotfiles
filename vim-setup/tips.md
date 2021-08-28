@@ -13,11 +13,11 @@ Link: Answer: https://stackoverflow.com/questions/105721/how-do-i-move-to-end-of
 
 - To go the end of the line and edit,
     ```
-    <Shift>+a
+    A
     ```
 - To go the beginning of the file and edit,
     ```
-    <Shift>+i
+    I
     ```
 - To get to the beginning of the line,
     ```
@@ -35,8 +35,15 @@ Link: Answer: https://stackoverflow.com/questions/105721/how-do-i-move-to-end-of
 
 - Enter visual mode.
 - Select lines.
-- Press <Shift>+>
-- To de-indent, press <Shift>+<
+- Press `>`
+- To de-indent, press `<`
+
+## Put a space between lines in normal mode
+
+`o` to put a space below the line
+`O` to put a space above the line
+
+Both will take you to insert mode.
 
 ## Comparing two files in Vim
 
@@ -60,7 +67,7 @@ Link: https://unix.stackexchange.com/questions/1386/comparing-two-files-in-vim
 
 The best way to actually refresh changes would be `so %`. If you're working with a new file, you'll probably do `so <file>`.
 
-However these could work too. Not recommended for this purpose though.
+## To edit a file in vim
 
 ```
 :e
