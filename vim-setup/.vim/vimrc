@@ -1,5 +1,8 @@
 " BASIC SETUP:
 
+" Set the location of viminfo inside .vim
+set viminfo+=n~/.vim/viminfo
+
 " Show trailing spaces and tabs like ··
 set listchars=trail:·,tab:··
 
