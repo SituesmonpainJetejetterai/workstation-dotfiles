@@ -159,6 +159,12 @@ nnoremap <C-h> <C-W>h
 " Added a remap to copy the entire line from the point of the cursor
 nnoremap Y y$
 
+" Key remaps to copy and paste to and from the system buffer
+nnoremap <C-y> "+y
+vnoremap <C-y> "+y
+nnoremap <C-p> "+gP
+vnoremap <C-p> "+gP
+
 " Added remaps to center the file while searching next/previous
 nnoremap n nzz
 nnoremap N Nzz
