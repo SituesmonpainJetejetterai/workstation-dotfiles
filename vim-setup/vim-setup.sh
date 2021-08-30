@@ -6,13 +6,11 @@ if [[ $PWD == ~ ]]; then
 fi 
 
 dot="$(cd "$(dirname "$0")"; pwd)"
-# config_path="$dot/.vim"
 colour_path="$dot/.vim/colors/"
 
 echo 'updating gruvbox.vim'
 
 cd "$colour_path" && { curl -O https://raw.githubusercontent.com/morhetz/gruvbox/master/colors/gruvbox.vim; cd -; }
-# curl -O https://raw.githubusercontent.com/morhetz/gruvbox/master/colors/gruvbox.vim
 
 echo 'updating config in $HOME/.vim'
 

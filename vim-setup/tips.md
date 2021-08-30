@@ -45,6 +45,10 @@ Link: Answer: https://stackoverflow.com/questions/105721/how-do-i-move-to-end-of
 
 Both will take you to insert mode.
 
+## Edit at the end of a word
+
+`a`
+
 ## Comparing two files in Vim
 
 Link: https://unix.stackexchange.com/questions/1386/comparing-two-files-in-vim
@@ -111,16 +115,16 @@ ZZ
 `replace`: word to replace with
 `g`: replace in the entire file
 
-## To go to next/previous occurence of the word
+## To go to next/previous occurrence of the word
 
 - Either use the search
     - Click <CR> after `/<string>`
-    - Use `n` to move to next occurence
-    - Use `N` to move to previous occurence
+    - Use `n` to move to next occurrence
+    - Use `N` to move to previous occurrence
 - Sometimes, the word is too big and/or complicated
     - Put the cursor on the word
-    - Press `*` to move to next occurence
-    - Press `#` to move to previous occurence
+    - Press `*` to move to next occurrence
+    - Press `#` to move to previous occurrence
 
 Link for reference: https://stackoverflow.com/questions/6607630/find-next-in-vim
 
