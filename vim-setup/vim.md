@@ -7,6 +7,12 @@
 
 A good resource to read: https://www.reddit.com/r/vim/wiki/vimrctips
 
+
+---
+
+
+# Lines
+
 ## Reach the ends of a line in vim
 
 Link: Answer: https://stackoverflow.com/questions/105721/how-do-i-move-to-end-of-line-in-vim
@@ -49,6 +55,12 @@ Both will take you to insert mode.
 
 `a`
 
+
+---
+
+
+# Files
+
 ## Comparing two files in Vim
 
 Link: https://unix.stackexchange.com/questions/1386/comparing-two-files-in-vim
@@ -57,15 +69,16 @@ Link: https://unix.stackexchange.com/questions/1386/comparing-two-files-in-vim
     ```
     :diffthis
     ```
+
+## To open up `netrw` in a vertical pane
+
+`:Vex`
+
 ## To open a new file in a vertical split window
 
 ```
 :vs path/to/file
 ```
-
-## To open up `netrw` in a vertical pane
-
-`:Vex`
 
 ## To refresh a file
 
@@ -82,14 +95,6 @@ The best way to actually refresh changes would be `so %`. If you're working with
 :e!
 ```
 
-## To undo
-- This will only work if `:set nocompatible` is set in the `vimrc`.
-- Press `u` to undo changes since the last time you were in normal mode, in the current buffer. 
-
-## To view the buffer for copied text
-```
-:p
-```
 ## To quit and save & quit a file
 
 In normal mode, to quit without saving;
@@ -101,6 +106,38 @@ In normal mode, to save and quit;
 ```
 ZZ
 ```
+
+## To undo/redo
+
+- undo:
+`u`: to undo the changes till the last time in normal mode
+- redo:
+`cntrl+r`: redo the changes, i.e. undo the undo
+
+
+---
+
+
+# Search
+
+## To view the buffer for copied text
+
+`:p`
+
+## To copy lines between vim and another application 
+
+This requires the use of the system clipboard. On `*nix` systems, that's the X11 clipboard. Because in most server environments, vim is not installed with the clipboard feature enabled (by the package manager), I needed to find an alternative.
+
+For now, temporarily, `tmux` to the rescue.
+
+However, for `tmux` doesn't really discriminate about what's on the screen, i.e. even my line numbers are copied along with the text, making it a hot mess.
+
+Simply `:set nonu nornu` to switch off all line numbers.\
+Copy text (and refactor it to an extent)\
+Type `:set nu rnu` to bring back both types of line numbers.
+
+I have also commented out some key mappings in the `vimrc` in case I get vim with the system clipboard flag enabled.
+
 ## To search
 
 `/`, then type what you want to find
@@ -126,11 +163,4 @@ ZZ
     - Press `*` to move to next occurrence
     - Press `#` to move to previous occurrence
 
-Link for reference: https://stackoverflow.com/questions/6607630/find-next-in-vim
-
-## To undo/redo
-
-- undo:
-`u`: to undo the changes till the last time in normal mode
-- redo:
-`cntrl+r`: redo the changes, i.e. undo the undo
+*Link for reference*: https://stackoverflow.com/questions/6607630/find-next-in-vim
