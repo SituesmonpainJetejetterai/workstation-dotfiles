@@ -3,9 +3,6 @@
 " Set the location of viminfo inside .vim
 set viminfo+=n~/.vim/viminfo
 
-" Show trailing spaces and tabs like ··
-set listchars=trail:·,tab:··
-
 " set relative and static numbering for lines
 set relativenumber 
 set number
@@ -149,6 +146,10 @@ cnoremap <Leader>vh :vert help<CR>
 nnoremap > <C-W>><C-W>>
 nnoremap < <C-W><<C-W><
 
+" Mapped `j` to `gj` and `k` to `gk` to move easily with wrapped lines
+nnoremap j gj
+nnoremap gj j
+
 " Copied easier split navigation bindings 
 " https://thoughtbot.com/blog/vim-splits-move-faster-and-more-naturally#easier-split-navigations
 nnoremap <C-j> <C-W>j
@@ -159,7 +160,7 @@ nnoremap <C-h> <C-W>h
 " Added a remap to copy the entire line from the point of the cursor
 nnoremap Y y$
 
-" Key remaps to copy and paste to and from the system buffer
+" Key remaps to copy and paste, to and from the system buffer
 nnoremap <C-y> "+y
 vnoremap <C-y> "+y
 nnoremap <C-p> "+gP
@@ -195,8 +196,8 @@ inoremap ` ``<ESC>hli
 
 augroup brackets
     autocmd!
-    autocmd FileType c,javascript,python,sh inoremap <buffer> ' ''<ESC>hli
-    autocmd FileType c,javascript,python,sh inoremap <buffer> " ""<ESC>hli
+    autocmd FileType markdown,python,sh inoremap <buffer> ' ''<ESC>hli
+    autocmd FileType markdown,python,sh inoremap <buffer> " ""<ESC>hli
 augroup END
 
 " copied a command from a reddit comment to invoke the help command with an
