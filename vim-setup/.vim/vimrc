@@ -161,10 +161,11 @@ nnoremap <C-h> <C-W>h
 nnoremap Y y$
 
 " Key remaps to copy and paste, to and from the system buffer
-nnoremap <C-y> "+y
-vnoremap <C-y> "+y
-nnoremap <C-p> "+gP
-vnoremap <C-p> "+gP
+" Will only work if vim is compiled with the clipboard flag
+" noremap <C-y> "*y
+" noremap <C-p> "*p
+" noremap <C-Y> "+y
+" noremap <C-P> "+p
 
 " Added remaps to center the file while searching next/previous
 nnoremap n nzz
