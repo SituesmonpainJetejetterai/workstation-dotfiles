@@ -42,7 +42,9 @@ set expandtab
 set path+=**
 
 " Display all matching files when we tab complete
+" And ignore certain files while searching
 set wildmenu
+set wildignore+=.git/*,*/node_modules/*,*/target/*,*.class,*.png,*.gif,*.pdf,*.exe,*.so,*.jar,*.war,*.ear,*.dll,*.swp,*.zip,*.pyc
 
 " NOW WE CAN:
 " - Hit tab to :find by partial match
@@ -188,6 +190,9 @@ inoremap ? ?<c-g>u
 
 " List buffers and prepare to switch
 nnoremap gb :buffers<CR>:b
+
+" Reload buffers that have changed
+nnoremap <Leader>r :checktime<CR>
 
 " Autocomplete brackets logic 
 inoremap ( ()<ESC>hli
