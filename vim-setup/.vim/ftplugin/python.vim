@@ -11,7 +11,8 @@ augroup PythonSpecific
     " Automatic execution on :write
     autocmd BufWritePost *.py silent make! <afile> | silent redraw!
     " Automatic opening of the quickfix window
-    autocmd QuickFixCmdPost [^l]* cwindow
+    autocmd QuickFixCmdPost [^l]* vertical cwindow|vert resize +40
+
 augroup END
 
 " Added a keymap to comment a bunch of lines together.
@@ -24,4 +25,4 @@ noremap <F3> :norm I#<Space><CR>
 noremap <F4> :norm 0xx<CR>
 
 " map <F5> to run python files
-noremap <buffer> <F5> :w<CR>:vert term python3 "%"<CR> 
+noremap <buffer> <F5> :update<CR>:below terminal++rows=15 python3 "%"<CR> 
