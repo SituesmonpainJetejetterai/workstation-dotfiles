@@ -107,6 +107,10 @@ In normal mode, to save and quit;
 ZZ
 ```
 
+## To see the recently edited (or opened) files
+
+`:browse oldfiles`
+
 ## To undo/redo
 
 - undo:
