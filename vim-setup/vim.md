@@ -63,7 +63,7 @@ Both will take you to insert mode.
 
 ## Comparing two files in Vim
 
-Link: https://unix.stackexchange.com/questions/1386/comparing-two-files-in-vim
+*Link*: https://unix.stackexchange.com/questions/1386/comparing-two-files-in-vim
 
 - To compare changes in a file 
     ```
@@ -168,3 +168,27 @@ I have also commented out some key mappings in the `vimrc` in case I get vim wit
     - Press `#` to move to previous occurrence
 
 *Link for reference*: https://stackoverflow.com/questions/6607630/find-next-in-vim
+
+
+---
+
+
+# Errors
+
+## `errorformat` or `efm`
+
+It is important to set up the right `errorformat` or the quickfix window won't open, even if there are errors. There are 2 main steps to get errors to show up in the quickfix window:
+
+- Set `makerpg` properly, and install the linter/checker.
+- Set the `errorformat` properly, so the `:cwindow` will open automatically, because vim needs to be able to parse the errors.
+
+Check the `python.vim` and `sh.vim` files for examples on `errorformat`.
+
+As for resources, I found a few. The one right below is the most important, as it defines each option that can be used in the `errorformat`. 
+- [The error format](http://vimdoc.sourceforge.net/htmldoc/quickfix.html#errorformat) - From the Vim docs (online)
+
+There are some others, like,
+- [Errorformats](https://vim.fandom.com/wiki/Errorformats) - Vim Tips Wiki
+- [Integrate Pylint and Pychecker support](https://vim.fandom.com/wiki/Integrate_Pylint_and_Pychecker_support) - Vim Tips Wiki
+- [Errorformat for java/ant/junit/cygwin/bash](https://vim.fandom.com/wiki/Errorformat_for_java/ant/junit/cygwin/bash) - Vim Tips Wiki
+- [Vim errorformat Demystified](https://flukus.github.io/vim-errorformat-demystified.html)
