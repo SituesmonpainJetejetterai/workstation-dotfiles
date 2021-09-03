@@ -2,13 +2,15 @@
 
 " Bash linting
 set makeprg=shellcheck
+set errorformat=In\ %f\ line\ %l:
 
 augroup bashSpecific
     autocmd!
     " Automatic execution on :write
     autocmd BufWritePost *.sh silent make! <afile> | silent redraw!
     " Automatic opening of the quickfix window
-    autocmd QuickFixCmdPost [^l]* cwindow
+    autocmd QuickFixCmdPost make vertical cwindow|vertical resize +35
+
 augroup END
              
 
@@ -22,4 +24,4 @@ noremap <F3> :norm I#<Space><CR>
 noremap <F4> :norm 0xx<CR>
 
 " Key mapping to auto run bash scripts
-noremap <buffer> <F5> :w<CR>:vert term bash "%"<CR>
+noremap <buffer> <F5> :w<CR>:below terminal++rows=15 bash "%"<CR>
