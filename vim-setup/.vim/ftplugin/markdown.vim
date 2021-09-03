@@ -24,6 +24,9 @@ endfunction
 set statusline+=\ %f\ %=\ %w:%{WordCount()}\ \|\ Modified\ on:\ %{strftime('%T\ %Z')}
 set laststatus=2 " show the statusline
 
+" Key remap to insert the date and time as a timestamp
+nnoremap dt I<C-R>=strftime("%Y-%m-%d %a %I:%M %p")<CR><Esc>
+
 " Map k and j to work with wrapped lines
 noremap <silent> <buffer> k gk
 noremap <silent> <buffer> j gj
