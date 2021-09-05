@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-sudo apt update && sudo apt upgrade
-sudo apt purge vim && sudo apt autoremove -y
+sudo apt update -y && sudo apt upgrade -y
+sudo apt purge vim -y && sudo apt autoremove -y
 sudo apt install tmux vim-gtk lynx tree htop git shellcheck pylint python3 neofetch -y
 
 if [[ $PWD == ~ ]]; then
