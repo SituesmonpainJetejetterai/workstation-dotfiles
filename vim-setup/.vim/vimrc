@@ -1,7 +1,14 @@
 " BASIC SETUP:
 
+" Set the cursorline
+set cursorline
+
 " Set the location of viminfo inside .vim
 set viminfo+=n~/.vim/viminfo
+
+" Set characters to signify tabs, whitespaces etc
+set list
+set lcs=tab:>~,trail:-,nbsp:%
 
 " set relative and static numbering for lines
 set relativenumber 
