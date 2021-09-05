@@ -61,6 +61,12 @@ Both will take you to insert mode.
 
 # Files
 
+## Moving to various parts of a file
+
+To move to the beginning of the visible area of the file, `H`.\
+To move to the middle of the visible area of the file, `M`.\
+To move to the end of the visible area of the file, `L`.
+
 ## Comparing two files in Vim
 
 *Link*: https://unix.stackexchange.com/questions/1386/comparing-two-files-in-vim
