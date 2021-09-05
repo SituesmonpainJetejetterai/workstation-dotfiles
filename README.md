@@ -18,3 +18,6 @@ I need to symlink all the configuration files from the repository to the relevan
 
 *For bash*\
 `ln -s bash/.bashrc ~/.bashrc`
+
+*For neofetch*\
+`ln -s ~/git-repos/setups/neofetch/config.conf ~/.config/neofetch/`
