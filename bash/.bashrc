@@ -12,19 +12,23 @@ esac
 
 clear
 
-printf "\n"
-printf "   %s\n" "IP ADDR: $(curl -sS ifconfig.me)"
-printf "   %s\n" "USER: $(echo $USER)"
-printf "   %s\n" "TIME: $(date '+%a %d %b %T %Y %Z')"
-printf "   %s\n" "UPTIME: $(uptime -p)"
-printf "   %s\n" "HOSTNAME: $(hostname -f)"
-# printf "   %s\n" "CPU: $(awk -F: '/model name/{print $2}' | head -1)"
-printf "   %s\n" "KERNEL: $(uname -rms)"
-printf "   %s\n" "PACKAGES: $(dpkg --get-selections | wc -l)"
-# printf "   %s\n" "RESOLUTION: $(xrandr | awk '/\*/{printf $1" "}')"
-printf "   %s\n" "MEMORY: $(free -m -h | awk '/Mem/{print $3"/"$2}')"
-printf "\n"
+neofetch ## After customising neofetch, just use that instead of complex lines
 
+# # Link: https://www.freecodecamp.org/news/bashrc-customization-guide/
+
+# # printf "\n"
+# # printf "   %s\n" "IP ADDR: $(curl -sS ifconfig.me)"
+# # printf "   %s\n" "USER: $(echo $USER)"
+# # printf "   %s\n" "TIME: $(date '+%a %d %b %T %Y %Z')"
+# # printf "   %s\n" "UPTIME: $(uptime -p)"
+# # printf "   %s\n" "HOSTNAME: $(hostname -f)"
+# # # printf "   %s\n" "CPU: $(awk -F: '/model name/{print $2}' | head -1)"
+# # printf "   %s\n" "KERNEL: $(uname -rms)"
+# # printf "   %s\n" "PACKAGES: $(dpkg --get-selections | wc -l)"
+# # # printf "   %s\n" "RESOLUTION: $(xrandr | awk '/\*/{printf $1" "}')"
+# # printf "   %s\n" "MEMORY: $(free -m -h | awk '/Mem/{print $3"/"$2}')"
+# # printf "\n"
+ 
 # Using vim commands in bash
 set -o vi
 
@@ -151,6 +155,7 @@ alias sob='source ~/.bashrc' ## sourcing the .bashrc after update
 alias gs='git status' ## Checking the git status.
 alias ga='git add' ## Add a file to Git.
 alias gc='git commit -m' ## Commit changes to the code.
+alias gp='git push -u origin' ## Push to a branch in origin
 alias gd='git diff' ## View the difference.
 
 ## Tree alias
