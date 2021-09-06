@@ -4,10 +4,10 @@ sudo apt update -y && sudo apt upgrade -y
 sudo apt purge vim -y && sudo apt autoremove -y
 sudo apt install tmux vim-gtk lynx tree htop git shellcheck pylint python3 neofetch -y
 
-if [[ $PWD == ~ ]]; then
-    echo 'Running this script from your home dir is pointless.'
-    exit 1
-fi 
+# if [[ $PWD == ~ ]]; then
+    # echo 'Running this script from your home dir is pointless.'
+    # exit 1
+# fi 
 
 # vim setup
 
