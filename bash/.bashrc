@@ -155,7 +155,7 @@ alias setup='cd $HOME/git-repos/setups/ && bash setup.sh && cd $HOME' ## setting
 
 alias gs='git status' ## Checking the git status.
 alias ga='git add' ## Add a file to Git.
-alias gc='git commit -m' ## Commit changes to the code.
+alias gc='git commit' ## Commit changes to the code.
 alias gp='git push -u origin' ## Push to a branch in origin
 alias gd='git diff' ## View the difference.
 
