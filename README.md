@@ -6,18 +6,14 @@ Intended for personal use, however it's free to the world, if anybody is looking
 
 ## Basic setup
 
-I've not written any script for this yet, so it's a bit manual.
+Simply symlink all the relevant files and directories to the correct locations, and viola! Everything works.
 
-I need to symlink all the configuration files from the repository to the relevant directory (`$HOME`).
+I've written a script called `setup.sh` which is at the root of this directory. It has the symlink locations hard-coded for now, because that works for me. I'll think about improving it when I get the time.
 
-*For vim*\
-`ln -s vim/.vim ~/.vim`
+## The `.profile`
 
-*For tmux*\
-`ln -s tmux/.tmux.conf ~/.tmux.conf`
+This is a good place to write it. From `stackoverflow`, I came to know that permanent/regularly used bash variables should be stored in `$HOME/.profile`. 
 
-*For bash*\
-`ln -s bash/.bashrc ~/.bashrc`
+***git variables***
 
-*For neofetch*\
-`ln -s ~/git-repos/setups/neofetch/config.conf ~/.config/neofetch/`
+I've started with putting in git credentials as variables (nobody access my PC so no problem). The next step is to replace the `origin` url in the git repositories with the respective username and password variables in the url, so I don't have to keep typing in my `PAT` every time (believe me even caching credentials sucks after a while).
