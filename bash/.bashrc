@@ -147,7 +147,7 @@ fi
 
 ## System aliases
 
-alias upds='sudo apt update -y && sudo apt upgrade -y' ## updating the system
+alias upds='sudo apt update -y && sudo apt upgrade -y && sudo apt autoremove -y' ## updating the system
 alias sob='source ~/.bashrc' ## sourcing the .bashrc after update
 alias setup='cd $HOME/git-repos/setups/ && bash setup.sh && cd $HOME' ## setting up and updating tools
 
