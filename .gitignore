@@ -2,3 +2,4 @@
 *.swp
 .viminfo
 *.save
+.bash_variables.sh
