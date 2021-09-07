@@ -26,7 +26,7 @@ source ~/.bash/.bash_functions.sh
 source ~/.bash/.bash_variables.sh
 ```
 
-Of course, there might be more files in the future, for which I will have to find out a way to source a directory (P.S. I haven't been able to figure out how to do that yet). But for now, this should work.
+Of course, there might be more files in the future, for which I will have to find out a way to source a directory (P.S. I haven't been able to figure out how to do that yet). But for now, this should work. It's referenced in [this](https://github.com/jetejetteraiASAP/setups/issues/1) issue.
 
 Note that `.bash_variables` can store anything, and is basically an alternative to editing the `~/.profile` on your system. I like it that way, because I'm not dependent on the configuration of the OS.
 
