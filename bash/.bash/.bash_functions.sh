@@ -11,6 +11,7 @@ export PS1="\u@\h \[\e[32m\]\w \[\e[91m\]\$(parse_git_branch)\[\e[00m\]$ "
 
 ## apt function
 
+### The "$1" parameter takes the first argument passed to the function in the shell as input
 ins()
 {
     sudo apt install "$1" -y
