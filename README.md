@@ -19,14 +19,12 @@ I've written a script called `setup.sh` which is at the root of this directory. 
 Out of these, only the `~/.bashrc` will need some editing. Get in there and enable the relevant aliases you like.
 Then, add in the following lines (assuming you've run `setup.sh` already, or have manually symlinked the directories and files):
 
+```bash
+for f in $HOME/.bash/.*
+do
+    if [ ! -d $f ]; then source "$f"; fi
+done
 ```
-source ~/.bash/.bash_startup.sh
-source ~/.bash/.bash_aliases
-source ~/.bash/.bash_functions.sh
-source ~/.bash/.bash_variables.sh
-```
-
-Of course, there might be more files in the future, for which I will have to find out a way to source a directory (P.S. I haven't been able to figure out how to do that yet). But for now, this should work. It's referenced in [this](https://github.com/jetejetteraiASAP/setups/issues/1) issue.
 
 Note that `.bash_variables` can store anything, and is basically an alternative to editing the `~/.profile` on your system. I like it that way, because I'm not dependent on the configuration of the OS.
 
