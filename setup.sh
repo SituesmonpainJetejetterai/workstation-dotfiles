@@ -1,29 +1,57 @@
 #!/usr/bin/env bash
 
+# Updating the system and installing some applications.
+
+printf "\nUpdating the system, removing vim and installing applications\n\n"
 sudo apt update -y && sudo apt upgrade -y
+printf "\n"
 sudo apt purge vim -y && sudo apt autoremove -y
+print "\n"
 sudo apt install tmux vim-gtk lynx tree htop git shellcheck pylint python3 -y
+printf "\n"
 
 # if [[ $PWD == ~ ]]; then
     # echo 'Running this script from your home dir is pointless.'
     # exit 1
 # fi 
 
+# variable
+setup_path="$HOME/git-repos/setups"
+
 # vim setup
 
-echo 'updating gruvbox.vim'
+printf "\nupdating gruvbox.vim\n"
 
-cd "$HOME/git-repos/setups/vim/.vim/colors/" && { curl -sSO https://raw.githubusercontent.com/morhetz/gruvbox/master/colors/gruvbox.vim; cd - || return; }
+cd "$setup_path/vim/.vim/colors/" && { curl -sSO https://raw.githubusercontent.com/morhetz/gruvbox/master/colors/gruvbox.vim; cd - || return; }
 
-echo "updating config in $HOME/.vim"
+printf "\nupdating config in ~/.vim\n"
 rm -rf "$HOME/.vim" || rm "$HOME/.vim"
-ln -si "$HOME/git-repos/setups/vim/.vim" "$HOME"
+ln -si "$setup_path/vim/.vim" "$HOME"
 
 # tmux setup
 
-ln -sf "$HOME/git-repos/setups/tmux/.tmux.conf" "$HOME"
+printf "\ncopying over the tmux configuration file\n"
+ln -sf "$setup_path/tmux/.tmux.conf" "$HOME"
 
 # bash setup
 
-cd "$HOME" && ln -sf "$HOME/git-repos/setups/bash/.bash" "$HOME" && cd "-" || return
+printf "\ncopying over the scripts for bash configuration\n"
+cd "$HOME" && ln -sf "$setup_path/bash/.bash" "$HOME" && cd - || return
+
+printf "\nadding lines to ~/.bashrc to source the scripts\n\n"
+
+## Escaping the character $f with \ helps to keep its literal value, i.e. outputs it as the string: "$f"
+
+string=$(cat <<EOT
+# ---
+## Sourcing fucking everything
+for f in $HOME/.bash/.*
+do
+    if [ ! -d "\$f" ]; then source "\$f"; fi
+done
+EOT
+)
+
+grep -qx "$string" "$HOME/.bashrc" || echo "$string" >> "$HOME/.bashrc"
+
 ## Check out the README.md on the steps to follow to complete this. I haven't automated this yet.
