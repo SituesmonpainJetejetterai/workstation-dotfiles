@@ -6,7 +6,7 @@ Intended for personal use, however it's free to the world, if anybody is looking
 
 ## Basic setup
 
-Simply symlink all the relevant files and directories to the correct locations, and viola! Everything works.
+Simply `symlink` all the relevant files and directories to the correct locations, and viola! Everything works.
 
 I've written a script called `setup.sh` which is at the root of this directory. It has the symlink locations hard-coded for now, because that works for me. I'll think about improving it when I get the time.
 
@@ -16,17 +16,9 @@ I've written a script called `setup.sh` which is at the root of this directory. 
 - `.tmux.conf` to `$HOME`
 - `.bash/` to `$HOME`
 
-Out of these, only the `~/.bashrc` will need some editing. Get in there and enable the relevant aliases you like.
-Then, add in the following lines (assuming you've run `setup.sh` already, or have manually symlinked the directories and files):
+No need to worry, `setup.sh` will `symlink` everything and append the text at the end of `~/.bashrc` so that all the relevant files are sourced properly.
 
-```bash
-for f in $HOME/.bash/.*
-do
-    if [ ! -d $f ]; then source "$f"; fi
-done
-```
-
-Note that `.bash_variables` can store anything, and is basically an alternative to editing the `~/.profile` on your system. I like it that way, because I'm not dependent on the configuration of the OS.
+Note that `.bash_variables.sh` can store anything, and is basically an alternative to editing the `~/.profile` on your system. I like it that way, because I'm not dependent on the configuration of the OS.
 
 
 ### git variables
