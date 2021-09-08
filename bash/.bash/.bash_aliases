@@ -14,7 +14,7 @@ alias gs='git status -sb' ## Checking the git status.
 alias ga='git add' ## Add a file to Git.
 alias gc='git commit' ## Commit changes to the code.
 alias gp='git push -u origin' ## Push to a branch in origin
-alias gl='git log --oneline | less' ## View the logs, each commit in a separate line
+alias gl='git log --oneline' ## View the logs, each commit in a separate line
 
 ## Tree alias
 
