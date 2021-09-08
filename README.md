@@ -14,6 +14,7 @@ I've written a script called `setup.sh` which is at the root of this directory. 
 
 - `.vim/` to `$HOME`
 - `.tmux.conf` to `$HOME`
+- `.gitconfig` to `$HOME`
 - `.bash/` to `$HOME`
 
 No need to worry, `setup.sh` will `symlink` everything and append the text at the end of `~/.bashrc` so that all the relevant files are sourced properly.
