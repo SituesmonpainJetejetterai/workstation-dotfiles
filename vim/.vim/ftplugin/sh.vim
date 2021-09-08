@@ -21,7 +21,7 @@ augroup END
 noremap <F3> :norm I#<Space><CR>
 
 " And, to uncomment
-noremap <F4> :norm 0xx<CR>
+noremap <F4> :norm ^xx<CR>
 
 " Key mapping to auto run bash scripts
 noremap <buffer> <F5> :w<CR>:below terminal++rows=15 bash "%"<CR>
