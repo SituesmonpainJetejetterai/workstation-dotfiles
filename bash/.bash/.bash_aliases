@@ -1,12 +1,14 @@
 # Setting Aliases
 
-## System aliases
+## System
 
+alias al='grep -w "alias" ~/.bash/.bash_aliases' ## list all aliases
 alias upds='sudo apt update -y && sudo apt upgrade -y && sudo apt autoremove -y' ## updating the system
 alias sob='clear && source ~/.bashrc' ## sourcing the .bashrc after update
-alias setup='cd $HOME/git-repos/setups/ && bash setup.sh && cd -' ## setting up and updating tools
+alias msetup='cd $HOME/git-repos/setups' ## move to my favourite directory
+alias rsetup='cd $HOME/git-repos/setups/ && bash setup.sh && cd -' ## setting up and updating tools
 
-## Git aliases
+## Git 
 
 alias pullall='ls | xargs -P10 -I{} git -C {} pull' ## Pull all git repositories which are subdirectories to the current directory
 alias pushall='ls | xargs -P10 -I{} git -C {} push' ## Push all git repositories which are subdirectories to the current directory
@@ -16,11 +18,11 @@ alias gc='git commit' ## Commit changes to the code.
 alias gp='git push -u origin' ## Push to a branch in origin
 alias gl='git log --oneline' ## View the logs, each commit in a separate line
 
-## Tree alias
+## Tree 
 
 alias tree='tree --dirsfirst -F'
 
-## Calendar aliases
+## Calendar
 
 alias jan='cal -m 01'
 alias feb='cal -m 02'
