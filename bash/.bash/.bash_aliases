@@ -9,10 +9,9 @@ alias setup='cd $HOME/git-repos/setups/ && bash setup.sh && cd $HOME' ## setting
 
 ## Git aliases
 
-# alias all='cd %HOME/git-repos && {ls -R -d */.git | sed 's/\/.git//' | xargs -P10 -I{} git -C {} pull} && CD $HOME'
 alias pullall='ls | xargs -P10 -I{} git -C {} pull'
 alias pushall='ls | xargs -P10 -I{} git -C {} push'
-alias gs='git status' ## Checking the git status.
+alias gs='git status -sb' ## Checking the git status.
 alias ga='git add' ## Add a file to Git.
 alias gc='git commit' ## Commit changes to the code.
 alias gp='git push -u origin' ## Push to a branch in origin
