@@ -33,4 +33,8 @@ Very informative.
 `find` has been very important for me, I just pushed a commit where I used it. The `\;` just tells `find` that you have executed the command and `find` can now exit.\
 There is another suffix, i.e. `+`, but I haven't used it yet.
 
-*Link*: https://askubuntu.com/questions/339015/what-does-mean-in-the-find-command
+*Link1*: https://askubuntu.com/questions/339015/what-does-mean-in-the-find-command
+*Link2*: https://stackoverflow.com/questions/2961673/find-missing-argument-to-exec
+
+Edit: [This](https://stackoverflow.com/a/2962015) link shows how to run bash commands using `exec` in `find`. Very impressive.\
+Also, the rest of the answers are worthwhile too, I found another showing how to run multiple `exec`s in `find`.\
