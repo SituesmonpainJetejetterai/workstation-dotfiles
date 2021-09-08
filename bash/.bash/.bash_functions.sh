@@ -1,7 +1,7 @@
 #!/usr/bin/bash
 
 # Setting functions
-
+## The "$1" parameter takes the first argument passed to the function in the shell as input
 
 # ---
 
@@ -27,8 +27,6 @@ function gd () {
 }
 
 # apt functions
-
-## The "$1" parameter takes the first argument passed to the function in the shell as input
 
 ## install a package
 function ins ()
