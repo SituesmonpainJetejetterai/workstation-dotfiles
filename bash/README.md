@@ -21,3 +21,9 @@ Basically, use `$()` to substitute bash commands (or functions), and `${}` to su
 ## Safety shortcomings in the POSIX shell
 
 *Link*: https://github.com/matu3ba/dotfiles_skeleton/blob/main/POSIXunsafe
+
+## Common and not-so-common `*nix` shell footguns
+
+*Link*: https://an3223.github.io/blog/20210907_shelldonts.html
+
+Very informative.
