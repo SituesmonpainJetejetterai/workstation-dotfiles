@@ -27,3 +27,10 @@ Basically, use `$()` to substitute bash commands (or functions), and `${}` to su
 *Link*: https://an3223.github.io/blog/20210907_shelldonts.html
 
 Very informative.
+
+## What does "{} \;" mean in the find command?
+
+`find` has been very important for me, I just pushed a commit where I used it. The `\;` just tells `find` that you have executed the command and `find` can now exit.\
+There is another suffix, i.e. `+`, but I haven't used it yet.
+
+*Link*: https://askubuntu.com/questions/339015/what-does-mean-in-the-find-command
