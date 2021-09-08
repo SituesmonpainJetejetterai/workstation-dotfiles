@@ -7,7 +7,7 @@ sudo apt update -y && sudo apt upgrade -y
 printf "\n"
 sudo apt purge vim -y && sudo apt autoremove -y
 print "\n"
-sudo apt install tmux vim-gtk lynx tree htop git shellcheck pylint python3 -y
+sudo apt install tmux vim-gtk lynx tree htop git shellcheck pylint python3 less -y
 printf "\n"
 
 # if [[ $PWD == ~ ]]; then
@@ -32,6 +32,11 @@ ln -si "$setup_path/vim/.vim" "$HOME"
 
 printf "\ncopying over the tmux configuration file\n"
 ln -sf "$setup_path/tmux/.tmux.conf" "$HOME"
+
+# git setup
+
+printf "\ncopying over the global git config file\n"
+ln -sf "$setup_path/git/.gitconfig" "$HOME"
 
 # bash setup
 
