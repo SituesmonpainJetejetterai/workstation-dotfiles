@@ -26,6 +26,13 @@ function gd () {
     git diff "${1-.}"
 }
 
+## Performs the git action on all subdirectories with .git/ in them.
+## Help: https://stackoverflow.com/questions/3497123/run-git-pull-over-all-subdirectories
+function gall () {
+    find . -type d -name ".git" -print -exec git --git-dir={} "${1}" \;
+    # find . -name ".git" -type d -print | xargs -P10 -I{} git --git-dir={} "${1}"
+}
+
 # apt functions
 
 ## install a package
