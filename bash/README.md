@@ -1,4 +1,4 @@
-# I am for this to be an information dump on bash
+# I aim for this to be an information dump on bash
 
 ## Quotes and escaping
 
