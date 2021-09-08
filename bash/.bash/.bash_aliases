@@ -2,10 +2,9 @@
 
 ## System aliases
 
-alias gh='history|grep' ## search command history
 alias upds='sudo apt update -y && sudo apt upgrade -y && sudo apt autoremove -y' ## updating the system
 alias sob='clear && source ~/.bashrc' ## sourcing the .bashrc after update
-alias setup='cd $HOME/git-repos/setups/ && bash setup.sh && cd $HOME' ## setting up and updating tools
+alias setup='cd $HOME/git-repos/setups/ && bash setup.sh && cd -' ## setting up and updating tools
 
 ## Git aliases
 
@@ -15,8 +14,7 @@ alias gs='git status -sb' ## Checking the git status.
 alias ga='git add' ## Add a file to Git.
 alias gc='git commit' ## Commit changes to the code.
 alias gp='git push -u origin' ## Push to a branch in origin
-alias gd='git diff' ## View the difference.
-alias gl='git log --oneline' ## View the logs, each commit in a separate line
+alias gl='git log --oneline | less' ## View the logs, each commit in a separate line
 
 ## Tree alias
 
