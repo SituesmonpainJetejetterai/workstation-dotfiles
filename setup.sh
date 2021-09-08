@@ -40,18 +40,16 @@ cd "$HOME" && ln -sf "$setup_path/bash/.bash" "$HOME" && cd - || return
 
 printf "\nadding lines to ~/.bashrc to source the scripts\n\n"
 
-## Escaping the character $f with \ helps to keep its literal value, i.e. outputs it as the string: "$f"
+## Escaping the character ${f} with \ helps to keep its literal value, i.e. outputs it as the string: "${f}"
 
 string=$(cat <<EOT
 # ---
 ## Sourcing fucking everything
 for f in $HOME/.bash/.*
 do
-    if [ ! -d "\$f" ]; then source "\$f"; fi
+    if [ ! -d "\${f}" ]; then source "\${f}"; fi
 done
 EOT
 )
 
 grep -qx "$string" "$HOME/.bashrc" || echo "$string" >> "$HOME/.bashrc"
-
-## Check out the README.md on the steps to follow to complete this. I haven't automated this yet.
