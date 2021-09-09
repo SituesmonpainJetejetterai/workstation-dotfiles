@@ -23,7 +23,7 @@ export PS1="\u@\h \[\e[32m\]\w \[\e[91m\]\$(parse_git_branch)\[\e[00m\]$ "
 
 ## Shows the git diff in a colourful pager
 function gd () {
-    git diff "${1-.}"
+    git diff --check "${1-.}"
 }
 
 ## Performs the git action on all subdirectories with .git/ in them.
