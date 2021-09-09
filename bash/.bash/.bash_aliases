@@ -3,7 +3,7 @@
 ## System
 
 alias al='grep -w "alias" ~/.bash/.bash_aliases' ## list all aliases
-alias upds='sudo apt update -y && sudo apt upgrade -y && sudo apt autoremove -y' ## updating the system
+alias upds='echo -e "\nUpdating package lists\n" && sudo apt update -y && echo -e "\nLooking to upgrade packages\n" && sudo apt upgrade -y && echo -e "\nCleaning up redundant packages/applications\n" && sudo apt autoremove -y' ## updating the system
 alias sob='clear && source ~/.bashrc' ## sourcing the .bashrc after update
 alias mset='cd $HOME/git-repos/setups' ## move to my favourite directory
 alias rset='cd $HOME/git-repos/setups/ && bash setup.sh && cd -' ## setting up and updating tools
