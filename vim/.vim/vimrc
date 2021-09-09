@@ -214,6 +214,7 @@ inoremap ( ()<ESC>hli
 inoremap { {}<ESC>hli
 inoremap [ []<ESC>hli
 inoremap ` ``<ESC>hli
+inoremap * **<ESC>hli
 
 augroup brackets
     autocmd!
