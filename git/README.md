@@ -2,10 +2,12 @@
 
 ## How to write commit messages
 
-*Link1*: https://chris.beams.io/posts/git-commit/<br/>
-*Link2*: https://chaitanyacodes.hashnode.dev/basics-of-git-and-writing-good-commit-messages<br/>
-*Link3*: https://stackoverflow.com/questions/33097657/how-to-write-a-good-git-commit-message<br/>
-*Link4*: https://git-scm.com/book/en/v2/Distributed-Git-Contributing-to-a-Project
+- [How to Write a Git Commit Message](https://chris.beams.io/posts/git-commit/)
+- [Basics of Git and writing good commit messages](https://chaitanyacodes.hashnode.dev/basics-of-git-and-writing-good-commit-messages)
+- [How to write a good Git commit message?](https://stackoverflow.com/questions/33097657/how-to-write-a-good-git-commit-message)
+- [5.2 Distributed Git - Contributing to a Project](https://git-scm.com/book/en/v2/Distributed-Git-Contributing-to-a-Project)
+- [Semantic Commit Messages](https://gist.github.com/joshbuchea/6f47e86d2510bce28f8e7f42ae84c716)
+- [Conventional Commits](https://www.conventionalcommits.org/)
 
 *In summary*, there are a few (mostly) defined types of commits,
 
@@ -25,3 +27,4 @@
 
 > Use the body to explain what and why vs. how
 
+It seems that if there is a breaking change in the code-base, use `!` to signify the commit.
