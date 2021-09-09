@@ -26,6 +26,7 @@ function gd () {
     git diff "${1-.}"
 }
 
+## Merges remote changes with the local branch
 function gfm () {
     git fetch origin "${1}" && git merge -s recursive -X theirs origin/"${1}"
 }
