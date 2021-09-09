@@ -16,6 +16,10 @@ alias gc='git commit' ## Commit changes to the code.
 alias gp='git push -u origin' ## Push to a branch in origin
 alias gl='git log --oneline' ## View the logs, each commit in a separate line
 
+## Vim
+
+alias vial='grep -E "noremap|command!" ~/.vim/vimrc | less' ## List all vim remaps
+
 ## Tree
 
 alias tree='tree --dirsfirst -F'
