@@ -30,4 +30,4 @@ Edit: I found [this](https://www.shellhacks.com/git-config-username-password-sto
 
 ### How to view huge output on screen
 
-I'm doing this on a server, and I can't scroll up and down using a mouse. I used to enter the `tmux` copy mode using, and then use `vim` bindings. However, I've been using this lately: pipe the command with `| less`, and read the output with it. In essence, `command | less` does the job.
+I'm doing this on a server, and I can't scroll up and down using a mouse. I used to enter the `tmux` copy mode and then use `vim` bindings. However, I've been using this lately: pipe the command with `| less`, and read the output with it. In essence, `command | less` does the job.
