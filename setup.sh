@@ -3,11 +3,17 @@
 # Updating the system and installing some applications.
 
 printf "\nUpdating the system, removing vim and installing applications\n\n"
+
 sudo apt update -y && sudo apt upgrade -y
+
 printf "\n"
+
 sudo apt purge vim -y && sudo apt autoremove -y
-print "\n"
+
+printf "\n"
+
 sudo apt install tmux vim-gtk lynx tree htop git shellcheck pylint python3 less -y
+
 printf "\n"
 
 # if [[ $PWD == ~ ]]; then
