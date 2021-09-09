@@ -152,7 +152,7 @@ I have also commented out some key mappings in the `vimrc` in case I get vim wit
 
 `/`, then type what you want to find
 
-## To search and replace
+## To search and replace in normal mode
 
 ```
 :%s/search/replace/g
@@ -161,6 +161,10 @@ I have also commented out some key mappings in the `vimrc` in case I get vim wit
 `search`: word to search for
 `replace`: word to replace with
 `g`: replace in the entire file
+
+## To search and replace in visual mode
+
+`:s/search/replace/g` to search and replace text in selected lines.
 
 ## To go to next/previous occurrence of the word
 
