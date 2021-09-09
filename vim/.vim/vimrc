@@ -201,7 +201,15 @@ nnoremap gb :buffers<CR>:b
 " Reload buffers that have changed
 nnoremap <Leader>r :checktime<CR>
 
-" Autocomplete brackets logic 
+" Surround with brackets or punctuation marks
+vnoremap <Leader>( di()<ESC>hp
+vnoremap <Leader>[ di[]<ESC>hp
+vnoremap <Leader>{ di{}<ESC>hp
+vnoremap <Leader>' di''<ESC>hp
+vnoremap <Leader>" di""<ESC>hp
+vnoremap <Leader>` di``<ESC>hp
+
+" Autocomplete brackets and punctuation marks logic
 inoremap ( ()<ESC>hli
 inoremap { {}<ESC>hli
 inoremap [ []<ESC>hli
@@ -213,6 +221,5 @@ augroup brackets
     autocmd FileType markdown,python,sh inoremap <buffer> " ""<ESC>hli
 augroup END
 
-" copied a command from a reddit comment to invoke the help command with an
-" argument, but vertically
+" copied a command from a reddit comment to invoke the help command with an argument, but vertically
 command! -nargs=? -complete=help Vh vert help <args>
