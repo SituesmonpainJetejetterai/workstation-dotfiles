@@ -27,3 +27,7 @@ Note that `.bash_variables.sh` can store anything, and is basically an alternati
 I've started with putting in git credentials as variables (nobody access my PC so no problem). The next step is to replace the `origin` url in the git repositories with the respective username and password variables in the url, so I don't have to keep typing in my `PAT` every time (believe me even caching credentials sucks after a while).
 
 Edit: I found [this](https://www.shellhacks.com/git-config-username-password-store-credentials/) link that basically explains how to do what I've done above. Lol
+
+### How to view huge output on screen
+
+I'm doing this on a server, and I can't scroll up and down using a mouse. I used to enter the `tmux` copy mode using, and then use `vim` bindings. However, I've been using this lately: pipe the command with `| less`, and read the output with it. In essence, `command | less` does the job.
