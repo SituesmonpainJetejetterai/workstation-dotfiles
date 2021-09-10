@@ -13,9 +13,9 @@ function hg () {
     history | grep "${1}" | less
 }
 
-# search for text in files inside current folder
-# add one other parameter (generally `w` to match separate words) to `grep`
-# `sed G` simply appends a newline character followed by the contents of the hold space to the pattern space.
+## search for text in files inside current folder
+## add one other parameter (generally `w` to match separate words) to `grep`
+## `sed G` simply appends a newline character followed by the contents of the hold space to the pattern space.
 function search () {
     if [ -z "${2}" ];
     then
@@ -25,11 +25,15 @@ function search () {
     fi
 }
 
+## start 2 tmux sessions, one for work and another for config
+## split the window in the config session horizontally
 function cont () {
     tmux new -t work -d
     cd ~/git-repos/setups && tmux new -t config -d \; split-window -h \;
     exec tmux a -t config
 }
+
+
 # Git functions
 
 ## Show the branch I'm currently on while inside a git repository
@@ -54,6 +58,7 @@ function gall () {
     find . -type d -name ".git" -printf "%h: " -prune -exec git --git-dir={} "${1}" \;
     # find . -name ".git" -type d -print | xargs -P10 -I{} git --git-dir={} "${1}"
 }
+
 
 # apt functions
 
