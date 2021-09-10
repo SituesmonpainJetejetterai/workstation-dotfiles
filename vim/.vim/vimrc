@@ -11,7 +11,7 @@ set list
 set lcs=tab:>~,trail:-,nbsp:%
 
 " set relative and static numbering for lines
-set relativenumber 
+set relativenumber
 set number
 
 " Set scrolloff so I don't move around in a file, unless I'm at the top or the
@@ -38,8 +38,44 @@ set softtabstop=4
 set shiftwidth=4
 set expandtab
 
+" highlight matching [{()}]
+set showmatch
+
+" improve text search inside a file
+set incsearch
+
+" Don't keep the higlight on after searching, it's annoying
+set nohlsearch
+
+" code folding
+set foldenable
+set foldlevelstart=10
+set foldmethod=syntax
+
+" Good backspace behaviour
+set backspace=indent,eol,start
+
+" Have lines wrap instead of continue off-screen
+set linebreak
+
+" Wrapping with breakindent
+" Link: https://bluz71.github.io/2021/09/10/vim-tips-revisited.html
+set breakindent
+set breakindentopt=shift:2
+set showbreak=↳
+
+" Persistent undo
+" Link: https://bluz71.github.io/2021/09/10/vim-tips-revisited.html
+let s:undodir = "/tmp/.undodir_" . $USER
+if !isdirectory(s:undodir)
+    call mkdir(s:undodir, "", 0700)
+endif
+let &undodir=s:undodir
+set undofile
+
 
 " ---------
+
 
 
 " FINDING FILES:
@@ -61,7 +97,9 @@ set wildignore+=.git/*,*/node_modules/*,*/target/*,*.class,*.png,*.gif,*.pdf,*.e
 " - :b lets you autocomplete any open buffer
 
 
+
 " ---------
+
 
 
 " FILE BROWSING:
@@ -80,7 +118,9 @@ let g:netrw_list_hide.=',\(^\|\s\s\)\zs\.\S\+'
 " - check |netrw-browse-maps| for more mappings
 
 
+
 "---------
+
 
 
 " MISCELLANEOUS:
@@ -95,25 +135,13 @@ augroup RETURN_TO_POSITION
         \ endif
 augroup END
 
-" highlight matching [{()}]
-set showmatch
 
-" improve text search inside a file
-set incsearch
 
-" Don't keep the higlight on after searching, it's annoying
-set nohlsearch
+" ---------
 
-" code folding
-set foldenable
-set foldlevelstart=10
-set foldmethod=syntax
 
-" Good backspace behaviour
-set backspace=indent,eol,start
 
-" Have lines wrap instead of continue off-screen
-set linebreak
+" COLOURS
 
 " Gives Vim access to a broader range of colours
 set termguicolors
@@ -135,59 +163,70 @@ let g:gruvbox_improved_strings= '1'
 colorscheme gruvbox
 
 
+
 " ---------
+
 
 
 " KEY MAPPINGS
 
-" mapped <SPACE> as the <Leader>
+" Map <SPACE> as the <Leader>
 let g:mapleader=" "
 
-" mapped :vert term<CR> to <Leader>vt
-" mapped :vert help<CR> to <Leader>vh
+" Map :vert term<CR> to <Leader>vt
+" Map :vert help<CR> to <Leader>vh
 cnoremap <Leader>vt :vert term<CR>
 cnoremap <Leader>vh :vert help<CR>
 
-" Mapped > to resize the window by 2 units to the right.
-" Mapped < to resize the window by 2 units to the left.
+" Map > to resize the window by 2 units to the right.
+" Map < to resize the window by 2 units to the left.
 " Only for vertical windows, as I don't use (or like) the horizontal split.
-" From this link: https://vim.fandom.com/wiki/Quick_window_resizing
+" Link: https://vim.fandom.com/wiki/Quick_window_resizing
 nnoremap > <C-W>><C-W>>
 nnoremap < <C-W><<C-W><
 
-" Mapped `j` to `gj` and `k` to `gk` to move easily with wrapped lines
+" Map `j` to `gj` and `k` to `gk` to move easily with wrapped lines
 nnoremap j gj
 nnoremap gj j
 
-" Copied easier split navigation bindings 
-" https://thoughtbot.com/blog/vim-splits-move-faster-and-more-naturally#easier-split-navigations
+" Easier split navigation bindings 
+" Link: https://thoughtbot.com/blog/vim-splits-move-faster-and-more-naturally#easier-split-navigations
 nnoremap <C-j> <C-W>j
 nnoremap <C-k> <C-W>k
 nnoremap <C-l> <C-W>l
 nnoremap <C-h> <C-W>h
 
-" Added a remap to copy the entire line from the point of the cursor
+" Remap to copy the entire line from the point of the cursor
 nnoremap Y y$
 
-" Key remaps to copy and paste, to and from the system buffer
+" Remaps to copy and paste, to and from the system buffer
 " Will only work if vim is compiled with the clipboard flag
 " noremap <C-y> "*y
 " noremap <C-p> "*p
 " noremap <C-Y> "+y
 " noremap <C-P> "+p
 
-" Added remaps to center the file while searching next/previous
-nnoremap n nzz
-nnoremap N Nzz
+" Remaps to center the cursor
+" Link: https://bluz71.github.io/2021/09/10/vim-tips-revisited.html
+nnoremap {  {zz
+nnoremap }  }zz
+nnoremap n  nzz
+nnoremap N  Nzz
+nnoremap ]c ]czz
+nnoremap [c [czz
+nnoremap [j <C-o>zz
+nnoremap ]j <C-i>zz
+nnoremap ]s ]szz
+nnoremap [s [szz
 
-" Added a remap to save a file if updated
+" Remap to save a file if updated
 nnoremap <Leader>w :update<CR>
 
-" Added remap to paste what you yanked, not what you deleted
+" Remap to paste what you yanked, not what you deleted
 nnoremap ,p "0p
 nnoremap ,P "0P
 
-" Added a remap to undo break points (really important)
+" Remap to undo break points (really important)
 " Instead of undoing the entire change (which can really such), undo till a
 " last recongnised mark, like a '.', ',', '!' and '?'.
 inoremap , ,<c-g>u
@@ -222,5 +261,5 @@ augroup brackets
     autocmd FileType markdown,python,sh inoremap <buffer> " ""<ESC>hli
 augroup END
 
-" copied a command from a reddit comment to invoke the help command with an argument, but vertically
+" Invoke the help command with an argument, but vertically
 command! -nargs=? -complete=help Vh vert help <args>
