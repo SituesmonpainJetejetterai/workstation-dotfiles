@@ -12,16 +12,17 @@ augroup bashSpecific
     autocmd QuickFixCmdPost make vertical cwindow|vertical resize +35
 
 augroup END
-             
 
-" Adding in the 'comment lines' logic from the other scripts.
-" Basically, enter visual mode
-" Select the lines you want to comment using j and/or k
-" Press the key. Voila!
-noremap <F3> :norm I#<Space><CR>
+" Press to comment
+vnoremap <F3> :norm I#<Space><CR>
+nnoremap <F3> :norm I#<Space><CR>
 
 " And, to uncomment
-noremap <F4> :norm ^xx<CR>
+vnoremap <F4> :norm ^xx<CR>
+nnoremap <F4> :norm ^xx<CR>
 
 " Key mapping to auto run bash scripts
 noremap <buffer> <F5> :w<CR>:below terminal++rows=15 bash "%"<CR>
+
+" remap to insert a function
+nnoremap <Leader>f ifunction<Space><Space>()<Space>{<CR><CR>}<ESC>2kwhi

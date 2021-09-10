@@ -15,14 +15,14 @@ augroup PythonSpecific
 
 augroup END
 
-" Added a keymap to comment a bunch of lines together.
-" The way this works is, enter into visual mode by pressing 'v'
-" Move the cursor over the lines, either with arrow keys or 'h', 'j', 'k', 'l'
-" Finally, type this super short key combination. Viola!
-noremap <F3> :norm I#<Space><CR>
+" To comment
+vnoremap <F3> :norm I#<Space><CR>
 
 " And, to uncomment
-noremap <F4> :norm ^xx<CR>
+vnoremap <F4> :norm ^xx<CR>
 
 " map <F5> to run python files
-noremap <buffer> <F5> :update<CR>:below terminal++rows=15 python3 "%"<CR> 
+nnoremap <buffer> <F5> :update<CR>:below terminal++rows=15 python3 "%"<CR> 
+
+" Remap to auto-write a function
+nnoremap <silent> <Leader>f idef<Space><Space>():<ESC>3hi
