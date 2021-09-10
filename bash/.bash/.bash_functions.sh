@@ -19,9 +19,9 @@ function hg () {
 function search () {
     if [ -z "${2}" ];
     then
-        find . -type f -print0 | xargs -0 -I /{} grep -H "${1}" /{} | sed G | less
+        find . -type f -print0 | xargs -0 -I {} grep -H "${1}" {} | sed G | less
     else
-        find . -type f -print0 | xargs -0 -I /{} grep -H"${2}" "${1}" /{} | sed G | less
+        find . -type f -print0 | xargs -0 -I {} grep -H"${2}" "${1}" {} | sed G | less
     fi
 }
 
