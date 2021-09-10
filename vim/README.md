@@ -202,3 +202,11 @@ There are some others, like,
 - [Integrate Pylint and Pychecker support](https://vim.fandom.com/wiki/Integrate_Pylint_and_Pychecker_support) - Vim Tips Wiki
 - [Errorformat for java/ant/junit/cygwin/bash](https://vim.fandom.com/wiki/Errorformat_for_java/ant/junit/cygwin/bash) - Vim Tips Wiki
 - [Vim errorformat Demystified](https://flukus.github.io/vim-errorformat-demystified.html)
+
+
+---
+
+
+# Resources
+
+- [Vim Tips (Revisited)](https://bluz71.github.io/2021/09/10/vim-tips-revisited.html)
