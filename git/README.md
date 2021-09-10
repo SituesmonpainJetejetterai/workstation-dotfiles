@@ -28,3 +28,10 @@
 > Use the body to explain what and why vs. how
 
 It seems that if there is a breaking change in the code-base, use `!` to signify the commit.
+
+## [Change Old Commit Message in GIT](https://codedexterous.medium.com/change-old-commit-message-in-git-3d64ce57be72)
+
+> `git rebase -i HEAD~n`
+> Replace n by the number of commits you want to review.
+> Replace pick with reword before each commit message you want to change.
+> In each resulting commit file, type the new commit message, save the file, and close it.
