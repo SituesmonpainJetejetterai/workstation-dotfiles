@@ -25,6 +25,11 @@ function search () {
     fi
 }
 
+function cont () {
+    tmux new -t work -d
+    cd ~/git-repos/setups && tmux new -t config -d \; split-window -h \;
+    exec tmux a -t config
+}
 # Git functions
 
 ## Show the branch I'm currently on while inside a git repository
@@ -40,7 +45,7 @@ function gd () {
 
 ## Merge remote changes with the local branch
 function gfm () {
-    git fetch origin "${1}" && git merge -s recursive -X theirs origin/"${1}"
+    git fetch origin "${1}" && git merge -s recursive -X theirs origin "${1}"
 }
 
 ## Perform the git action on all subdirectories with .git/ in them.
