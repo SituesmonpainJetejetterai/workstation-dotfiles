@@ -1,6 +1,6 @@
-# Setting up stuff 
+# Setting up stuff
 
-This will be a repository documenting how I set up/will be setting up various things, mostly software. 
+This will be a repository documenting how I set up/will be setting up various things, mostly software.
 
 Intended for personal use, however it's free to the world, if anybody is looking for a reference.
 
@@ -21,13 +21,6 @@ No need to worry, `setup.sh` will `symlink` everything and append the text at th
 
 Note that `.bash_variables.sh` can store anything, and is basically an alternative to editing the `~/.profile` on your system. I like it that way, because I'm not dependent on the configuration of the OS.
 
+## How to view huge output on screen
 
-### git variables
-
-I've started with putting in git credentials as variables (nobody access my PC so no problem). The next step is to replace the `origin` url in the git repositories with the respective username and password variables in the url, so I don't have to keep typing in my `PAT` every time (believe me even caching credentials sucks after a while).
-
-Edit: I found [this](https://www.shellhacks.com/git-config-username-password-store-credentials/) link that basically explains how to do what I've done above. Lol
-
-### How to view huge output on screen
-
-I'm doing this on a server, and I can't scroll up and down using a mouse. I used to enter the `tmux` copy mode and then use `vim` bindings. However, I've been using this lately: pipe the command with `| less`, and read the output with it. In essence, `command | less` does the job.
+I'm doing this on a server, and I can't scroll up and down using a mouse. I used to enter the `tmux` copy mode and then use `vim` bindings. However, I've been using this lately: pipe the command with `less`, and read the output with it.
