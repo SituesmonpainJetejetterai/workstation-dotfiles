@@ -27,7 +27,7 @@ set t_Co=256
 " enter the current millenium
 set nocompatible
 
-" enable syntax, plugins (for netrw) and indentation
+" enable syntax, plugins and indentation
 syntax enable
 filetype plugin indent on
 set autoindent
@@ -109,8 +109,10 @@ let g:netrw_banner=0        " disable annoying banner
 let g:netrw_browse_split=4  " open in prior window
 let g:netrw_altv=1          " open splits to the right
 let g:netrw_liststyle=3     " tree view
+let g:netrw_preview = 1     " vertical preview splits
+let g:netrw_winsize = 15    " width of explorer
 let g:netrw_list_hide=netrw_gitignore#Hide()
-let g:netrw_list_hide.=',\(^\|\s\s\)\zs\.\S\+'
+" let g:netrw_list_hide.=',\(^\|\s\s\)\zs\.\S\+'
 
 " NOW WE CAN:
 " - :edit a folder to open a file browser
