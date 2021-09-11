@@ -25,31 +25,23 @@ function search () {
     fi
 }
 
+
+# Tmux functions
+
 ## start 2 tmux sessions, one for work and another for config
 ## split the window in the config session horizontally
-# function cont () {
-    # tmux new -t work -d
-    # cd ~/git-repos/setups && tmux new -t config -d \; split-window -h \;
-    # exec tmux a -t config
-# }
-function tst () {
-    # tmux new -t config -d \; send-keys 'cd ~/git-repos/setups' C-m -t config \; split-window -t config -h \; new -t work -d \; tmux attach -s config
-    # cd ~/git-repos/setups || return
-    # tmux new -t config -d
-    # tmux send-keys -t config'cd ~/git-repos/setups' C-m
-    # tmux split-window -t config -h
-    # cd - || exit
-    # tmux attach -t config
-    # ses ="$(tmux ls | grep -Po "${1}" | head -1)"
-    # tmux a -A -t "$ses"
+function ts () {
     if tmux has-session 2>/dev/null; then
-        # echo session exists
         tmux a
     else
-        echo no sessions
+        echo "session doesn't exist"S
+        cd ~/git-repos/setups || return
+        tmux new -t config -d
+        tmux split-window -t config -h
+        cd - || return
+        tmux new -t work -d
+        tmux a -t config
     fi
-
-
 }
 
 
