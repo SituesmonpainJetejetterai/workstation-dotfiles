@@ -34,7 +34,7 @@ function ts () {
     if tmux has-session 2>/dev/null; then
         tmux a
     else
-        echo "session doesn't exist"S
+        echo -e "session doesn't exist"
         cd ~/git-repos/setups || return
         tmux new -t config -d
         tmux split-window -t config -h
