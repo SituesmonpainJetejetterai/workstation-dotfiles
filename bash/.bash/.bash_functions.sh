@@ -14,23 +14,42 @@ function hg () {
 }
 
 ## search for text in files inside current folder
-## add one other parameter (generally `w` to match separate words) to `grep`
+## add one other parameter (for example: `w`, `H` etc) to `grep` - note that these are `grep` parameters, nothing new.
 ## `sed G` simply appends a newline character followed by the contents of the hold space to the pattern space.
 function search () {
     if [ -z "${2}" ];
     then
-        find . -type f -print0 | xargs -0 -I {} grep -H "${1}" {} | sed G | less
+        find . -type f -print0 | xargs -0 -I {} grep "${1}" {} | sed G | less
     else
-        find . -type f -print0 | xargs -0 -I {} grep -H"${2}" "${1}" {} | sed G | less
+        find . -type f -print0 | xargs -0 -I {} grep -"${2}" "${1}" {} | sed G | less
     fi
 }
 
 ## start 2 tmux sessions, one for work and another for config
 ## split the window in the config session horizontally
-function cont () {
-    tmux new -t work -d
-    cd ~/git-repos/setups && tmux new -t config -d \; split-window -h \;
-    exec tmux a -t config
+# function cont () {
+    # tmux new -t work -d
+    # cd ~/git-repos/setups && tmux new -t config -d \; split-window -h \;
+    # exec tmux a -t config
+# }
+function tst () {
+    # tmux new -t config -d \; send-keys 'cd ~/git-repos/setups' C-m -t config \; split-window -t config -h \; new -t work -d \; tmux attach -s config
+    # cd ~/git-repos/setups || return
+    # tmux new -t config -d
+    # tmux send-keys -t config'cd ~/git-repos/setups' C-m
+    # tmux split-window -t config -h
+    # cd - || exit
+    # tmux attach -t config
+    # ses ="$(tmux ls | grep -Po "${1}" | head -1)"
+    # tmux a -A -t "$ses"
+    if tmux has-session 2>/dev/null; then
+        # echo session exists
+        tmux a
+    else
+        echo no sessions
+    fi
+
+
 }
 
 
@@ -63,13 +82,11 @@ function gall () {
 # apt functions
 
 ## install a package
-function ins ()
-{
+function ins () {
     sudo apt install "${1}" -y
 }
 
 ## purge an application & cleanup
-function del ()
-{
+function del () {
     sudo apt purge "${1}" -y && sudo apt autoremove -y
 }
