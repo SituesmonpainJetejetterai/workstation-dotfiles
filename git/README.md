@@ -35,3 +35,7 @@ It seems that if there is a breaking change in the code-base, use `!` to signify
 > Replace n by the number of commits you want to review.
 > Replace pick with reword before each commit message you want to change.
 > In each resulting commit file, type the new commit message, save the file, and close it.
+
+##[Git – Config Username & Password – Store Credentials](https://www.shellhacks.com/git-config-username-password-store-credentials/)
+
+Store git credentials for each repository in the `~/.git-credentials` file, and never put in your PAT again.
