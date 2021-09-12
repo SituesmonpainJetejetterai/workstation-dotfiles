@@ -41,3 +41,9 @@ Store git credentials for each repository in the `~/.git-credentials` file, and 
 - Another window will pop up, amend the commit message in that.
 - If your local branch is not updated, you need to `git pull` first.
 - Then, push it.
+
+## [How do I “git pull” and overwrite my local changes?](https://koukia.ca/how-do-i-git-pull-and-overwrite-my-local-changes-4b6e3a8de955)
+
+- `git fetch --all`
+- `git reset <remote>/<branch>` or `git reset --hard <remote>/<branch>`
+- If you still want to keep your local changes, simply make a draft branch with your changes, and then `reset` the other branch.
