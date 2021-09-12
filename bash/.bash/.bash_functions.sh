@@ -75,6 +75,10 @@ function gall () {
     # find . -name ".git" -type d -print | xargs -P10 -I{} git --git-dir={} "${1}"
 }
 
+## Delete branch locally and remotely
+function gdel () {
+    git branch -d "${1}" && git push origin --delete "${1}"
+}
 
 # apt functions
 
