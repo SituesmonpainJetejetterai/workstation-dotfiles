@@ -36,6 +36,15 @@ It seems that if there is a breaking change in the code-base, use `!` to signify
 > Replace pick with reword before each commit message you want to change.
 > In each resulting commit file, type the new commit message, save the file, and close it.
 
-##[Git – Config Username & Password – Store Credentials](https://www.shellhacks.com/git-config-username-password-store-credentials/)
+## [Git – Config Username & Password – Store Credentials](https://www.shellhacks.com/git-config-username-password-store-credentials)
 
 Store git credentials for each repository in the `~/.git-credentials` file, and never put in your PAT again.
+
+## [How to Change Commit Message In Git](https://www.w3docs.com/snippets/git/how-to-change-commit-message.html)
+
+*Steps*:
+- `git rebase -i HEAD~n` (`n` can be any number).
+- Replace `pick` with `reword` for the commit messages you want to change.
+- Another window will pop up, amend the commit message in that.
+- If your local branch is not updated, you need to `git pull` first.
+- Then, push it.
