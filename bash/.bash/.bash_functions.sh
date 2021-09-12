@@ -31,16 +31,21 @@ function search () {
 ## start 2 tmux sessions, one for work and another for config
 ## split the window in the config session horizontally
 function ts () {
-    if tmux has-session 2>/dev/null; then
-        tmux a
+    if [ -z "$TMUX" ]; then
+        if tmux has-session 2>/dev/null; then
+            tmux a
+        else
+            echo -e "session doesn't exist"
+            cd ~/git-repos/setups || return
+            tmux new -t config -d
+            tmux split-window -t config -h
+            cd - || return
+            tmux new -t work -d
+            tmux a -t config
+        fi
     else
-        echo -e "session doesn't exist"
-        cd ~/git-repos/setups || return
-        tmux new -t config -d
-        tmux split-window -t config -h
-        cd - || return
-        tmux new -t work -d
-        tmux a -t config
+        echo -e "Already in a tmux session"
+        return
     fi
 }
 
