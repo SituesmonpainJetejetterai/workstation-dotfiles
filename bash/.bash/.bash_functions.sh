@@ -59,8 +59,17 @@ function parse_git_branch () {
 export PS1="\u@\h \[\e[32m\]\w \[\e[91m\]\$(parse_git_branch)\[\e[00m\]$ "
 
 ## Show the git diff in a colourful pager
+## If a file is not in the git list of files, use less to show its contents
 function gd () {
-    git diff "${1-.}"
+    if [ -z "${1}" ]; then
+        git diff .
+    else
+        if [[ -n "$(git ls-files "${1}")" ]]; then
+            git diff "${1}"
+        else
+            less "${1}"
+        fi
+    fi
 }
 
 ## Merge remote changes with the local branch
