@@ -77,6 +77,11 @@ function gfm () {
     git fetch origin "${1}" && git merge -s recursive -X theirs origin "${1}"
 }
 
+## Forcibly pull remote changes and override local changes
+function gdf () {
+    git fetch --all && git reset --hard origin/"${1}"
+}
+
 ## Perform the git action on all subdirectories with .git/ in them.
 ## Help: https://stackoverflow.com/questions/3497123/run-git-pull-over-all-subdirectories
 function gall () {
