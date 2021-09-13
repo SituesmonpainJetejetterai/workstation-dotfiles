@@ -73,11 +73,13 @@ function gd () {
 }
 
 ## Merge remote changes with the local branch
+## Needs argument specifying the branch
 function gfm () {
     git fetch origin "${1}" && git merge -s recursive -X theirs origin "${1}"
 }
 
 ## Forcibly pull remote changes and override local changes
+## Needs argument specifying the branch
 function gdf () {
     git fetch --all && git reset --hard origin/"${1}"
 }
