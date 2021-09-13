@@ -55,6 +55,10 @@ Both will take you to insert mode.
 
 `a`
 
+## Capitalise/lowercase the first letter
+
+`b~`
+
 
 ---
 
