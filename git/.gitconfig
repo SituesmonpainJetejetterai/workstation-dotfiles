@@ -2,4 +2,6 @@
 	last = log -1 HEAD --stat
 [core]
 	editor = vim
-	pager = less
+        pager = less
+[status]
+	showuntrackedfiles = all
