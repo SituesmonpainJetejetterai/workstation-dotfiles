@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/usr/bin/env bash
 
 # Setting functions
 ## The "$1" parameter takes the first argument passed to the function in the shell as input
