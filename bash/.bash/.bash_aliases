@@ -14,7 +14,7 @@ alias cl='clear && ls -a' ## clear and list all files
 alias la='ls -alt' ## check all files with permissions
 alias eal='vim ~/.bash/.bash_aliases' ## use vim to edit bash aliases
 alias efn='vim ~/.bash/.bash_functions.sh' ## use vim to edit bash functions
-alias shrug='echo "¯\_(ツ)_/¯"' ## shrug and copy to clipboard; add | pbcopy to copy to clipbaord automatically
+alias shrug='echo "¯\_(ツ)_/¯"' ## shrug; add | pbcopy to copy to clipbaord automatically
 alias ff='find . -type f -iname' ## find files in current directory
 alias fd='find . -type d -iname' ## find subdirectories
 
