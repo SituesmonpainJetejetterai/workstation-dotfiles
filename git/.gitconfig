@@ -1,7 +1,10 @@
 [alias]
-	last = log -1 HEAD --stat
+    last = log -1 HEAD --stat
+[color]
+    ui = true
 [core]
-	editor = vim
-        pager = less
+    editor = vim
+    pager = less -r
+    whitespace = trailing-space,-space-before-tab,tab-in-indent,cr-at-eol
 [status]
-	showuntrackedfiles = all
+    showuntrackedfiles = all
