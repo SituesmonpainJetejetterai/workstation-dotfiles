@@ -5,9 +5,16 @@
 alias al='grep -w "alias" ~/.bash/.bash_aliases' ## list all aliases
 alias upds='echo -e "\nUpdating package lists\n" && sudo apt update -y && echo -e "\nLooking to upgrade packages\n" && sudo apt upgrade -y && echo -e "\nCleaning up redundant packages/applications\n" && sudo apt autoremove -y' ## updating the system
 alias sob='clear && source ~/.bashrc' ## sourcing the .bashrc after update
+alias dc='cd' ## type dc instead of cd; no problem
+alias sl='ls' ## type sl instead of ls; no problem
 alias mset='cd $HOME/git-repos/setups' ## move to my favourite directory
 alias rset='cd $HOME/git-repos/setups/ && bash setup.sh && cd -' ## setting up and updating tools
 alias fn='cat ~/.bash/.bash_functions.sh | sed "s/\s*#.*//g; /^$/ d" | less' ## list all user-defined functions
+alias cl='clear && ls -a' ## clear and list all files
+alias la='ls -alt' ## check all files with permissions
+alias eal='vim ~/.bash/.bash_aliases' ## use vim to edit bash aliases
+alias efn='vim ~/.bash/.bash_functions.sh' ## use vim to edit bash functions
+alias shrug='echo "¯\_(ツ)_/¯"' ## shrug and copy to clipboard; add | pbcopy to copy to clipbaord automatically
 
 ## Git
 
