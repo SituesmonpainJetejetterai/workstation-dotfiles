@@ -3,17 +3,11 @@
 # Updating the system and installing some applications.
 
 printf "\nUpdating the system, removing vim and installing applications\n\n"
-
 sudo apt update -y && sudo apt upgrade -y
-
 printf "\n"
-
 sudo apt purge vim -y && sudo apt autoremove -y
-
 printf "\n"
-
 sudo apt install tmux vim-gtk lynx tree htop git shellcheck pylint python3 less -y
-
 printf "\n"
 
 # if [[ $PWD == ~ ]]; then
@@ -27,7 +21,6 @@ setup_path="$HOME/git-repos/setups"
 # vim setup
 
 printf "\nupdating gruvbox.vim\n"
-
 cd "$setup_path/vim/.vim/colors/" && { curl -sSO https://raw.githubusercontent.com/morhetz/gruvbox/master/colors/gruvbox.vim; cd - || return; }
 
 printf "\nupdating config in ~/.vim\n"
