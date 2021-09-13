@@ -20,7 +20,7 @@ alias gw='git switch' ## switch to another, existing branch
 
 ## Vim
 
-alias vial='grep -E "noremap|command!" ~/.vim/vimrc | less' ## list all vim remaps
+alias vial="grep -E 'noremap|command!/' ~/.vim/vimrc | sed 's/\s*\".*//; /^$/ d' | less"
 
 ## Tree
 
