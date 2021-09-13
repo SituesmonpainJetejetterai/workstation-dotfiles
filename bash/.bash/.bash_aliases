@@ -7,6 +7,7 @@ alias upds='echo -e "\nUpdating package lists\n" && sudo apt update -y && echo -
 alias sob='clear && source ~/.bashrc' ## sourcing the .bashrc after update
 alias mset='cd $HOME/git-repos/setups' ## move to my favourite directory
 alias rset='cd $HOME/git-repos/setups/ && bash setup.sh && cd -' ## setting up and updating tools
+alias fn='cat ~/.bash/.bash_functions.sh | sed "s/#.*//g" | sed -n "1{/^$/p};{/./,/^$/p}" | less' ## list all user-defined functions
 
 ## Git
 
@@ -19,7 +20,7 @@ alias gw='git switch' ## switch to another, existing branch
 
 ## Vim
 
-alias vial='grep -E "noremap|command!" ~/.vim/vimrc | less' ## List all vim remaps
+alias vial='grep -E "noremap|command!" ~/.vim/vimrc | less' ## list all vim remaps
 
 ## Tree
 
