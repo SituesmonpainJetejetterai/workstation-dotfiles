@@ -36,6 +36,10 @@ alias gw='git switch' ## switch to another, existing branch
 alias vv='vim ~/.vim/vimrc' ## Edit the vimrc
 alias vial="grep -E 'noremap|command!/' ~/.vim/vimrc | sed 's/\s*\".*//; /^$/ d' | less -r" ## Show all vim key remaps
 
+## Tmux
+alias vt='vim ~/.tmux.conf' ## use vim to edit the tmux config
+alias tmux='tmux -2' ## Start with 256 colours as default
+
 ## Tree
 
 alias tree='tree --dirsfirst -F'
