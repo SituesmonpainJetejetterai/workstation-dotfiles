@@ -61,7 +61,7 @@ set linebreak
 " Link: https://bluz71.github.io/2021/09/10/vim-tips-revisited.html
 set breakindent
 set breakindentopt=shift:2
-set showbreak=↳
+set showbreak=////
 
 " Persistent undo
 " Link: https://bluz71.github.io/2021/09/10/vim-tips-revisited.html
