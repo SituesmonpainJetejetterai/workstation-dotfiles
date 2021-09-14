@@ -261,5 +261,9 @@ augroup brackets
     autocmd FileType markdown,python,sh inoremap <buffer> " ""<ESC>hli
 augroup END
 
+" Delete bracket pairs when first bracket is deleted
+nnoremap <Leader>d %x``x
+" nnoremap <Leader>d %x<C-o>x
+
 " Invoke the help command with an argument, but vertically
 command! -nargs=? -complete=help Vh vert help <args>
