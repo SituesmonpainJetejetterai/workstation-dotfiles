@@ -59,7 +59,11 @@ Both will take you to insert mode.
 
 `b~`
 
+## To edit/work with text inside a "block"
 
+`<command>ib`
+
+`<command>` could be anything. For example, I can use a key remap to delete surrounding brackets if I delete the first bracket in the pair. The command for that would be `yibvabp` which would first copy the content inside the block, then visually select the entire block, then copy the contents on the text containing the brackets, so in essence the brackets would get deleted (although I no longer use this, I have a better key-remap).
 ---
 
 
