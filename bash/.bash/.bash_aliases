@@ -23,6 +23,7 @@ alias vfn='vim ~/.bash/.bash_functions.sh' ## use vim to edit bash functions
 
 ## Git
 
+alias vg='vim ~/.gitconfig' ## edit gitconfig with vim
 alias gs='git status -sb' ## Checking the git status.
 alias ga='git add' ## Stage a file
 alias gaa='git add -A' ## Stage all files
@@ -37,6 +38,7 @@ alias vv='vim ~/.vim/vimrc' ## Edit the vimrc
 alias vial="grep -E 'noremap|command!/' ~/.vim/vimrc | sed 's/\s*\".*//; /^$/ d' | less -r" ## Show all vim key remaps
 
 ## Tmux
+
 alias vt='vim ~/.tmux.conf' ## use vim to edit the tmux config
 alias tmux='tmux -2' ## Start with 256 colours as default
 
