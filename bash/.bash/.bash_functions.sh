@@ -25,6 +25,19 @@ function search () {
     fi
 }
 
+## regex practice
+function regex_practice () {
+    # grep -hse "\'.*\'" "temp.md"
+    printf '\nWelcome to the regex practice session!\nEnter the path of the file you want to practice on: \n'
+    read -r file
+    while true
+    do
+        printf '\nReading input regex syntax\n: '
+        read -r syntax
+        grep -hse \'\""${syntax}"\"\' "${file}"
+    done
+}
+
 
 # Tmux functions
 
