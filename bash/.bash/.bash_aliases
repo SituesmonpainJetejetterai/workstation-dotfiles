@@ -16,8 +16,8 @@ alias fd='find . -type d -iname' ## find subdirectories
 
 ## Bash
 
-alias al='grep -w "alias" ~/.bash/.bash_aliases' ## list all aliases
-alias fn='cat ~/.bash/.bash_functions.sh | sed "s/\s*#.*//g; /^$/ d" | less' ## list all user-defined functions
+alias al='grep -w "alias" ~/.bash/.bash_aliases | less' ## list all aliases
+alias fn='cat ~/.bash/.bash_functions.sh | sed "s/\s*#.*//g; /^$/ d" | less -r' ## list all user-defined functions
 alias val='vim ~/.bash/.bash_aliases' ## use vim to edit bash aliases
 alias vfn='vim ~/.bash/.bash_functions.sh' ## use vim to edit bash functions
 
