@@ -22,7 +22,7 @@ vnoremap <F3> :norm I#<Space><CR>
 vnoremap <F4> :norm ^xx<CR>
 
 " map <F5> to run python files
-nnoremap <buffer> <F5> :update<CR>:below terminal++rows=15 python3 "%"<CR> 
+nnoremap <buffer> <F5> :update<CR>:below terminal++rows=15 python3 "%"<CR>
 
 " Remap to auto-write a function
 nnoremap <silent> <Leader>f idef<Space><Space>():<ESC>3hi
