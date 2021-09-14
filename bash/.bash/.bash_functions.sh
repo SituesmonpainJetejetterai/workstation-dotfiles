@@ -26,15 +26,15 @@ function search () {
 }
 
 ## regex practice
-function regex_practice () {
+function rexp () {
     # grep -hse "\'.*\'" "temp.md"
-    printf '\nWelcome to the regex practice session!\nEnter the path of the file you want to practice on: \n'
+    printf "\nWelcome to the regex practice session!\nEnter the path of the file you want to practice on: "
     read -r file
     while true
     do
-        printf '\nReading input regex syntax\n: '
+        printf "\nReading input regex syntax: "
         read -r syntax
-        grep -hse \'\""${syntax}"\"\' "${file}"
+        grep -hse "${syntax}" "${file}"
     done
 }
 
