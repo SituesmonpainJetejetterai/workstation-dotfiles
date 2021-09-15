@@ -13,6 +13,14 @@ function hg () {
     history | grep "${1}" | less
 }
 
+## check if name is already in use as a function or an alias
+## needs an argument to check the name
+## returns file name and line number
+function ckw () {
+    sed -e 's/\s{//' ~/.bash/.bash_functions.sh| grep -Hn "^function\s${1}\s()"
+    sed -e 's/^.....\s//' ~/.bash/.bash_aliases | grep -Hnw "${1}"
+}
+
 ## search for text in files inside current folder
 ## add one other parameter (for example: `w`, `H` etc) to `grep` - note that these are `grep` parameters, nothing new.
 ## `sed G` simply appends a newline character followed by the contents of the hold space to the pattern space.
@@ -38,6 +46,11 @@ function rexp () {
     done
 }
 
+## count number of lines in all files in a directory (including subdirectories)
+## can specify directory, or will act in current directory
+function cnl () {
+    find "${1-.}" -type f -print | sed 's/.*/"&"/' | xargs  wc -l
+}
 
 # Tmux functions
 
