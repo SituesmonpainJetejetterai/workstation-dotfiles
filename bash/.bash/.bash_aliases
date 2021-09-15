@@ -8,11 +8,21 @@ alias dc='cd' ## type dc instead of cd; no problem
 alias sl='ls' ## type sl instead of ls; no problem
 alias mset='cd $HOME/git-repos/setups && git status -sb' ## move to my favourite directory, and show git status
 alias rset='cd $HOME/git-repos/setups/ && bash setup.sh && cd -' ## setting up and updating tools
-alias cl='clear && ls -a && printf "\n" && ls -a | wc -l' ## clear and list all objects, with the total number of objects
+alias cl='clear && echo -e "$PWD" && ls -a && printf "\n" && ls -a | wc -l' ## clear and list all objects, with the total number of objects
 alias la='ls -alt' ## check all files with permissions
 alias shrug='echo "¯\_(ツ)_/¯"' ## shrug; add | pbcopy to copy to clipbaord automatically
 alias ff='find . -type f -iname' ## find files in current directory
 alias fd='find . -type d -iname' ## find subdirectories
+alias rd='rm -r "${1}"' ## Delete a directory
+alias rdf='rm -rf "${1}"' ## Delete a directory forcibly
+alias t='touch "${1}"' ## Create a file
+alias md='mkdir "${1}"' ## Create a directory
+alias b='cd ..' ## Go up one directory
+alias cdl='cd "$(ls -rt | head -n1)" && ls -a' ## Move to most recently updated directory and show all contents
+alias si='sudo apt install "${1}" -y' ## Install an application
+alias sd='sudo apt purge "${1}" -y && sudo apt autoremove -y' ## Delete and application and cleanup after
+alias busy="cat /dev/urandom | hexdump -C | grep 'ca fe'" ## Use this to look busy when boss comes around
+
 
 ## Bash
 
