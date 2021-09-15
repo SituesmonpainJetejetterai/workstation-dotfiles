@@ -122,14 +122,24 @@ function gdel () {
     git branch -d "${1}" && git push origin --delete "${1}"
 }
 
-# apt functions
 
-## install a package
-function ins () {
-    sudo apt install "${1}" -y
-}
-
-## purge an application & cleanup
-function del () {
-    sudo apt purge "${1}" -y && sudo apt autoremove -y
+## Add everything, commit, and push automatically
+## Needs input argument for commit message
+function gacp() {
+    if [ -z "${1}" ] || [ -z "${2}" ]; then
+        printf "\nNo commit message provided"
+        exit
+    else
+        echo "This will add, commit and push all the files to the specified branch."
+        read -p "Do you want to proceed? y/n: " -n 1 -r
+        if [[ "$REPLY" =~ ^([yY][eE][sS]|[yY])+$ ]]
+        then
+            git add .
+            git commit -m "${1}"
+            git push origin "${2}"
+        else
+            echo -e "\n Quit."
+            exit
+        fi
+    fi
 }
