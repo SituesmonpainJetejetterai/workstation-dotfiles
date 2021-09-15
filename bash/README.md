@@ -1,7 +1,8 @@
 # I aim for this to be an information dump on bash
 
-A primary resource that, perhaps everyone learning `bash` should read: [Bash Reference Manual](https://www.gnu.org/savannah-checkouts/gnu/bash/manual/bash)
-
+- A primary resource that, perhaps everyone learning `bash` should read: [Bash Reference Manual](https://www.gnu.org/savannah-checkouts/gnu/bash/manual/bash)
+- [A very useful `.bashrc` file](https://www.reddit.com/r/commandline/comments/9md3pp/a_very_useful_bashrc_file/)
+- [What is your favourite alias that you made?](https://www.reddit.com/r/commandline/comments/pmtnwj/what_is_your_favorite_alias_that_you_made/)
 ---
 
 # [Quotes and escaping](https://wiki.bash-hackers.org/syntax/quoting)
