@@ -188,7 +188,7 @@ nnoremap j gj
 nnoremap gj j
 
 " Map `H` and `L` to move to the beginning and end of the line
-nnoremap H ^
+nnoremap H g^
 nnoremap L g$
 
 " Easier split navigation bindings 
