@@ -35,6 +35,7 @@ function hg () {
 function ckw () {
     sed -e 's/\s{//' ~/.bash/.bash_functions.sh| grep -Hn "^function\s${1}\s()"
     sed -e 's/^.....\s//' ~/.bash/.bash_aliases | grep -Hnw "${1}"
+    sed -e 's/\s*\".*//; /^$/d' ~/.vim/vimrc | grep -E 'remap|command!' | grep -Hnw "${1}"
 }
 
 ## search for text in files inside current folder
