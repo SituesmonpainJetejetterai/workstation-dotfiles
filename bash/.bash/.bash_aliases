@@ -3,16 +3,16 @@
 ## System
 
 alias upds='echo -e "\nUpdating package lists\n" && sudo apt update -y && echo -e "\nLooking to upgrade packages\n" && sudo apt upgrade -y && echo -e "\nCleaning up redundant packages/applications\n" && sudo apt autoremove -y' ## updating the system
-alias sob='clear && source ~/.bashrc' ## sourcing the .bashrc after update
-alias dc='cd' ## type dc instead of cd; no problem
-alias sl='ls' ## type sl instead of ls; no problem
-alias mset='cd $HOME/git-repos/setups && git status -sb' ## move to my favourite directory, and show git status
-alias rset='cd $HOME/git-repos/setups/ && bash setup.sh && cd -' ## setting up and updating tools
-alias cl='clear && echo -e "$PWD" && ls -a && printf "\n" && ls -a | wc -l' ## clear and list all objects, with the total number of objects
-alias la='ls -alt' ## check all files with permissions
-alias shrug='echo "¯\_(ツ)_/¯"' ## shrug; add | pbcopy to copy to clipbaord automatically
-alias ff='find . -type f -iname' ## find files in current directory
-alias fd='find . -type d -iname' ## find subdirectories
+alias sob='clear && source ~/.bashrc' ## Sourcing the .bashrc after update
+alias dc='cd' ## Type dc instead of cd; no problem
+alias sl='ls' ## Type sl instead of ls; no problem
+alias mset='cd $HOME/git-repos/setups && git status -sb' ## Move to my favourite directory, and show git status
+alias rset='cd $HOME/git-repos/setups/ && bash setup.sh && cd -' ## Setting up and updating tools
+alias cl='clear && echo -e "$PWD" && ls -a && printf "\n" && ls -a | wc -l' ## Clear and list all objects, with the total number of objects
+alias la='ls -alt' ## Check all files with permissions
+alias shrug='echo "¯\_(ツ)_/¯"' ## Shrug; add | pbcopy to copy to clipboard automatically
+alias ff='find . -type f -iname' ## Find files in current directory
+alias fd='find . -type d -iname' ## Find subdirectories
 alias rd='rm -r "${1}"' ## Delete a directory
 alias rdf='rm -rf "${1}"' ## Delete a directory forcibly
 alias t='touch "${1}"' ## Create a file
@@ -26,22 +26,22 @@ alias busy="cat /dev/urandom | hexdump -C | grep 'ca fe'" ## Use this to look bu
 
 ## Bash
 
-alias al='grep -w "alias" ~/.bash/.bash_aliases | less' ## list all aliases
-alias fn='cat ~/.bash/.bash_functions.sh | sed "s/\s*#.*//g; /^$/ d" | less -r' ## list all user-defined functions
-alias vb='vim ~/.bash/' ## open the folder to edit bash configuration
-alias val='vim ~/.bash/.bash_aliases' ## use vim to edit bash aliases
-alias vfn='vim ~/.bash/.bash_functions.sh' ## use vim to edit bash functions
+alias al='grep -w "alias" ~/.bash/.bash_aliases | less' ## List all aliases
+alias fn='cat ~/.bash/.bash_functions.sh | sed "s/\s*#.*//g; /^$/ d" | less -r' ## List all user-defined functions
+alias vb='vim ~/.bash/' ## Open the folder to edit bash configuration
+alias val='vim ~/.bash/.bash_aliases' ## Use vim to edit bash aliases
+alias vfn='vim ~/.bash/.bash_functions.sh' ## Use vim to edit bash functions
 
 ## Git
 
-alias vg='vim ~/.gitconfig' ## edit gitconfig with vim
+alias vg='vim ~/.gitconfig' ## Edit gitconfig with vim
 alias gs='git status -sb' ## Checking the git status.
 alias ga='git add' ## Stage a file
 alias gaa='git add -A' ## Stage all files
 alias gc='git commit' ## Commit changes to the code.
 alias gp='git push -u origin' ## Push to a branch in origin
 alias gl='git log --oneline' ## View the logs, each commit in a separate line
-alias gw='git switch' ## switch to another, existing branch
+alias gw='git switch' ## Switch to another, existing branch
 
 ## Vim
 
@@ -50,14 +50,15 @@ alias vial="grep -E 'noremap|command!/' ~/.vim/vimrc | sed 's/\s*\".*//; /^$/ d'
 
 ## Tmux
 
-alias vt='vim ~/.tmux.conf' ## use vim to edit the tmux config
+alias vt='vim ~/.tmux.conf' ## Use vim to edit the tmux config
 alias tmux='tmux -2' ## Start with 256 colours as default
 
 ## Tree
 
-alias tree='tree --dirsfirst -F'
+alias tree='tree --dirsfirst -F' ## Show directories first, with the '/' to represent them
 
 ## Calendar
+### Show different months of the calendar
 
 alias jan='cal -m 01'
 alias feb='cal -m 02'
