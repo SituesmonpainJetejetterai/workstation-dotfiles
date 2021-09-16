@@ -23,7 +23,7 @@ endfunction
 " Set the status line to show the live word count
 set statusline+=\ %f\ %=\ %w:%{WordCount()}\ \|\ Modified\ on:\ %{strftime('%T\ %Z')}
 " show the statusline
-set laststatus=2 
+set laststatus=2
 
 " Key remap to insert the date and time as a timestamp
 nnoremap dt i<C-R>=strftime("%Y-%m-%d %a %H:%M:%S")<CR><Esc>
