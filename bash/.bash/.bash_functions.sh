@@ -8,6 +8,22 @@
 
 # System functions
 
+## File and folder removal all-in-one
+function rma () {
+    if [ "${1}" = "f" ];
+    then
+        shift
+        rm -rf "$@" || true
+        rm -f "$@" || true
+    else
+        rm -rf "$@" || true
+        rm -f "$@" || true
+    fi
+
+    printf "\nAttempted to delete all files and folders mentioned as arguments\n"
+    ls -a
+}
+
 ## grep the commands I've put into the shell using a pager to scroll
 function hg () {
     history | grep "${1}" | less
