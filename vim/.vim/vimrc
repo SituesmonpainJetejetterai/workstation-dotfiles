@@ -189,10 +189,11 @@ nnoremap gj j
 
 " Easier split navigation bindings 
 " Link: https://thoughtbot.com/blog/vim-splits-move-faster-and-more-naturally#easier-split-navigations
-nnoremap <C-j> <C-W>j
-nnoremap <C-k> <C-W>k
-nnoremap <C-l> <C-W>l
-nnoremap <C-h> <C-W>h
+nnoremap <Leader>j <C-w>j
+nnoremap <Leader>k <C-w>k
+nnoremap <Leader>l <C-w>l
+nnoremap <Leader>h <C-w>h
+nnoremap <Leader>= <C-w>=
 
 " Remap to copy the entire line from the point of the cursor
 nnoremap Y y$
