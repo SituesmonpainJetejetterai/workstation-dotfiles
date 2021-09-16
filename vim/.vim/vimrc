@@ -187,6 +187,10 @@ nnoremap < <C-W><<C-W><
 nnoremap j gj
 nnoremap gj j
 
+" Map `H` and `L` to move to the beginning and end of the line
+nnoremap H ^
+nnoremap L g$
+
 " Easier split navigation bindings 
 " Link: https://thoughtbot.com/blog/vim-splits-move-faster-and-more-naturally#easier-split-navigations
 nnoremap <Leader>j <C-w>j
