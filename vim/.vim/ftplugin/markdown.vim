@@ -6,7 +6,7 @@ let g:markdown_fenced_languages = ['javascript', 'python', 'c', 'ruby', 'sh', 'y
 " Spellcheck in British English
 setlocal spell spelllang=en_gb complete+=kspell
 
-" Show bold and italics 
+" Show bold and italics
 setlocal conceallevel=2
 
 " Live word count: https://vim.fandom.com/wiki/Word_count
@@ -21,9 +21,7 @@ function WordCount()
 endfunction
 
 " Set the status line to show the live word count
-set statusline+=\ %f\ %=\ %w:%{WordCount()}\ \|\ Modified\ on:\ %{strftime('%T\ %Z')}
-" show the statusline
-set laststatus=2
+set statusline+=\%=\Wordcount:\ %{WordCount()}\ \|\ Modified:\ %{strftime('%T\ %Z')}
 
 " Key remap to insert the date and time as a timestamp
 nnoremap dt i<C-R>=strftime("%Y-%m-%d %a %H:%M:%S")<CR><Esc>
