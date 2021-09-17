@@ -70,6 +70,7 @@ let &undodir=s:undodir
 set undofile
 
 
+
 " ---------
 
 
@@ -156,9 +157,34 @@ let g:gruvbox_termcolors = '256'
 let g:gruvbox_contrast_dark = 'medium'
 let g:gruvbox_hls_cursor = 'orange'
 let g:gruvbox_italicize_comments = '1'
-let g:gruvbox_improved_strings= '1'  
+let g:gruvbox_improved_strings= '1'
 
 colorscheme gruvbox
+
+
+
+" ---------
+
+
+
+" Statusline
+
+" Function to get the git branch in the statusline
+function! Gitbranch() abort
+    return substitute(system("git branch | sed -e 's/..//'"), "\n", "", "g")
+endfunction
+
+" Link: https://stackoverflow.com/a/5380230
+
+set statusline=                             " Start
+set statusline+=\{%n}%h                     " Show the buffer and help
+set statusline+=\ %t%y\~(%{Gitbranch()})    " Show the tail(filename), filetype, and git branch
+set statusline+=\ %-8.(%l\:%c%V\:%L%)       " Show current line and column (and virtual column number) numbers that the cursor is on, and total lines
+set statusline+=\ %p\%%                     " Show percentage through file in lines as in CTRL-G
+set statusline+=\ %m%r                      " Show if file is modified, in readonly mode
+
+" Enable the statusline
+set laststatus=2
 
 
 
@@ -189,7 +215,9 @@ nnoremap gj j
 
 " Map `H` and `L` to move to the beginning and end of the line
 nnoremap H g^
+vnoremap H g^
 nnoremap L g$
+vnoremap L g$
 
 " Easier split navigation bindings 
 " Link: https://thoughtbot.com/blog/vim-splits-move-faster-and-more-naturally#easier-split-navigations
@@ -251,15 +279,15 @@ vnoremap <Leader>" di""<ESC>hp
 vnoremap <Leader>` di``<ESC>hp
 
 " Autocomplete brackets and punctuation marks logic
-inoremap ( ()<ESC>hli
-inoremap { {}<ESC>hli
-inoremap [ []<ESC>hli
-inoremap ` ``<ESC>hli
-inoremap * **<ESC>hli
+inoremap <buffer>( ()<ESC>hli
+inoremap <buffer>{ {}<ESC>hli
+inoremap <buffer>[ []<ESC>hli
+inoremap <buffer>` ``<ESC>hli
+inoremap <buffer>* **<ESC>hli
+inoremap <buffer>' ''<ESC>hli
 
 augroup brackets
     autocmd!
-    autocmd FileType markdown,python,sh inoremap <buffer> ' ''<ESC>hli
     autocmd FileType markdown,python,sh inoremap <buffer> " ""<ESC>hli
 augroup END
 
