@@ -26,7 +26,3 @@ nnoremap <buffer> <F5> :update<CR>:below terminal++rows=15 python3 "%"<CR>
 
 " Remap to auto-write a function
 nnoremap <silent> <Leader>f idef<Space><Space>():<ESC>3hi
-
-" Set the status line to show the live word count
-set statusline+=\ %f
-set laststatus=2

@@ -26,7 +26,3 @@ noremap <buffer> <F5> :w<CR>:below terminal++rows=15 bash "%"<CR>
 
 " remap to insert a function
 nnoremap <Leader>f ifunction<Space><Space>()<Space>{<CR><CR>}<ESC>2kwhi
-
-" Set the status line to show the live word count
-set statusline+=\ %f
-set laststatus=2
