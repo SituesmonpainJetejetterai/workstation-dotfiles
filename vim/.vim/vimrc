@@ -170,15 +170,22 @@ colorscheme gruvbox
 " Statusline
 
 " Function to get the git branch in the statusline
-function! Gitbranch() abort
-    return substitute(system("git branch | sed -e 's/..//'"), "\n", "", "g")
+function Gitbranch()
+    return trim(system("git -C " . expand("%:h") . " branch --show-current 2>/dev/null"))
 endfunction
 
+" Autogroup to run the command only when entering the window of the buffer
+augroup Gitget
+    autocmd!
+    autocmd BufWinEnter * let b:git_branch = Gitbranch()
+augroup END
+
 " Link: https://stackoverflow.com/a/5380230
+" Link: https://www.reddit.com/r/vim/comments/pq3xwa/how_to_get_the_git_branch_in_the_statusline/
 
 set statusline=                             " Start
 set statusline+=\{%n}%h                     " Show the buffer and help
-set statusline+=\ %t%y\~(%{Gitbranch()})    " Show the tail(filename), filetype, and git branch
+set statusline+=\ %t%y\~(%{b:git_branch})   " Show the tail(filename), filetype, and git branch
 set statusline+=\ %-8.(%l\:%c%V\:%L%)       " Show current line and column (and virtual column number) numbers that the cursor is on, and total lines
 set statusline+=\ %p\%%                     " Show percentage through file in lines as in CTRL-G
 set statusline+=\ %m%r                      " Show if file is modified, in readonly mode
@@ -292,8 +299,8 @@ augroup brackets
 augroup END
 
 " Delete bracket pairs when first bracket is deleted
-nnoremap <Leader>d %x``x
-" nnoremap <Leader>d %x<C-o>x
+" nnoremap <Leader>d %x``x
+nnoremap <Leader>d %x<C-o>x
 
 " Invoke the help command with an argument, but vertically
 command! -nargs=? -complete=help Vh vert help <args>
