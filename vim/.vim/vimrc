@@ -272,7 +272,7 @@ inoremap ! !<c-g>u
 inoremap ? ?<c-g>u
 
 " List buffers and prepare to switch
-nnoremap gb :buffers<CR>:b
+nnoremap gb :ls<CR>:b
 
 " Reload buffers that have changed
 nnoremap <Leader>r :checktime<CR>
