@@ -226,7 +226,7 @@ vnoremap H g^
 nnoremap L g$
 vnoremap L g$
 
-" Easier split navigation bindings 
+" Easier split navigation bindings
 " Link: https://thoughtbot.com/blog/vim-splits-move-faster-and-more-naturally#easier-split-navigations
 nnoremap <Leader>j <C-w>j
 nnoremap <Leader>k <C-w>k
@@ -291,11 +291,11 @@ inoremap <buffer>{ {}<ESC>hli
 inoremap <buffer>[ []<ESC>hli
 inoremap <buffer>` ``<ESC>hli
 inoremap <buffer>* **<ESC>hli
-inoremap <buffer>' ''<ESC>hli
 
 augroup brackets
     autocmd!
     autocmd FileType markdown,python,sh inoremap <buffer> " ""<ESC>hli
+    autocmd FileType vim,python,sh inoremap <buffer> ' ''<ESC>hli
 augroup END
 
 " Delete bracket pairs when first bracket is deleted
