@@ -13,16 +13,11 @@ alias la='ls -alt' ## Check all files with permissions
 alias shrug='echo "¯\_(ツ)_/¯"' ## Shrug; add | pbcopy to copy to clipboard automatically
 alias ff='find . -type f -iname' ## Find files in current directory
 alias fd='find . -type d -iname' ## Find subdirectories
-alias rd='rm -r "${1}"' ## Delete a directory
-alias rdf='rm -rf "${1}"' ## Delete a directory forcibly
-alias t='touch "${1}"' ## Create a file
-alias md='mkdir "${1}"' ## Create a directory
 alias b='cd ..' ## Go up one directory
 alias cdl='cd "$(ls -rt | head -n1)" && ls -a' ## Move to most recently updated directory and show all contents
 alias si='sudo apt install "${1}" -y' ## Install an application
 alias sd='sudo apt purge "${1}" -y && sudo apt autoremove -y' ## Delete and application and cleanup after
 alias busy="cat /dev/urandom | hexdump -C | grep 'ca fe'" ## Use this to look busy when boss comes around
-
 
 ## Bash
 
@@ -57,8 +52,7 @@ alias tmux='tmux -2' ## Start with 256 colours as default
 
 alias tree='tree --dirsfirst -F' ## Show directories first, with the '/' to represent them
 
-## Calendar
-### Show different months of the calendar
+## Calendar: different months of the calendar
 
 alias jan='cal -m 01'
 alias feb='cal -m 02'
