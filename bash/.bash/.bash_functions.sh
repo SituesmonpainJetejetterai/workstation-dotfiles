@@ -26,7 +26,7 @@ function rma () {
 
 ## grep the commands I've put into the shell using a pager to scroll
 function hg () {
-    history | grep "${1}" | less
+    history | grep "${1}" | less -r
 }
 
 ## check if name is already in use as a function or an alias
