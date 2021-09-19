@@ -7,7 +7,7 @@ sudo apt update -y && sudo apt upgrade -y
 printf "\n"
 sudo apt purge vim -y && sudo apt autoremove -y
 printf "\n"
-sudo apt install tmux vim-gtk lynx tree htop git shellcheck pylint python3 less -y
+sudo apt install tmux vim-gtk lynx tree htop git shellcheck pylint python3 less curl -y
 printf "\n"
 
 # if [[ $PWD == ~ ]]; then
