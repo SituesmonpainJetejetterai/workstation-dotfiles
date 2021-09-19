@@ -231,7 +231,7 @@ vnoremap <C-j> :m '>+1<CR>gv
 
 " Map `j` to `gj` and `k` to `gk` to move easily with wrapped lines
 nnoremap j gj
-nnoremap gj j
+nnoremap k gk
 
 " Map `H` and `L` to move to the beginning and end of the line
 nnoremap H g^
