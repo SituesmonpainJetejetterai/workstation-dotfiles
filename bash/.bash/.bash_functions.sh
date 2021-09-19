@@ -21,7 +21,7 @@ function rma () {
     fi
 
     printf "\nAttempted to delete all files and folders mentioned as arguments\n"
-    ls -a
+    ls -a && printf "\n" && ls -a | wc -l
 }
 
 ## grep the commands I've put into the shell using a pager to scroll
