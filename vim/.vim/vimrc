@@ -216,10 +216,6 @@ cnoremap <Leader>vh :vert help<CR>
 nnoremap > <C-W>><C-W>>
 nnoremap < <C-W><<C-W><
 
-" Easy indent in normal mode
-nnoremap > v>
-nnoremap < v<
-
 " Move lines up
 nnoremap <C-k> :m-2<CR>
 inoremap <C-k> :m-2<CR>
