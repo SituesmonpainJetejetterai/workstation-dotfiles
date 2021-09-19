@@ -216,6 +216,19 @@ cnoremap <Leader>vh :vert help<CR>
 nnoremap > <C-W>><C-W>>
 nnoremap < <C-W><<C-W><
 
+" Easy indent in normal mode
+nnoremap > v>
+nnoremap < v<
+
+" Move lines up
+nnoremap <C-k> :m-2<CR>
+inoremap <C-k> :m-2<CR>
+vnoremap <C-k> :m '<-2<CR>gv
+" Move lines down
+nnoremap <C-j> :m+1<CR>
+inoremap <C-j> :m+1<CR>
+vnoremap <C-j> :m '>+1<CR>gv
+
 " Map `j` to `gj` and `k` to `gk` to move easily with wrapped lines
 nnoremap j gj
 nnoremap gj j
