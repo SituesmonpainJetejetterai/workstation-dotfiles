@@ -40,6 +40,7 @@ alias gw='git switch' ## Switch to another, existing branch
 
 ## Vim
 
+alias v='vim' ## Start vim with one letter
 alias vv='vim ~/.vim/vimrc' ## Edit the vimrc
 alias vial="sed -e 's/\s*\".*//; /^$/d' ~/.vim/vimrc | grep -E 'remap|command!' | less -r" ## Show all vim key remaps
 
