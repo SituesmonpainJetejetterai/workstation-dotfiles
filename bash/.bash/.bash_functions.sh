@@ -20,7 +20,7 @@ rma () {
         rm -f "$@" || true
     fi
     printf "\nAttempted to delete all files and folders mentioned as arguments\n"
-    ls -a && printf "\n" && find . -maxdepth 1 | wc -l
+    ls -a && printf "\n" && ls -a | wc -l
 }
 
 ## grep the commands I've put into the shell using a pager to scroll
