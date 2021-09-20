@@ -148,7 +148,6 @@ gacp () {
         printf "\nThis will add, commit and push all the files to the specified branch\n"
         printf "\nDo you want to proceed? y/n: "
         read -r ans;
-        # if expr "$ans" : "^([yY][eE][sS]|[yY])+$";
         if [ "$ans" = "Y" ] || [ "$ans" = "y" ];
         then
             git add .
