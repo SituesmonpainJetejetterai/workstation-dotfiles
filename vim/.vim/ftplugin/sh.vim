@@ -25,4 +25,4 @@ nnoremap <F4> :norm ^xx<CR>
 noremap <buffer> <F5> :w<CR>:below terminal++rows=15 bash "%"<CR>
 
 " remap to insert a function
-nnoremap <Leader>f ifunction<Space><Space>()<Space>{<CR><CR>}<ESC>2kwhi
+nnoremap <Leader>f i()<Space>{<CR><CR>}<ESC>2ki
