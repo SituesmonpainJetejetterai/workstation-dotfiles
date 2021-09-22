@@ -107,7 +107,7 @@ let g:netrw_browse_split=4  " open in prior window
 let g:netrw_altv=1          " open splits to the right
 let g:netrw_liststyle=3     " tree view
 let g:netrw_preview = 1     " vertical preview splits
-let g:netrw_winsize = 80    " width of explorer
+let g:netrw_winsize = 20    " width of explorer
 let g:netrw_list_hide=netrw_gitignore#Hide()
 " let g:netrw_list_hide.=',\(^\|\s\s\)\zs\.\S\+'
 
@@ -204,11 +204,6 @@ set laststatus=2
 " Map <SPACE> as the <Leader>
 let g:mapleader=" "
 
-" Map :vert term<CR> to <Leader>vt
-" Map :vert help<CR> to <Leader>vh
-cnoremap <Leader>vt :vert term<CR>
-cnoremap <Leader>vh :vert help<CR>
-
 " Map > to resize the window by 2 units to the right.
 " Map < to resize the window by 2 units to the left.
 " Only for vertical windows, as I don't use (or like) the horizontal split.
@@ -282,6 +277,9 @@ inoremap ? ?<c-g>u
 
 " List buffers and prepare to switch
 nnoremap gb :ls<CR>:b
+
+" Open up netrw in a vertical split
+nnoremap <Leader>v :Vexplore<CR>
 
 " Reload buffers that have changed
 nnoremap <Leader>r :checktime<CR>
