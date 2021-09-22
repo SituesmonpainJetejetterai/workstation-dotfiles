@@ -220,6 +220,11 @@ nnoremap <C-j> :m+1<CR>
 inoremap <C-j> :m+1<CR>
 vnoremap <C-j> :m '>+1<CR>gv
 
+" Ability to indent repeatedly without changing modes
+" This will re-select the last visual selection after you use > while in Visual mode
+xnoremap > >gv
+xnoremap < <gv
+
 " Map `j` to `gj` and `k` to `gk` to move easily with wrapped lines
 nnoremap j gj
 nnoremap k gk
