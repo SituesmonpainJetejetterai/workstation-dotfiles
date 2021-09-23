@@ -35,7 +35,7 @@ There is another suffix, i.e. `+`, but I haven't used it yet.
 - [This](https://stackoverflow.com/a/2962015) link shows how to run bash commands using `exec` in `find`. Very impressive.
 - The rest of the answers are worthwhile too, I found another showing how to run multiple `exec`s in `find`.
 
-#[`xargs: unmatched single quote; by default quotes are special to xargs unless you use the -0 option`](https://www.reddit.com/r/bash/comments/pl1ukb/xargs_unmatched_single_quote_by_default_quotes/)
+# [`xargs: unmatched single quote; by default quotes are special to xargs unless you use the -0 option`](https://www.reddit.com/r/bash/comments/pl1ukb/xargs_unmatched_single_quote_by_default_quotes/)
 
 > Some of the file names found by `find` contained a single quote like in `let's dance.txt`. `xargs` treats quotes special way by default:
 > > `xargs` reads items from the standard input, delimited by blanks (which can be protected with double or single quotes ...
