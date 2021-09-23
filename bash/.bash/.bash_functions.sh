@@ -187,7 +187,7 @@ gam() {
             # In bash, there is an alternative, which is to use the -p flag
             read -r remote branch
 
-            # The {:-} essentially means that if the argument in passed/set, use the default value provided
+            # The {:-} essentially means that if the argument is not passed/set, use the default value provided
             git push --force-with-lease "${remote:-origin}" "${branch:-main}"
 
         elif [ "${commit}" = "o" ]; then
@@ -195,7 +195,7 @@ gam() {
             printf "\nTell me the remote and branch: "
             read -r remote branch
 
-            # The {:-} essentially means that if the argument in passed/set, use the default value provided
+            # The {:-} essentially means that if the argument is not passed/set, use the default value provided
             git push --force "${remote:-origin}" "${branch:-main}"
         fi
     else
