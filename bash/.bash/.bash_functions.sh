@@ -140,15 +140,34 @@ gdel() {
 ## Use a number instead of ${1} to point out which commit message to change
 ## Use a branch name instead of ${2} to push to specific branch
 gam() {
+    # Show the git commits
     git log --oneline
+
+    # Take input
     printf "\nChange recent, or older commits? Type \"r\" for recent, \"o\" for older: "
     read -r commit
+
     if [ "${commit}" = "r" ]; then
+
+        # Change the most recent commit
         git commit --amend
+
     elif [ "${commit}" = "o" ]; then
-        git rebase -i HEAD~"${commit}"
+
+        # Change an arbitrary number of previous commits
+        printf "\nNumber of commits: "
+
+        # Read the number of commit messages to be changed. This number acts as an index for the commits.
+        # i.e. We can change the last "n" commit messages
+
+        read -r n
+
+        # Rebase the last "n" commits
+        git rebase -i HEAD~"${n}"
     else
-        printf "\nI don't even know what to change"
+        printf "\nI don't even know what to change\n"
+
+        # Exit the function
         return
     fi
 
@@ -157,15 +176,24 @@ gam() {
     if [ "${push}" = "y" ] || [ "${push}" = "Y" ]; then
         if [ "${commit}" = "r" ]; then
             printf "\nTell me the remote and branch: "
-            read -r branch-arg
-            git push --force-with-lease "${branch-arg[0]:-origin}" "${branch-arg[1]:-main}"
+
+            # Take multiple inputs for remote and branch
+            # In bash, there is an alternative, which is to use the -p flag
+            read -r remote branch
+
+            # The {:-} essentially means that if the argument in passed/set, use the default value provided
+            git push --force-with-lease "${remote:-origin}" "${branch:-main}"
+
         elif [ "${commit}" = "o" ]; then
+
             printf "\nTell me the remote and branch: "
-            read -r branch-arg
-            git push --force "${branch-arg[0]:-origin}" "${branch-arg[1]:-main}"
+            read -r remote branch
+
+            # The {:-} essentially means that if the argument in passed/set, use the default value provided
+            git push --force "${remote:-origin}" "${branch:-main}"
         fi
     else
-        printf "\nNot pushed"
+        printf "\nNot pushed\n"
         return
     fi
 }
@@ -193,12 +221,12 @@ gacp() {
 ## Git switch function
 ## Either switch to a new branch with the f argument
 ## Or switch to an existing branch
-gt() {
-    if [ -z "${2}" ]; then
-        git switch "${1}"
-    elif [ "${2}" = "f" ]; then
-        git switch -c "${1}"
-    else
-        printf "\nSorry, doesn't work like that"
-    fi
-}
+# gs() {
+    # if [ -z "${2}" ]; then
+        # git switch "${1}"
+    # elif [ "${2}" = "f" ]; then
+        # git switch -c "${1}"
+    # else
+        # printf "\nSorry, doesn't work like that"
+    # fi
+# }
