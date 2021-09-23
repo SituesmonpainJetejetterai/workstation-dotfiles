@@ -69,6 +69,18 @@ cnl() {
     find "${1-.}" -type f -print | sed 's/.*/"&"/' | xargs  wc -l
 }
 
+## Move to a directory and show all contents
+## If no directory is mentioned, show the $HOME directory
+## Link: https://opensource.com/article/19/7/bash-aliases
+c() {
+    DIR="$*";
+    # if no DIR given, go home
+    if [ $# -lt 1 ]; then
+        DIR=$HOME;
+    fi;
+    builtin cd "${DIR}" && ls -Fa --color=auto
+}
+
 # Tmux functions
 
 ## start 2 tmux sessions, one for work and another for config
