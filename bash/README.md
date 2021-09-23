@@ -41,3 +41,9 @@ There is another suffix, i.e. `+`, but I haven't used it yet.
 > > `xargs` reads items from the standard input, delimited by blanks (which can be protected with double or single quotes ...
 
 > To prevent that behaviour, use `-print0` with `find` and `-0` with`xargs`.
+
+# What to do when bash shows an error for your function name
+
+`unalias <name>`
+
+This is because on sourcing `.bashrc`, it can only update existing aliases and functions. It does not start from scratch.
