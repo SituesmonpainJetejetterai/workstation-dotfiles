@@ -36,8 +36,8 @@ alias gaa='git add -A' ## Stage all files
 alias gc='git commit' ## Commit changes to the code.
 alias gp='git push -u origin' ## Push to a branch in origin
 alias gl='git log --oneline' ## View the logs, each commit in a separate line
-alias gw='git switch' ## Switch to another, existing branch
-alias gwf='git switch -C' ## Switch to a new branch
+# alias gw='git switch' ## Switch to another, existing branch
+# alias gwf='git switch -C' ## Switch to a new branch
 
 ## Vim
 
