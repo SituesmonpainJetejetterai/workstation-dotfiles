@@ -32,14 +32,15 @@ hg() {
 ## needs an argument to check the name
 ## returns file name and line number
 ckw() {
+    type "${1}"
+    grep -HEn 'remap|command!' "$HOME/.vim/vimrc" | sed -e 's/\s*\".*//; /^$/d' | grep -w "${1}"
+
     # grep -Hn "^function\s${1}\s()" "$HOME/.bash/.bash_functions.sh" | sed -e "s/\s{//"
     # declare -f "${1}"
     # grep -Hnw "${1}" "$HOME/.bash/.bash_aliases" | sed -e "s/^.....\s//"
     # alias | grep -Hnw "${1}"
-    type "${1}"
     # grep -nE "remap|command!" "$HOME/.vim/vimrc" | sed -e"s/\s*\".*//; /^$/d" | grep -w "${1}"
     # sed -e 's/\s*\".*//; /^$/d' "$HOME/.vim/vimrc" | grep -E 'remap|command!' | grep -Hnw "${1}"
-    grep -HEn 'remap|command!' "$HOME/.vim/vimrc" | sed -e 's/\s*\".*//; /^$/d' | grep -w "${1}"
 }
 
 ## search for text in files inside current folder
