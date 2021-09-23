@@ -18,6 +18,8 @@ alias cdl='cd "$(ls -rt | head -n1)" && ls -a' ## Move to most recently updated 
 alias si='sudo apt install "${1}" -y' ## Install an application
 alias sd='sudo apt purge "${1}" -y && sudo apt autoremove -y' ## Delete and application and cleanup after
 alias busy="cat /dev/urandom | hexdump -C | grep 'ca fe'" ## Use this to look busy when boss comes around
+alias als='alias | less' ## Show the system list of running aliases with less
+alias fns='declare -f | less' ## Show the system list of functions with less
 
 ## Bash
 
