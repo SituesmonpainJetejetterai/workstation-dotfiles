@@ -55,4 +55,24 @@ This is because on sourcing `.bashrc`, it can only update existing aliases and f
 
 # How to suppress errors in bash
 
-Append the command with `2>/dev/null`
+Append the command with `2>/dev/null`. Directing to `1>/dev/null` will suppress output (`STDOUT`) while `2>/dev/null` will suppress errors (`STDERR`).
+
+# How to Display Specific Lines of a File in Linux Command Line
+
+`sed -n '<line-number>p' <file/output>`
+
+Can also be used with pipes.
+
+# [Add Line Numbers to Output on Linux Command Line](https://www.putorius.net/nl-command-basic-usage.html)
+
+`nl`  
+`nl -s:`  
+`nl -s:" "`  
+`nl -n ln`  
+`nl -n rz`
+
+And more.
+
+# [How can I make a script take multiple arguments?](https://unix.stackexchange.com/questions/198952/how-can-i-make-a-script-take-multiple-arguments)
+
+> just need to iterate over the `$@` array
