@@ -184,20 +184,18 @@ gam() {
     printf "\nDo you want to push?: "
     read -r push
     if [ "${push}" = "y" ] || [ "${push}" = "Y" ]; then
-        if [ "${commit}" = "r" ]; then
-            printf "\nTell me the remote and branch: "
+        printf "\nTell me the remote and branch: "
 
-            # Take multiple inputs for remote and branch
-            # In bash, there is an alternative, which is to use the -p flag
-            read -r remote branch
+        # Take multiple inputs for remote and branch
+        # In bash, there is an alternative, which is to use the -p flag
+        read -r remote branch
+
+        if [ "${commit}" = "r" ]; then
 
             # The {:-} essentially means that if the argument is not passed/set, use the default value provided
             git push --force-with-lease "${remote:-origin}" "${branch:-main}"
 
         elif [ "${commit}" = "o" ]; then
-
-            printf "\nTell me the remote and branch: "
-            read -r remote branch
 
             # The {:-} essentially means that if the argument is not passed/set, use the default value provided
             git push --force "${remote:-origin}" "${branch:-main}"
@@ -208,7 +206,8 @@ gam() {
     fi
 }
 
-## Add everything, commit, and push automatically
+## Adds the files specified (or everything), commits, and pushes automatically
+## The first argument is required, either put the name of the file, or put -A to add all files.
 ## Needs input argument for commit message
 gcp() {
     if [ -z "${2}" ]; then
