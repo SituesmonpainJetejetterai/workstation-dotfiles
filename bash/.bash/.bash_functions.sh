@@ -213,20 +213,38 @@ gcp() {
     res="Y"
     while [ "${res}" = "y" ] || [ "${res}" = "Y" ];
     do
-        if [ -z "${1}" ]; then
+
+        # Function to extract the names of files to be staged
+        leftover() {
+            git status -sb | sed "s/#.*//; s/M//; s/.*\s//; /^$/d"
+        }
+
+        # Show the changed files with line numbers
+        printf "\nThese are the file(s) which have been changed: \n"
+        leftover | nl -s: | sed -e "s/.*\s//"
+
+        # Choose line numbers to select files to commit. Alternatively, don't choose anything to commit everything
+        printf "\n\nChoose the files you want to stage: "
+        read -r files
+
+        if [ -z "${files}" ]; then
             # If no argument specified, add all files
             printf "\nStaging all files\n"
             git add -A
         else
             # Add specified files
             printf "\nStaging specified files\n"
-            for f in "${@}"
+            for f in ${files}
             do
-                git add "${f}"
+                # A variable containing the name of the file to be staged
+                temp=$(leftover | sed -n "${f}p")
+                # Print the name of the file while staging it
+                printf "\n%s" "${temp}"
+                git add "${temp}"
             done
         fi
 
-        printf "\nTime for the commit message\nIf you want to use an editor (vim) for the commit message, press 'v'. Otherwise, simply type the commit message: "
+        printf "\n\nTime for the commit message\nIf you want to use an editor (vim) for the commit message, press 'v'. Otherwise, simply type the commit message: "
         read -r op
         if [ "${op}" = "v" ]; then
             # Open the text editor (vim in my case) to type the commit message
