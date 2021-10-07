@@ -206,25 +206,52 @@ gam() {
     fi
 }
 
-## Adds the files specified (or everything), commits, and pushes automatically
-## The first argument is required, either put the name of the file, or put -A to add all files.
-## Needs input argument for commit message
+## Adds the files specified (or everything), commits, and pushes automatically.
+## Stages selected files if passed as arguments, or stages all changes if no argument is passed.
 gcp() {
-    if [ -z "${2}" ]; then
-        printf "\nNo commit message provided"
-    else
-        printf "\nThis will add, commit and push the selected files to the specified branch\n"
-        printf "\nDo you want to proceed? y/n: "
-        read -r ans;
-        if [ "$ans" = "Y" ] || [ "$ans" = "y" ];
-        then
-            git add "${1:--A}"
-            git commit -m "${2}"
-            git push origin "${3}"
+    # Set the variable for the while loop
+    res="Y"
+    while [ "${res}" = "y" ] || [ "${res}" = "Y" ];
+    do
+        if [ -z "${1}" ]; then
+            # If no argument specified, add all files
+            printf "\nStaging all files\n"
+            git add -A
         else
-            printf "\nQuit\n"
+            # Add specified files
+            printf "\nStaging specified files\n"
+            for f in "${@}"
+            do
+                git add "${f}"
+            done
         fi
-    fi
+
+        printf "\nTime for the commit message\nIf you want to use an editor (vim) for the commit message, press 'v'. Otherwise, simply type the commit message: "
+        read -r op
+        if [ "${op}" = "v" ]; then
+            # Open the text editor (vim in my case) to type the commit message
+            printf "\nOpening vim...\n\n"
+            git commit
+            printf "\nClosed vim. Check your commit message.\n"
+        else
+            # Type the commit message directly
+            printf "\nUsing the given commit message.\n"
+            git commit -m "${op}"
+            printf "\nClosed vim. Check your commit message.\n"
+        fi
+
+        printf "\nDo you want to push the changes? Press 'y' or 'Y' to push: "
+        read -r yn
+        if [ "${yn}" = "y" ] || [ "${yn}" = "Y" ]; then
+            printf "\nEnter the remote and the branch to push to. If not provided, the defaults of 'origin' and 'main' will be used: "
+            read -r remote branch
+            printf "\nPushing changes...\n"
+            git push -u "${remote:-origin}" "${branch:-main}"
+        fi
+
+        printf "\nDo you want to go again? Enter 'y' or 'Y' to restart the process: "
+        read -r res
+    done
 }
 
 ## Git switch function
