@@ -47,3 +47,12 @@ There is another suffix, i.e. `+`, but I haven't used it yet.
 `unalias <name>`
 
 This is because on sourcing `.bashrc`, it can only update existing aliases and functions. It does not start from scratch.
+
+# [How to make less paginate only when the input is larger than the screen size?](https://stackoverflow.com/questions/45221266/how-to-make-less-paginate-only-when-the-input-is-larger-than-the-screen-size)
+
+> `mycmd | less -F`
+> The `-F` option is nicely combined with `-X` which will skip clearing of the screen before listing (can also have it as a default with `LESS='-FX'`).
+
+# How to suppress errors in bash
+
+Append the command with `2>/dev/null`
