@@ -32,22 +32,14 @@ hg() {
 ## needs an argument to check the name
 ## returns file name and line number
 ckw() {
-    type "${1}"
+    type "${1}" 2>/dev/null # Suppress errors, only show output if type "variable" exists
     grep -HEn 'remap|command!' "$HOME/.vim/vimrc" | sed -e 's/\s*\".*//; /^$/d' | grep -w "${1}"
-
-    # grep -Hn "^function\s${1}\s()" "$HOME/.bash/.bash_functions.sh" | sed -e "s/\s{//"
-    # declare -f "${1}"
-    # grep -Hnw "${1}" "$HOME/.bash/.bash_aliases" | sed -e "s/^.....\s//"
-    # alias | grep -Hnw "${1}"
-    # grep -nE "remap|command!" "$HOME/.vim/vimrc" | sed -e"s/\s*\".*//; /^$/d" | grep -w "${1}"
-    # sed -e 's/\s*\".*//; /^$/d' "$HOME/.vim/vimrc" | grep -E 'remap|command!' | grep -Hnw "${1}"
 }
 
 ## search for text in files inside current folder
-## add one other parameter(for example: `w`, `H` etc) to `grep` - note that these are `grep` parameters, nothing new.
 ## `sed G` simply appends a newline character followed by the contents of the hold space to the pattern space.
 search() {
-        find "${2-.}" -type f ! -iname ".bash_history" -print0 | xargs -0 -I {} grep -IHnrw "${1}" {} | sed G | less
+        find "${2:-.}" -type f ! -iname ".bash_history" -print0 | xargs -0 -I {} grep -IHnrw "${1}" {} | sed G | less
 }
 
 ## regex practice
@@ -66,7 +58,7 @@ rexp() {
 ## count number of lines in all files in a directory(including subdirectories)
 ## can specify directory, or will act in current directory
 cnl() {
-    find "${1-.}" -type f -print | sed 's/.*/"&"/' | xargs  wc -l
+    find "${1:-.}" -type f -print | sed 's/.*/"&"/' | xargs  wc -l | less -FX
 }
 
 ## Move to a directory and show all contents
@@ -218,18 +210,18 @@ gam() {
 
 ## Add everything, commit, and push automatically
 ## Needs input argument for commit message
-gacp() {
-    if [ -z "${1}" ] || [ -z "${2}" ]; then
+gcp() {
+    if [ -z "${2}" ]; then
         printf "\nNo commit message provided"
     else
-        printf "\nThis will add, commit and push all the files to the specified branch\n"
+        printf "\nThis will add, commit and push the selected files to the specified branch\n"
         printf "\nDo you want to proceed? y/n: "
         read -r ans;
         if [ "$ans" = "Y" ] || [ "$ans" = "y" ];
         then
-            git add .
-            git commit -m "${1}"
-            git push origin "${2}"
+            git add "${1:--A}"
+            git commit -m "${2}"
+            git push origin "${3}"
         else
             printf "\nQuit\n"
         fi
