@@ -25,7 +25,7 @@ rma() {
 
 ## grep the commands I've put into the shell using a pager to scroll
 hg() {
-    history | grep "${1}" | less -r
+    history | grep "${1}" | less -FX
 }
 
 ## check if name is already in use as a or an alias
@@ -39,7 +39,7 @@ ckw() {
 ## search for text in files inside current folder
 ## `sed G` simply appends a newline character followed by the contents of the hold space to the pattern space.
 search() {
-        find "${2:-.}" -type f ! -iname ".bash_history" -print0 | xargs -0 -I {} grep -IHnrw "${1}" {} | sed G | less
+        find "${2:-.}" -type f ! -iname ".bash_history" -print0 | xargs -0 -I {} grep -IHnrw "${1}" {} | sed G | less -FX
 }
 
 ## regex practice
@@ -114,7 +114,7 @@ gd() {
         if [ -n "$(git ls-files "${1}")" ]; then
             git diff "${1}"
         else
-            less "${1}"
+            less -FX "${1}"
         fi
     fi
 }
