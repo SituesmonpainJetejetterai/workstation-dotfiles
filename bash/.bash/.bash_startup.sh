@@ -5,6 +5,8 @@
 export TERM=xterm-256color
 
 # Showing system information
+clear
+cd "$HOME" || return
 
 echo -e "Public IP: $(curl -sS ifconfig.me)"
 echo -e "User: $USER"
