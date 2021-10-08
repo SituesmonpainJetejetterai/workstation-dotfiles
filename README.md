@@ -18,9 +18,3 @@ I've written a script called `setup.sh` which is at the root of this directory. 
 - `.bash/` to `$HOME`
 
 No need to worry, `setup.sh` will `symlink` everything and append the text at the end of `~/.bashrc` so that all the relevant files are sourced properly.
-
-Note that `.bash_variables.sh` can store anything, and is basically an alternative to editing the `~/.profile` on your system. I like it that way, because I'm not dependent on the configuration of the OS.
-
-## How to view huge output on screen
-
-I'm doing this on a server, and I can't scroll up and down using a mouse. I used to enter the `tmux` copy mode and then use `vim` bindings. However, I've been using this lately: pipe the command with `less`, and read the output with it.
