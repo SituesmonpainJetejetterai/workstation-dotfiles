@@ -40,7 +40,7 @@ set showmatch
 " improve text search inside a file
 set incsearch
 
-" Don't keep the higlight on after searching, it's annoying
+" Don't keep the higlight on after searching by default
 set nohlsearch
 
 " code folding
@@ -198,6 +198,10 @@ let g:mapleader=" "
 nnoremap > <C-W>><C-W>>
 nnoremap < <C-W><<C-W><
 
+" Toggle hlsearch
+" Link: https://stackoverflow.com/a/54938524
+nnoremap <silent> <Leader>h :set invhlsearch<CR>
+
 " Move lines up
 nnoremap <C-k> :m-2<CR>
 inoremap <C-k> :m-2<CR>
@@ -255,7 +259,7 @@ nnoremap ]s ]szz
 nnoremap [s [szz
 
 " Remap to save a file if updated
-nnoremap <Leader>w :update<CR>
+nnoremap <silent> <Leader>w :update<CR>
 
 " Remap to paste what you yanked, not what you deleted
 nnoremap ,p "0p
@@ -298,7 +302,7 @@ augroup brackets
     autocmd FileType vim,python,sh inoremap <buffer> ' ''<ESC>hli
 augroup END
 
-" Delete bracket pairs when first bracket is deleted
+" Remove bracket pair by deleting first bracket
 " nnoremap <Leader>d %x``x
 nnoremap <Leader>d %x<C-o>x
 
