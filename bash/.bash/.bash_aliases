@@ -35,11 +35,7 @@ alias vfn='vim ~/.bash/.bash_functions.sh' ## Use vim to edit bash functions
 alias vg='vim ~/.gitconfig' ## Edit gitconfig with vim
 alias gr="git restore --staged ${1}" ## Restore a file from being staged
 alias gs='git status -sb' ## Checking the git status.
-alias gl='git log --oneline' ## View the logs, each commit in a separate line
-# alias ga='git add' ## Stage a file
-# alias gaa='git add -A' ## Stage all files
-# alias gc='git commit' ## Commit changes to the code.
-# alias gp='git push -u origin' ## Push to a branch in origin
+alias gl='git log --oneline && clear' ## View the logs, each commit in a separate line
 
 ## Vim
 
