@@ -1,13 +1,10 @@
 " MARKDOWN SPECIFIC CONFIGURATION
 
 " Specifying fenced-in languages.
-let g:markdown_fenced_languages = ['javascript', 'python', 'c', 'ruby', 'sh', 'yaml', 'html', 'vim', 'coffee', 'json', 'diff']
+let g:markdown_fenced_languages = ['javascript', 'python', 'c', 'ruby', 'sh', 'yaml', 'html', 'vim', 'json', 'diff']
 
 " Spellcheck in British English
 setlocal spell spelllang=en_gb complete+=kspell
-
-" Show bold and italics
-setlocal conceallevel=2
 
 " Live word count: https://vim.fandom.com/wiki/Word_count
 let g:word_count=wordcount().words
@@ -29,8 +26,3 @@ nnoremap dt i<C-R>=strftime("%Y-%m-%d %a %H:%M:%S")<CR><Esc>
 " Map k and j to work with wrapped lines
 noremap <silent> <buffer> k gk
 noremap <silent> <buffer> j gj
-
-" set a colour scheme
-" error detection is not working with the default gruvbox scheme
-" Neither is it working with badwolf, which I would've liked to use
-" colorscheme onedark
