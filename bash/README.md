@@ -76,3 +76,12 @@ And more.
 # [How can I make a script take multiple arguments?](https://unix.stackexchange.com/questions/198952/how-can-i-make-a-script-take-multiple-arguments)
 
 > just need to iterate over the `$@` array
+
+# `getopts`
+
+- [parameters and switches in bash script](https://stackoverflow.com/questions/33760956/parameters-and-switches-in-bash-script#33761327)
+- [BASH “switch case” in Linux with practical example](https://linuxcent.com/bash-switch-case-in-linux-with-practical-example/)
+- [How do I handle switches in a shell script?](https://unix.stackexchange.com/questions/20975/how-do-i-handle-switches-in-a-shell-script)
+- [`getopts` - parse utility options](https://pubs.opengroup.org/onlinepubs/9699919799/utilities/getopts.html)
+- [Small `getopts` tutorial](https://wiki.bash-hackers.org/howto/getopts_tutorial)
+- [An example of how to use `getopts` in bash](https://stackoverflow.com/questions/16483119/an-example-of-how-to-use-getopts-in-bash)
