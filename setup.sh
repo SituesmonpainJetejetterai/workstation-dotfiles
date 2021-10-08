@@ -20,12 +20,8 @@ setup_path="$HOME/git-repos/setups"
 
 # vim setup
 
-printf "\nupdating gruvbox.vim\n"
-cd "$setup_path/vim/.vim/colors/" && { curl -sSO https://raw.githubusercontent.com/morhetz/gruvbox/master/colors/gruvbox.vim; cd - || return; }
-
 printf "\nupdating config in ~/.vim\n"
-rm -rf "$HOME/.vim" || rm "$HOME/.vim"
-ln -si "$setup_path/vim/.vim" "$HOME"
+cd "$HOME" && ln -sf "$setup_path/vim/.vim" "$HOME" && cd - || return
 
 # tmux setup
 
