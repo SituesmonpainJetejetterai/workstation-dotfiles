@@ -32,8 +32,8 @@ hg() {
 ## needs an argument to check the name
 ## returns file name and line number
 ckw() {
-    type "${1}" 2>/dev/null # Suppress errors, only show output if type "variable" exists
-    grep -HEn 'remap|command!' "$HOME/.vim/vimrc" | sed -e 's/\s*\".*//; /^$/d' | grep -w "${1}"
+    type "${1}" 2>/dev/null | less -FX # Suppress errors, only show output if type "variable" exists
+    grep -HEn 'remap|command!' "$HOME/.vim/vimrc" | sed -e 's/\s*\".*//; /^$/d' | grep -w "${1}" | less -FX
 }
 
 ## search for text in files inside current folder
@@ -208,7 +208,7 @@ gam() {
 
 ## Adds the files specified (or everything), commits, and pushes automatically.
 ## Stages selected files if passed as arguments, or stages all changes if no argument is passed.
-gcp() {
+gacp() {
     # Set the variable for the while loop
     res="Y"
     while [ "${res}" = "y" ] || [ "${res}" = "Y" ];
