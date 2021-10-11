@@ -1,11 +1,10 @@
-#### symlink the .vim directory here to a .vim directory in the $HOME directory. Only use this while in the $HOME directory,
-
-`ln -s <path/to/.vim> .vim`
-
-
 # Instructions to implement a good vim experience.
 
 A good resource to read: https://www.reddit.com/r/vim/wiki/vimrctips
+
+# `statusline`
+
+When you want to evaluate an expression with spaces/characters/etc, wrap it inside a `%(%)`. i.e.`%(%{expression}%)`. This let me use padding in my `statusline` for git-branch updates.
 
 
 ---
