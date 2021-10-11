@@ -10,15 +10,15 @@ setlocal spell spelllang=en_gb complete+=kspell
 let g:word_count=wordcount().words
 function WordCount()
     if has_key(wordcount(),'visual_words')
-        let g:word_count=wordcount().visual_words."/".wordcount().words " count selected words
+      let g:word_count=wordcount().visual_words."/".wordcount().words " count selected words
     else
-        let g:word_count=wordcount().cursor_words."/".wordcount().words " or shows words 'so far'
+      let g:word_count=wordcount().cursor_words."/".wordcount().words " or shows words 'so far'
     endif
     return g:word_count
 endfunction
 
 " Set the status line to show the live word count
-set statusline+=\%=\Wordcount:\ %{WordCount()}\ \|\ Modified:\ %{strftime('%T\ %Z')}
+setlocal statusline+=\%=\Wordcount:\%(\ %{WordCount()}\ %)
 
 " Key remap to insert the date and time as a timestamp
 nnoremap dt i<C-R>=strftime("%Y-%m-%d %a %H:%M:%S")<CR><Esc>
