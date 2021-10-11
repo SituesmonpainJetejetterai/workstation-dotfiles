@@ -13,11 +13,11 @@ rma() {
     if [ "${1}" = "f" ];
     then
         shift
-        rm -rf "$@" || true
-        rm -f "$@" || true
+        rm -rf "$@" 2>/dev/null
+        rm -f "$@" 2>/dev/null
     else
-        rm -rf "$@" || true
-        rm -f "$@" || true
+        rm -rf "$@" 2>/dev/null
+        rm -f "$@" 2>/dev/null
     fi
     printf "\nAttempted to delete all files and folders mentioned as arguments\n"
     ls -a && printf "\n" && find . -maxdepth 1 | wc -l
