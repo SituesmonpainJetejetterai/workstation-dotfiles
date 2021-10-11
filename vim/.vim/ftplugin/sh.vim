@@ -22,7 +22,7 @@ vnoremap <F4> :norm ^xx<CR>
 nnoremap <F4> :norm ^xx<CR>
 
 " Key mapping to auto run bash scripts
-noremap <buffer> <F5> :w<CR>:below terminal++rows=15 bash "%"<CR>
+noremap <silent> <buffer> <F5> :w<CR>:below terminal++rows=15 sh "%"<CR>
 
 " remap to insert a function
 nnoremap <Leader>f i()<Space>{<CR><CR>}<ESC>2ki
