@@ -7,4 +7,4 @@
 noremap <F3> :norm I" <CR>
  
 " And to uncomment
-noremap <F4> :norm 0xx<CR>
+noremap <F4> :norm ^xx<CR>
