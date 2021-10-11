@@ -157,8 +157,14 @@ colorscheme evening
 " Statusline
 
 " Function to get the git branch in the statusline
-function Gitbranch()
-    return trim(system("git -C " . expand("%:h") . " branch --show-current 2>/dev/null"))
+function! Gitbranch() abort
+    try
+        silent!
+        " return trim(system("git -C " . expand("%:h") . " branch --show-current 2>/dev/null"))
+        return trim(system("cd " . expand("%:h") . "&& git rev-parse --abbrev-ref HEAD 2>/dev/null && cd - 1>/dev/null"))
+    catch
+        return " Unkown"
+    endtry
 endfunction
 
 " Autogroup to run the command only when entering the window of the buffer
@@ -170,12 +176,12 @@ augroup END
 " Link: https://stackoverflow.com/a/5380230
 " Link: https://www.reddit.com/r/vim/comments/pq3xwa/how_to_get_the_git_branch_in_the_statusline/
 
-set statusline=                             " Start
-set statusline+=\{%n}%h                     " Show the buffer and help
-set statusline+=\ %t%y\~(%{b:git_branch})   " Show the tail(filename), filetype, and git branch
-set statusline+=\ %-8.(%l\:%c%V\:%L%)       " Show current line and column (and virtual column number) numbers that the cursor is on, and total lines
-set statusline+=\ %p\%%                     " Show percentage through file in lines as in CTRL-G
-set statusline+=\ %m%r                      " Show if file is modified, in readonly mode
+set statusline=                              " Start
+set statusline+=\{%n}%(\ (%{b:git_branch})%) " Show the buffer and help
+set statusline+=\ %t%y                       " Show the tail(filename), filetype, and git branch
+set statusline+=\ %-6.(%c%V\:%L%)            " Show current line and column (and virtual column number) numbers that the cursor is on, and total lines
+set statusline+=\ %p\%%                      " Show percentage through file in lines as in CTRL-G
+set statusline+=\ %m%r                       " Show if file is modified, in readonly mode
 
 " Enable the statusline
 set laststatus=2
@@ -259,6 +265,10 @@ nnoremap ]s ]szz
 nnoremap [s [szz
 
 " Remap to save a file if updated
+augroup Vimsave
+    autocmd!
+    autocmd FileType vim nnoremap <Leader>w :update<CR>:so %<CR>
+augroup END
 nnoremap <silent> <Leader>w :update<CR>
 
 " Remap to paste what you yanked, not what you deleted
@@ -290,16 +300,16 @@ vnoremap <Leader>" di""<ESC>hp
 vnoremap <Leader>` di``<ESC>hp
 
 " Autocomplete brackets and punctuation marks logic
-inoremap <buffer>( ()<ESC>hli
-inoremap <buffer>{ {}<ESC>hli
-inoremap <buffer>[ []<ESC>hli
-inoremap <buffer>` ``<ESC>hli
-inoremap <buffer>* **<ESC>hli
+inoremap <buffer>( ()<ESC>i
+inoremap <buffer>{ {}<ESC>i
+inoremap <buffer>[ []<ESC>i
+inoremap <buffer>` ``<ESC>i
+inoremap <buffer>* **<ESC>i
 
 augroup brackets
     autocmd!
-    autocmd FileType markdown,python,sh inoremap <buffer> " ""<ESC>hli
-    autocmd FileType vim,python,sh inoremap <buffer> ' ''<ESC>hli
+    autocmd FileType markdown,python,sh inoremap <buffer> " ""<ESC>i
+    autocmd FileType vim,python,sh inoremap <buffer> ' ''<ESC>i
 augroup END
 
 " Remove bracket pair by deleting first bracket
