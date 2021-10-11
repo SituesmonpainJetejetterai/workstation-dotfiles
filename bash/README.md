@@ -85,3 +85,11 @@ And more.
 - [`getopts` - parse utility options](https://pubs.opengroup.org/onlinepubs/9699919799/utilities/getopts.html)
 - [Small `getopts` tutorial](https://wiki.bash-hackers.org/howto/getopts_tutorial)
 - [An example of how to use `getopts` in bash](https://stackoverflow.com/questions/16483119/an-example-of-how-to-use-getopts-in-bash)
+
+# Change the `PS1`
+
+- [How to Change / Set up bash custom prompt (PS1) in Linux](https://www.cyberciti.biz/tips/howto-linux-unix-bash-shell-setup-prompt.html)
+- [How To Change Your PS1 Bash Prompt (And Add Emojis)](https://tynick.com/blog/06-12-2019/how-to-change-your-ps1-bash-prompt-and-add-emojis/)
+- [Adding Color and Customize the Bash Prompt (PS1)](https://www.marksanborn.net/linux/adding-color-and-customize-the-bash-prompt-ps1/)
+- [PS1 prompt explained for Linux/Unix](https://www.linuxnix.com/linuxunix-shell-ps1-prompt-explained-in-detail/)
+- [Bash Shell PS1: 10 Examples to Make Your Linux Prompt like Angelina Jolie](https://www.thegeekstuff.com/2008/09/bash-shell-ps1-10-examples-to-make-your-linux-prompt-like-angelina-jolie/)
