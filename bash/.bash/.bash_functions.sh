@@ -123,7 +123,7 @@ git_info() {
     fi
 }
 
-export PS1="\n\[$(tput setab 0)$(tput setaf 3)$(tput bold)\]\u\[$(tput setb 0)$(tput setaf 7)\]@\[$(tput setb 2)$(tput setaf 6)\]\h \[$(tput setab 0)$(tput setaf 1)\][exit:$?] ->\[$(tput setb 7)$(tput setaf 0)\] \w \[$(tput setaf 1)\]\$(git_info)\n\[$(tput bold)$(tput setaf 4)\]\_$ \[$(tput sgr0)\]"
+export PS1="\n\$? \[$(tput setab 0)$(tput setaf 3)$(tput bold)\]\u\[$(tput setb 0)$(tput setaf 7)\]@\[$(tput setb 2)$(tput setaf 6)\]\h\[$(tput setab 0)$(tput setaf 1)\] -> \[$(tput setb 7)$(tput setaf 0)\]\w\[$(tput setaf 1)\]\$(git_info)\n\[$(tput bold)$(tput setaf 4)\]\_$ \[$(tput sgr0)\]"
 
 ## Show the git diff in a colourful pager
 ## If a file is not in the git list of files, use less to show its contents
