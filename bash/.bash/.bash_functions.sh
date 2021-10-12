@@ -112,7 +112,7 @@ git_info() {
     }
 
     git_changed() {
-        git status -s | sed "s/.*\s//" | wc -l
+        git status -s | wc -l
     }
 
     git_remote() {
