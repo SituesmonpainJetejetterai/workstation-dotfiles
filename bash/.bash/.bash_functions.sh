@@ -100,10 +100,17 @@ ts() {
 # Git functions
 
 ## Show the branch I'm currently on while inside a git repository
-parse_git_branch() {
-     git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
+# parse_git_branch() {
+     # git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
+# }
+# export PS1="\u@\h \[\e[32m\]\w \[\e[91m\]\$(parse_git_branch)\[\e[00m\]$ "
+
+
+git_branch() {
+    git rev-parse --abbrev-ref HEAD 2>/dev/null | sed -e "s/\(.*\)/(\1)/"
 }
-export PS1="\u@\h \[\e[32m\]\w \[\e[91m\]\$(parse_git_branch)\[\e[00m\]$ "
+
+export PS1="\n\[$(tput setab 0)$(tput setaf 3)$(tput bold)\]\u\[$(tput setb 0)$(tput setaf 7)\]@\[$(tput setb 2)$(tput setaf 6)\]\h \[$(tput setab 0)$(tput setaf 1)\]->\[$(tput setb 7)$(tput setaf 0)\] \w \[$(tput setaf 1)\]\$(git_branch)\n\[$(tput bold)$(tput setaf 4)\]\_$ \[$(tput sgr0)\]"
 
 ## Show the git diff in a colourful pager
 ## If a file is not in the git list of files, use less to show its contents
