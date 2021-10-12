@@ -93,3 +93,10 @@ And more.
 - [Adding Color and Customize the Bash Prompt (PS1)](https://www.marksanborn.net/linux/adding-color-and-customize-the-bash-prompt-ps1/)
 - [PS1 prompt explained for Linux/Unix](https://www.linuxnix.com/linuxunix-shell-ps1-prompt-explained-in-detail/)
 - [Bash Shell PS1: 10 Examples to Make Your Linux Prompt like Angelina Jolie](https://www.thegeekstuff.com/2008/09/bash-shell-ps1-10-examples-to-make-your-linux-prompt-like-angelina-jolie/)
+- [Bash Shell PS1: 10 Examples to Change Your Linux Prompt](https://networkengineer.me/2015/06/17/bash-shell-ps1-10-examples-to-change-your-linux-prompt/)
+- [Hack 40. Change the prompt color using tput](https://linux.101hacks.com/ps1-examples/prompt-color-using-tput/)
+
+# `sed`
+
+- To select different elements in the input with `sed`, use `\(.*\)` to partition the input. Then, substitute it with something like `\1`.
+    - Example: If I have a string like `origin main`, and I wanted `origin:main`, I'd do `s/\(.*\)\s\(.*\)/\1:\2/`.
