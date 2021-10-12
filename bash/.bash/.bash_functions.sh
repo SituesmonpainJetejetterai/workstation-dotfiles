@@ -105,12 +105,25 @@ ts() {
 # }
 # export PS1="\u@\h \[\e[32m\]\w \[\e[91m\]\$(parse_git_branch)\[\e[00m\]$ "
 
+git_info() {
+    git_branch() {
+        # git rev-parse --abbrev-ref HEAD 2>/dev/null | sed -e "s/\(.*\)/(\1)/"
+        git rev-parse --abbrev-ref HEAD 2>/dev/null
+    }
 
-git_branch() {
-    git rev-parse --abbrev-ref HEAD 2>/dev/null | sed -e "s/\(.*\)/(\1)/"
+    git_remote() {
+        git config --get branch."$(git_branch)".remote
+    }
+
+    git_commits_ahead() {
+        git rev-list --count "$(git_branch)" --not "$(git_remote)"/"$(git_branch)" 2>/dev/null
+    }
+    if [ -n "$(git_branch)" ] && [ -n "$(git_commits_ahead)" ]; then
+        echo "B=$(git_branch) C=$(git_commits_ahead)" | sed -e "s/\(.*\)\s\(.*\)/(\1; \2)/"
+    fi
 }
 
-export PS1="\n\[$(tput setab 0)$(tput setaf 3)$(tput bold)\]\u\[$(tput setb 0)$(tput setaf 7)\]@\[$(tput setb 2)$(tput setaf 6)\]\h \[$(tput setab 0)$(tput setaf 1)\]->\[$(tput setb 7)$(tput setaf 0)\] \w \[$(tput setaf 1)\]\$(git_branch)\n\[$(tput bold)$(tput setaf 4)\]\_$ \[$(tput sgr0)\]"
+export PS1="\n\[$(tput setab 0)$(tput setaf 3)$(tput bold)\]\u\[$(tput setb 0)$(tput setaf 7)\]@\[$(tput setb 2)$(tput setaf 6)\]\h \[$(tput setab 0)$(tput setaf 1)\][exit:$?] ->\[$(tput setb 7)$(tput setaf 0)\] \w \[$(tput setaf 1)\]\$(git_info)\n\[$(tput bold)$(tput setaf 4)\]\_$ \[$(tput sgr0)\]"
 
 ## Show the git diff in a colourful pager
 ## If a file is not in the git list of files, use less to show its contents
