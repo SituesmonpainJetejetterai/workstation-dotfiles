@@ -101,9 +101,11 @@ ts() {
 ## Show the git diff in a colourful pager
 ## If a file is not in the git list of files, use less to show its contents
 gd() {
+    # If the first argument does not exist
     if [ -z "${1}" ]; then
         git diff .
     else
+        # If the file is not new
         if [ -n "$(git ls-files "${1}")" ]; then
             git diff "${1}"
         else
