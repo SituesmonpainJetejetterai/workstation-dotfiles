@@ -110,6 +110,7 @@ gd() {
             less -FX "${1}"
         fi
     fi
+    clear
 }
 
 ## Merge remote changes with the local branch
