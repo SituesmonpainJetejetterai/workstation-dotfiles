@@ -6,7 +6,7 @@
 # ---
 
 
-# System functions
+# SYSTEM FUNCTIONS
 
 ## File and folder removal all-in-one
 rma() {
@@ -73,7 +73,7 @@ c() {
     builtin cd "${DIR}" && ls -Fa --color=auto
 }
 
-# Tmux functions
+# TMUX FUNCTIONS
 
 ## start 2 tmux sessions, one for work and another for config
 ## split the window in the config session horizontally
@@ -96,39 +96,7 @@ ts() {
     fi
 }
 
-
-# Git functions
-
-## Show the branch I'm currently on while inside a git repository
-# parse_git_branch() {
-     # git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
-# }
-# export PS1="\u@\h \[\e[32m\]\w \[\e[91m\]\$(parse_git_branch)\[\e[00m\]$ "
-
-git_info() {
-    git_branch() {
-        # git rev-parse --abbrev-ref HEAD 2>/dev/null | sed -e "s/\(.*\)/(\1)/"
-        git rev-parse --abbrev-ref HEAD 2>/dev/null
-    }
-
-    git_changed() {
-        git status -s | wc -l
-    }
-
-    git_remote() {
-        git config --get branch."$(git_branch)".remote
-    }
-
-    git_commits_ahead() {
-        git rev-list --count "$(git_branch)" --not "$(git_remote)"/"$(git_branch)" 2>/dev/null
-    }
-
-    if [ -n "$(git_branch)" ] && [ -n "$(git_commits_ahead)" ]; then
-        echo "B=$(git_branch) Ch=$(git_changed) C=$(git_commits_ahead)" | sed -e "s/\(.*\)\s\(.*\)\s\(.*\)/(\1; \2; \3)/"
-    fi
-}
-
-export PS1="\n\$? \[$(tput setab 0)$(tput setaf 3)$(tput bold)\]\u\[$(tput setb 0)$(tput setaf 7)\]@\[$(tput setb 2)$(tput setaf 6)\]\h\[$(tput setab 0)$(tput setaf 1)\] -> \[$(tput setb 7)$(tput setaf 0)\]\w\[$(tput setaf 1)\] \$(git_info)\n\[$(tput bold)$(tput setaf 4)\]\_$ \[$(tput sgr0)\]"
+# GIT FUNCTIONS
 
 ## Show the git diff in a colourful pager
 ## If a file is not in the git list of files, use less to show its contents
@@ -172,8 +140,8 @@ gdel() {
 ## Can amend any arbitrary message
 ## Optionally pushes changes
 ## Two optional arguments
-## Use a number instead of ${1} to point out which commit message to change
-## Use a branch name instead of ${2} to push to specific branch
+## Use a number for ${1} to point out which commit message to change
+## Use a branch name for ${2} to push to specific branch
 gam() {
     # Show the git commits
     git log --oneline
