@@ -29,6 +29,7 @@ alias fn='cat ~/.bash/.bash_functions.sh | sed "s/\s*#.*//g; /^$/ d" | less -FX'
 alias vb="vim ~/.bash/" ## Open the folder to edit bash configuration
 alias val="vim ~/.bash/.bash_aliases" ## Use vim to edit bash aliases
 alias vfn="vim ~/.bash/.bash_functions.sh" ## Use vim to edit bash functions
+alias vst="vim ~/.bash/.bash_startup.sh" ## Use vim to edit the bash startup script
 
 ## Git
 
