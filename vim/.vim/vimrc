@@ -11,8 +11,8 @@ set lcs=tab:>~,trail:-,nbsp:%
 set relativenumber
 set number
 
-" Set scrolloff so I don't move around in a file, unless I'm at the top or the bottom
-set scrolloff=8
+" Center the cursor while scrolling
+set scrolloff=999
 
 " Don't abandon buffers in the background even if they are unsaved
 set hidden
@@ -58,7 +58,7 @@ set linebreak
 " Link: https://bluz71.github.io/2021/09/10/vim-tips-revisited.html
 set breakindent
 set breakindentopt=shift:2
-set showbreak=////
+set showbreak=///
 
 " Persistent undo
 " Link: https://bluz71.github.io/2021/09/10/vim-tips-revisited.html
@@ -179,7 +179,7 @@ augroup END
 set statusline=                              " Start
 set statusline+=\{%n}%(\ (%{b:git_branch})%) " Show the buffer and help
 set statusline+=\ %t%y                       " Show the tail(filename), filetype, and git branch
-set statusline+=\ %-6.(%c%V\:%L%)            " Show current line and column (and virtual column number) numbers that the cursor is on, and total lines
+set statusline+=\ %c%V:%L                    " Show current line and column (and virtual column number) numbers that the cursor is on, and total lines
 set statusline+=\ %p\%%                      " Show percentage through file in lines as in CTRL-G
 set statusline+=\ %m%r                       " Show if file is modified, in readonly mode
 
