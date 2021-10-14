@@ -9,6 +9,9 @@ When you want to evaluate an expression with spaces/characters/etc, wrap it insi
 
 ---
 
+# Toggle numbers
+
+`:set inv<command>`
 
 # Lines
 
