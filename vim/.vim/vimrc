@@ -314,12 +314,12 @@ nnoremap <Leader>v :Vexplore<CR>
 nnoremap <Leader>r :checktime<CR>
 
 " Surround with brackets or punctuation marks
-vnoremap ( di()<ESC>hp
-vnoremap [ di[]<ESC>hp
-vnoremap { di{}<ESC>hp
-vnoremap ' di''<ESC>hp
-vnoremap " di""<ESC>hp
-vnoremap ` di``<ESC>hp
+vnoremap ( c()<ESC>hp
+vnoremap [ c[]<ESC>hp
+vnoremap { c{}<ESC>hp
+vnoremap ' c''<ESC>hp
+vnoremap " c""<ESC>hp
+vnoremap ` c``<ESC>hp
 
 " Autocomplete brackets and punctuation marks logic
 inoremap <buffer>( ()<ESC>i
