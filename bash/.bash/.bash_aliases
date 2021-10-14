@@ -21,6 +21,7 @@ alias d='sudo apt purge "${1}" -y && sudo apt autoremove -y' ## Delete and appli
 alias busy="cat /dev/urandom | hexdump -C | grep 'ca fe'" ## Use this to look busy when boss comes around
 alias als="alias | less -FX" ## Show the system list of running aliases with less
 alias fns="declare -f | less -FX" ## Show the system list of functions with less
+alias tp="top && clear" ## Show the system monitor and clear when done
 
 ## Bash
 
@@ -47,7 +48,7 @@ alias vial="sed -e 's/\s*\".*//; /^$/d' ~/.vim/vimrc | grep -E 'remap|command!' 
 ## Tmux
 
 alias vt="vim ~/.tmux.conf" ## Use vim to edit the tmux config
-alias tmux="tmux -2" ## Start with 256 colours as default
+alias t="tmux -2" ## Start with 256 colours as default
 
 ## Tree
 
