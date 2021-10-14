@@ -3,6 +3,9 @@
 " Set the cursorline
 set cursorline
 
+" display incomplete commands
+set showcmd
+
 " Set characters to signify tabs, whitespaces etc
 set list
 set lcs=tab:>~,trail:-,nbsp:%
@@ -10,6 +13,11 @@ set lcs=tab:>~,trail:-,nbsp:%
 " set relative and static numbering for lines
 set relativenumber
 set number
+set numberwidth=5
+
+" Open new split panes to right and bottom, which feels more natural
+set splitbelow
+set splitright
 
 " Center the cursor while scrolling
 set scrolloff=999
@@ -177,8 +185,8 @@ augroup END
 " Link: https://www.reddit.com/r/vim/comments/pq3xwa/how_to_get_the_git_branch_in_the_statusline/
 
 set statusline=                              " Start
-set statusline+=\{%n}%(\ (%{b:git_branch})%) " Show the buffer and help
-set statusline+=\ %t%y                       " Show the tail(filename), filetype, and git branch
+set statusline+=\{%n}%(\ (%{b:git_branch})%) " Show the buffer and the git branch
+set statusline+=\ %t%y                       " Show the tail(filename), filetype
 set statusline+=\ %c%V:%L                    " Show current line and column (and virtual column number) numbers that the cursor is on, and total lines
 set statusline+=\ %p\%%                      " Show percentage through file in lines as in CTRL-G
 set statusline+=\ %m%r                       " Show if file is modified, in readonly mode
@@ -207,6 +215,13 @@ nnoremap < <C-W><<C-W><
 " Toggle hlsearch
 " Link: https://stackoverflow.com/a/54938524
 nnoremap <silent> <Leader>h :set invhlsearch<CR>
+
+" Toggle nu and rnu
+" Link: https://stackoverflow.com/a/14975679
+nnoremap <silent> <Leader>n :set invnumber invrnumber<CR>
+
+" Open a terminal in the bottom half of the screen
+nnoremap <silent> <Leader>t :below terminal++rows=15<CR>
 
 " Move lines up
 nnoremap <C-k> :m-2<CR>
@@ -264,7 +279,14 @@ nnoremap ]j <C-i>zz
 nnoremap ]s ]szz
 nnoremap [s [szz
 
-" Remap to save a file if updated
+" Recognise vim files
+augroup recognisevim
+    autocmd!
+    autocmd BufRead,BufNewFile *.vim set filetype=vim
+    autocmd BufRead,BufNewFile vimrc set filetype=vim
+augroup END
+
+" Remap to save and source a file if updated
 augroup Vimsave
     autocmd!
     autocmd FileType vim nnoremap <Leader>w :update<CR>:so %<CR>
@@ -292,12 +314,12 @@ nnoremap <Leader>v :Vexplore<CR>
 nnoremap <Leader>r :checktime<CR>
 
 " Surround with brackets or punctuation marks
-vnoremap <Leader>( di()<ESC>hp
-vnoremap <Leader>[ di[]<ESC>hp
-vnoremap <Leader>{ di{}<ESC>hp
-vnoremap <Leader>' di''<ESC>hp
-vnoremap <Leader>" di""<ESC>hp
-vnoremap <Leader>` di``<ESC>hp
+vnoremap ( di()<ESC>hp
+vnoremap [ di[]<ESC>hp
+vnoremap { di{}<ESC>hp
+vnoremap ' di''<ESC>hp
+vnoremap " di""<ESC>hp
+vnoremap ` di``<ESC>hp
 
 " Autocomplete brackets and punctuation marks logic
 inoremap <buffer>( ()<ESC>i
