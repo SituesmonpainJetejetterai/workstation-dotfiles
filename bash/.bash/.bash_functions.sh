@@ -73,6 +73,17 @@ c() {
     builtin cd "${DIR}" && ls -Fa --color=auto
 }
 
+cdf() {
+    finder() {
+        find "$HOME" -name ".git" -prune -o -type d -print
+    }
+    finder | nl -w 1 -s: | less -FX
+
+    printf "\n%s" "Number for directory: "
+    read -r directory
+    cd "$(finder | sed -n """$directory"" p")"
+}
+
 # TMUX FUNCTIONS
 
 ## start 2 tmux sessions, one for work and another for config
