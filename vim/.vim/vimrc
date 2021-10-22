@@ -154,7 +154,7 @@ augroup END
 set termguicolors
 
 " set a default colour scheme
-colorscheme elflord
+colorscheme ron
 
 
 
