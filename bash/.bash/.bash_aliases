@@ -35,9 +35,8 @@ alias vst="vim ~/.bash/.bash_startup.sh" ## Use vim to edit the bash startup scr
 ## Git
 
 alias vg="vim ~/.gitconfig" ## Edit gitconfig with vim
-alias gr="git restore --staged ${1}" ## Restore a file from being staged
+alias gr="git restore --staged "${1}"" ## Restore a file from being staged
 alias gs="git status -sb" ## Checking the git status.
-alias gl="git log --oneline && clear" ## View the logs, each commit in a separate line
 
 ## Vim
 

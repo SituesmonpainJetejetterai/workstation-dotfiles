@@ -291,3 +291,14 @@ gw() {
         printf "\nSorry, doesn't work like that"
     fi
 }
+
+## View logs and optionally clear screen
+gl() {
+    git log --oneline
+    printf "\n%s" "Clear?: "
+    read -r op
+    if { [ "${op}" = "y" ] || [ "${op}" = "Y" ]; }
+    then
+        clear
+    fi
+}
