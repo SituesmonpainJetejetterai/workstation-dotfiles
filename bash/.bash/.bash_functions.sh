@@ -237,6 +237,7 @@ gacp() {
             # If no argument specified, add all files
             printf "\nStaging all files\n"
             git add -A
+            leftover
         else
             # Add specified files
             printf "\nStaging specified files\n"
