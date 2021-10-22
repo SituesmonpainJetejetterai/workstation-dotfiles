@@ -153,8 +153,8 @@ augroup END
 " Gives Vim access to a broader range of colours
 set termguicolors
 
-" set a default colour scheme, to override, make a filetype.vim in
-colorscheme evening
+" set a default colour scheme
+colorscheme elflord
 
 
 
@@ -194,7 +194,8 @@ set statusline+=\ %m%r                       " Show if file is modified, in read
 " Enable the statusline
 set laststatus=2
 
-
+hi StatusLine     term=bold,reverse cterm=bold,reverse guifg=black guibg=#c2bfa5
+hi StatusLineNC   term=reverse cterm=reverse guifg=grey50 guibg=#c2bfa5
 
 " ---------
 
