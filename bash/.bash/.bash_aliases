@@ -12,7 +12,6 @@ alias cl='clear && echo -e "$PWD" && ls -a && printf "\n" && find . -maxdepth 1 
 alias la="ls -alt" ## Check all files with permissions
 alias l="clear && ls -CF" ## Clear the screen and check all contents of current directory
 alias shrug='echo "¯\_(ツ)_/¯"' ## Shrug; add | pbcopy to copy to clipboard automatically
-alias ff="find . -type f -iname" ## Find files in current directory
 alias fd="find . -type d -iname" ## Find subdirectories
 alias b="cd .." ## Go up one directory
 alias cdl='cd "$(ls -rt | head -n1)" && ls -a' ## Move to most recently updated directory and show all contents
@@ -35,7 +34,6 @@ alias vst="vim ~/.bash/.bash_startup.sh" ## Use vim to edit the bash startup scr
 ## Git
 
 alias vg="vim ~/.gitconfig" ## Edit gitconfig with vim
-alias gr="git restore --staged "${1}"" ## Restore a file from being staged
 alias gs="git status -sb" ## Checking the git status.
 
 ## Vim
