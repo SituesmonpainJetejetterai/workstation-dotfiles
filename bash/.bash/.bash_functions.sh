@@ -81,7 +81,12 @@ cdf() {
 
     printf "\n%s" "Number for directory: "
     read -r directory
-    cd "$(finder | sed -n """$directory"" p")"
+    cd "$(finder | sed -n """$directory"" p")" || return
+}
+
+# Find a file
+ff() {
+    find . -type f -name "*${1}*"
 }
 
 # TMUX FUNCTIONS
@@ -301,4 +306,9 @@ gl() {
     then
         clear
     fi
+}
+
+## Restore a file from being staged
+gr() {
+    git restore --staged "${1}"
 }
