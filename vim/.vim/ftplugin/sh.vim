@@ -18,15 +18,15 @@ augroup END
 let g:is_posix = 1
 
 " Press to comment
-vnoremap <F3> :norm I#<Space><CR>
-nnoremap <F3> :norm I#<Space><CR>
+vnoremap <F2> :norm I#<Space><CR>
+nnoremap <F2> :norm I#<Space><CR>
 
 " And, to uncomment
-vnoremap <F4> :norm ^xx<CR>
-nnoremap <F4> :norm ^xx<CR>
+vnoremap <F3> :norm ^xx<CR>
+nnoremap <F3> :norm ^xx<CR>
 
 " Key mapping to auto run bash scripts
-noremap <silent> <buffer> <F5> :w<CR>:below terminal++rows=15 sh "%"<CR>
+noremap <silent> <buffer> <F4> :w<CR>:below terminal++rows=15 sh "%"<CR>
 
 " remap to insert a function
 nnoremap <Leader>f i()<Space>{<CR><CR>}<ESC>2ki

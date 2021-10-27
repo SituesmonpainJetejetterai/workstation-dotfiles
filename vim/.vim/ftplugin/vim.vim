@@ -4,7 +4,7 @@
 " The way this works is, get into visual mode
 " Select the lines with j and/or k
 " press the key which is mapped. Viola!
-noremap <F3> :norm I" <CR>
+noremap <F2> :norm I" <CR>
  
 " And to uncomment
-noremap <F4> :norm ^xx<CR>
+noremap <F3> :norm ^xx<CR>

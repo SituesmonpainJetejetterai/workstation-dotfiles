@@ -16,13 +16,13 @@ augroup PythonSpecific
 augroup END
 
 " To comment
-vnoremap <F3> :norm I#<Space><CR>
+vnoremap <F2> :norm I#<Space><CR>
 
 " And, to uncomment
-vnoremap <F4> :norm ^xx<CR>
+vnoremap <F3> :norm ^xx<CR>
 
 " map <F5> to run python files
-nnoremap <silent> <buffer> <F5> :update<CR>:below terminal++rows=15 python3 "%"<CR>
+nnoremap <silent> <buffer> <F4> :update<CR>:below terminal++rows=15 python3 "%"<CR>
 
 " Remap to auto-write a function
 nnoremap <silent> <Leader>f idef<Space><Space>():<ESC>3hi
