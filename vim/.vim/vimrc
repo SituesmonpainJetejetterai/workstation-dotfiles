@@ -1,4 +1,37 @@
+" Toggles
+
+" Function to toggle interactive shell
+nnoremap <Leader>1 :call Shelltoggle()<CR>
+
+let g:shelltogglevariable = 0
+function! Shelltoggle()
+    if g:shelltogglevariable
+        setlocal shellcmdflag=-c
+        let g:shelltogglevariable = 0
+    else
+        setlocal shellcmdflag=-ic
+        let g:shelltogglevariable = 1
+    endif
+endfunction
+
+" Toggle hlsearch
+" Link: https://stackoverflow.com/a/54938524
+nnoremap <silent> <Leader>h :set invhlsearch<CR>
+
+" Toggle line numbers and relative line numbers
+" Link: https://stackoverflow.com/a/14975679
+nnoremap <silent> <Leader>n :set invnu invrnu<CR>
+
+
+" ---
+
+
 " BASIC SETUP:
+
+" Set the cursor
+let &t_SI = "\<Esc>]12;LightGreen\x7"
+let &t_SR = "\<Esc>]12;magenta\x7"
+let &t_EI = "\<Esc>]12;grey\x7"
 
 " Set the cursorline
 set cursorline
@@ -78,7 +111,6 @@ let &undodir=s:undodir
 set undofile
 
 
-
 " ---------
 
 
@@ -154,7 +186,7 @@ augroup END
 set termguicolors
 
 " set a default colour scheme
-colorscheme ron
+colorscheme desert
 
 
 
@@ -194,8 +226,7 @@ set statusline+=\ %m%r                       " Show if file is modified, in read
 " Enable the statusline
 set laststatus=2
 
-hi StatusLine     term=bold,reverse cterm=bold,reverse guifg=black guibg=#c2bfa5
-hi StatusLineNC   term=reverse cterm=reverse guifg=grey50 guibg=#c2bfa5
+
 
 " ---------
 
@@ -212,14 +243,6 @@ let g:mapleader=" "
 " Link: https://vim.fandom.com/wiki/Quick_window_resizing
 nnoremap > <C-W>><C-W>>
 nnoremap < <C-W><<C-W><
-
-" Toggle hlsearch
-" Link: https://stackoverflow.com/a/54938524
-nnoremap <silent> <Leader>h :set invhlsearch<CR>
-
-" Toggle nu and rnu
-" Link: https://stackoverflow.com/a/14975679
-nnoremap <silent> <Leader>n :set invnumber invrnumber<CR>
 
 " Open a terminal in the bottom half of the screen
 nnoremap <silent> <Leader>t :below terminal++rows=15<CR>
@@ -292,6 +315,8 @@ augroup Vimsave
     autocmd!
     autocmd FileType vim nnoremap <Leader>w :update<CR>:so %<CR>
 augroup END
+
+" Remap to write to a file only if contents are changed
 nnoremap <silent> <Leader>w :update<CR>
 
 " Remap to paste what you yanked, not what you deleted
