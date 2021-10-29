@@ -7,7 +7,6 @@ alias sob="clear && source ~/.bashrc" ## Sourcing the .bashrc after update
 alias dc="cd" ## Type dc instead of cd; no problem
 alias sl="ls" ## Type sl instead of ls; no problem
 alias mst="cd $HOME/git-repos/setups && git status -sb" ## Move to my favourite directory, and show git status
-alias rst="cd $HOME/git-repos/setups/ && bash setup.sh && cd -" ## Setting up and updating tools
 alias cl='clear && echo -e "$PWD" && ls -a && printf "\n" && find . -maxdepth 1 | wc -l' ## Clear and list all objects, with the total number of objects
 alias la="ls -alt" ## Check all files with permissions
 alias l="clear && ls -CF" ## Clear the screen and check all contents of current directory
