@@ -305,7 +305,7 @@ gl() {
     git log --oneline
     printf "\n%s" "Clear?: "
     read -r op
-    if { [ "${op}" = "y" ] || [ "${op}" = "Y" ] || [ "${op}" = "\r" ]; }
+    if { [ "${op}" = "y" ] || [ "${op}" = "Y" ] || [ "${op}" = "" ]; }
     then
         clear
     fi
