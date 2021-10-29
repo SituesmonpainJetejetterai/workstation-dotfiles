@@ -19,7 +19,7 @@ rma() {
         rm -rf "$@" 2>/dev/null
         rm -f "$@" 2>/dev/null
     fi
-    printf "\nAttempted to delete all files and folders mentioned as arguments\n"
+    printf "\n%s\n" "Attempted to delete all files and folders mentioned as arguments"
     ls -a && printf "\n" && find . -maxdepth 1 | wc -l
 }
 
@@ -45,11 +45,11 @@ search() {
 ## regex practice
 rexp() {
     # grep -hse "\'.*\'" "temp.md"
-    printf "\nWelcome to the regex practice session!\nEnter the path of the file you want to practice on: "
+    printf "\n%s" "Welcome to the regex practice session!\nEnter the path of the file you want to practice on: "
     read -r file
     while true
     do
-        printf "\nReading input regex syntax: "
+        printf "\n%s" "Reading input regex syntax: "
         read -r syntax
         grep -hse "${syntax}" "${file}"
     done
@@ -73,6 +73,7 @@ c() {
     builtin cd "${DIR}" && ls -Fa --color=auto
 }
 
+## Change to a directory from anywhere in the FS
 cdf() {
     finder() {
         find "$HOME" -name ".git" -prune -o -type d -print
@@ -98,7 +99,7 @@ ts() {
         if tmux has-session 2>/dev/null; then
             tmux a
         else
-            printf "session doesn't exist"
+            printf "\n%s" "session doesn't exist"
             cd ~/git-repos/setups || return
             tmux new -t config -d
             tmux split-window -t config -h
@@ -107,7 +108,7 @@ ts() {
             tmux a -t config
         fi
     else
-        printf "Already in a tmux session"
+        printf "\n%s" "Already in a tmux session"
         return
     fi
 }
@@ -139,7 +140,9 @@ gfm() {
 ## Forcibly pull remote changes and override local changes
 ## Needs argument specifying the branch
 gdf() {
-    git fetch --all && git reset --hard origin/"${1}"
+    printf "\n%s" "Enter branch to reset from. Default is main: "
+    read -r branch
+    git fetch --all && git reset --hard origin/"${branch:-main}"
 }
 
 ## Perform the git action on all subdirectories with .git/ in them.
@@ -165,7 +168,7 @@ gam() {
     git log --oneline
 
     # Take input
-    printf "\nChange recent, or older commits? Type \"r\" for recent, \"o\" for older: "
+    printf "\n%s" "Change recent, or older commits? Type \"r\" for recent, \"o\" for older: "
     read -r commit
 
     if [ "${commit}" = "r" ]; then
@@ -176,7 +179,7 @@ gam() {
     elif [ "${commit}" = "o" ]; then
 
         # Change an arbitrary number of previous commits
-        printf "\nNumber of commits: "
+        printf "\n%s" "Number of commits: "
 
         # Read the number of commit messages to be changed. This number acts as an index for the commits.
         # i.e. We can change the last "n" commit messages
@@ -186,16 +189,16 @@ gam() {
         # Rebase the last "n" commits
         git rebase -i HEAD~"${n}"
     else
-        printf "\nI don't even know what to change\n"
+        printf "\n%s" "I don't even know what to change\n"
 
         # Exit the function
         return
     fi
 
-    printf "\nDo you want to push?: "
+    printf "\n%s" "Do you want to push?: "
     read -r push
     if [ "${push}" = "y" ] || [ "${push}" = "Y" ]; then
-        printf "\nTell me the remote and branch: "
+        printf "\n%s" "Tell me the remote and branch: "
 
         # Take multiple inputs for remote and branch
         # In bash, there is an alternative, which is to use the -p flag
@@ -212,7 +215,7 @@ gam() {
             git push --force "${remote:-origin}" "${branch:-main}"
         fi
     else
-        printf "\nNot pushed\n"
+        printf "\n%s" "Not pushed\n"
         return
     fi
 }
@@ -231,21 +234,21 @@ gacp() {
         }
 
         # Show the changed files with line numbers
-        printf "\nThese are the file(s) which have been changed: \n"
+        printf "\n%s\n" "These are the file(s) which have been changed: "
         leftover | nl -s: | sed -e "s/.*\s//"
 
         # Choose line numbers to select files to commit. Alternatively, don't choose anything to commit everything
-        printf "\n\nChoose the files you want to stage: "
+        printf "\n\n%s" "Choose the files you want to stage: "
         read -r files
 
         if [ -z "${files}" ]; then
             # If no argument specified, add all files
-            printf "\nStaging all files\n"
+            printf "\n%s\n" "Staging all files"
             git add -A
             leftover
         else
             # Add specified files
-            printf "\nStaging specified files\n"
+            printf "\n%s\n" "Staging specified files"
             for f in ${files}
             do
                 # A variable containing the name of the file to be staged
@@ -256,30 +259,30 @@ gacp() {
             done
         fi
 
-        printf "\n\nTime for the commit message\nIf you want to use an editor (vim) for the commit message, press 'v'. Otherwise, simply type the commit message: "
+        printf "\n\n%s" "Time for the commit message\nIf you want to use an editor (vim) for the commit message, press 'v'. Otherwise, simply type the commit message: "
         read -r op
         if [ "${op}" = "v" ]; then
             # Open the text editor (vim in my case) to type the commit message
-            printf "\nOpening vim...\n\n"
+            printf "\n%s\n\n" "Opening vim..."
             git commit
-            printf "\nClosed vim. Check your commit message.\n"
+            printf "\n%s\n" "Closed vim. Check your commit message."
         else
             # Type the commit message directly
-            printf "\nUsing the given commit message.\n"
+            printf "\n%s\n" "Using the given commit message."
             git commit -m "${op}"
-            printf "\nClosed vim. Check your commit message.\n"
+            printf "\n%s\n" "Closed vim. Check your commit message."
         fi
 
-        printf "\nDo you want to push the changes? Press 'y' or 'Y' to push: "
+        printf "\n%s" "Do you want to push the changes? Press 'y' or 'Y' to push: "
         read -r yn
         if [ "${yn}" = "y" ] || [ "${yn}" = "Y" ]; then
-            printf "\nEnter the remote and the branch to push to. If not provided, the defaults of 'origin' and 'main' will be used: "
+            printf "\n%s" "Enter the remote and the branch to push to. If not provided, the defaults of 'origin' and 'main' will be used: "
             read -r remote branch
-            printf "\nPushing changes...\n"
+            printf "\n%s" "Pushing changes...\n"
             git push -u "${remote:-origin}" "${branch:-main}"
         fi
 
-        printf "\nDo you want to go again? Enter 'y' or 'Y' to restart the process: "
+        printf "\n%s" "Do you want to go again? Enter 'y' or 'Y' to restart the process: "
         read -r res
     done
 }
@@ -293,7 +296,7 @@ gw() {
     elif [ "${2}" = "f" ]; then
         git switch -c "${1}"
     else
-        printf "\nSorry, doesn't work like that"
+        printf "\n%s" "Sorry, doesn't work like that"
     fi
 }
 
@@ -302,10 +305,31 @@ gl() {
     git log --oneline
     printf "\n%s" "Clear?: "
     read -r op
-    if { [ "${op}" = "y" ] || [ "${op}" = "Y" ]; }
+    if { [ "${op}" = "y" ] || [ "${op}" = "Y" ] || [ "${op}" = "\r" ]; }
     then
         clear
     fi
+}
+
+## Remove commit(s) already pushed to remote repository
+## Can be used to reset history till particular commit
+grp() {
+    printf "\n%s" "Enter the commit till which you want to delete history: "
+    read -r commit
+
+    if [ -z "${commit}" ];
+    then
+        return
+    fi
+
+    printf "\n%s" "Enter the branch (default is main): "
+    read -r branch
+
+    printf "\n%s" "Enter the remote (default is origin): "
+    read -r remote
+
+    git push "${remote:-origin}" +"${commit}":"${branch:-main}"
+    printf "\n%s" "Hint: use the function gdf to remove useless commits both locally and remotely"
 }
 
 ## Restore a file from being staged
