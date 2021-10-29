@@ -304,10 +304,12 @@ gw() {
 gl() {
     git log --oneline
     printf "\n%s" "Clear?: "
-    read -r op
-    if { [ "${op}" = "y" ] || [ "${op}" = "Y" ] || [ "${op}" = "" ]; }
-    then
-        clear
+    if read -r input; then
+        case "$input" in
+            y|Y|"")
+                clear
+                ;;
+        esac
     fi
 }
 
