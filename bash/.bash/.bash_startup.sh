@@ -16,7 +16,6 @@ printf "CPU Usage: %s\n" "$(top -bn1 | grep load | awk '{printf "%.2f%%\t\t\n", 
 printf "KERNEL: %s\n" "$(uname -rms)"
 printf "PACKAGES: %s\n" "$(dpkg --get-selections | wc -l)"
 printf "MEMORY: %s\n" "$(free -m -h | awk '/Mem/{print $3"/"$2}')"
-printf "\n"
 
 # Show a custom PS1
 output_PS1() {

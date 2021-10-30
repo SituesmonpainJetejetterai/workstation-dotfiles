@@ -259,7 +259,8 @@ gacp() {
             done
         fi
 
-        printf "\n\n%s" "Time for the commit message\nIf you want to use an editor (vim) for the commit message, press 'v'. Otherwise, simply type the commit message: "
+        printf "\n\n%s" "Time for the commit message"
+        printf "\n%s" "If you want to use an editor (vim) for the commit message, press 'v'. Otherwise, simply type the commit message: "
         read -r op
         if [ "${op}" = "v" ]; then
             # Open the text editor (vim in my case) to type the commit message
@@ -278,7 +279,7 @@ gacp() {
         if [ "${yn}" = "y" ] || [ "${yn}" = "Y" ]; then
             printf "\n%s" "Enter the remote and the branch to push to. If not provided, the defaults of 'origin' and 'main' will be used: "
             read -r remote branch
-            printf "\n%s" "Pushing changes...\n"
+            printf "\n%s\n" "Pushing changes..."
             git push -u "${remote:-origin}" "${branch:-main}"
         fi
 
