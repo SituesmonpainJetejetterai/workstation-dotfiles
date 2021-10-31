@@ -8,3 +8,5 @@
     whitespace = trailing-space,-space-before-tab,tab-in-indent,cr-at-eol
 [status]
     showuntrackedfiles = all
+[merge]
+	conflictstyle = diff3
