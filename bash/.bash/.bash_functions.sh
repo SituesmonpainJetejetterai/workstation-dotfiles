@@ -215,7 +215,7 @@ gam() {
             git push --force "${remote:-origin}" "${branch:-main}"
         fi
     else
-        printf "\n%s" "Not pushed\n"
+        printf "\n%s\n" "Not pushed"
         return
     fi
 }
