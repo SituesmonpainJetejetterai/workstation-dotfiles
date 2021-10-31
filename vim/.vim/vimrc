@@ -36,8 +36,9 @@ let &t_SI = "\<Esc>]12;LightGreen\x7"
 let &t_SR = "\<Esc>]12;magenta\x7"
 let &t_EI = "\<Esc>]12;grey\x7"
 
-" Set the cursorline
+" Set the cursorline and cursorcolumn
 set cursorline
+set cursorcolumn
 
 " display incomplete commands
 set showcmd
