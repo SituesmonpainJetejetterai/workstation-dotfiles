@@ -38,7 +38,7 @@ output_PS1() {
         }
 
         if [ -n "$(git_branch)" ] && [ -n "$(git_commits_ahead)" ]; then
-            echo "B=$(git_branch) Ch=$(git_changed) C=$(git_commits_ahead)" | sed -e "s/\(.*\)\s\(.*\)\s\(.*\)/(\1; \2; \3)/"
+            echo "B=$(git_branch) F=$(git_changed) C=$(git_commits_ahead)" | sed -e "s/\(.*\)\s\(.*\)\s\(.*\)/(\1; \2; \3)/"
         fi
     }
 
