@@ -47,3 +47,40 @@ Store git credentials for each repository in the `~/.git-credentials` file, and 
 - `git fetch --all`
 - `git reset <remote>/<branch>` or `git reset --hard <remote>/<branch>`
 - If you still want to keep your local changes, simply make a draft branch with your changes, and then `reset` the other branch.
+
+## Handle merge conflicts in git
+
+### `git rebase`
+
+The first option to try and prevent merge conflicts.
+It is not the default behaviour of `git pull` (fetch + merge), but it can rewrite history to provide a linear history.
+In my case, it only makes sense to use this in a small repository.
+I plan to use `git merge` in big repositories to indicate merges between branches (which I don't care about in a small repository).
+
+Basically,
+```
+git pull --rebase <remote-name> <branch-name>
+```
+
+This comment sums it up;
+> Careful though, as your commits will no longer be in chronological order. You have effectively rewritten the history, and this can cause a lot of nasty bugs unless you have very good test coverage. Safer to use merge.
+
+### `git stash`
+
+The idea is to first stash the changes (not commits) in a `stash`, pull the remote changes, and then apply the stash on the new HEAD. An easy method would be to,
+`git pull --rebase --autostash`
+As you can guess, this will `git pull --rebase` and `git stash` automatically. The commands when broken down are below.
+
+Example commands would be,
+```
+git stash (for unstaged changes)
+git pull (pull from remote)
+git stash apply (apply all the dirty changes on top of clean tree)
+git add
+git commit
+git push
+```
+- [`git pull --rebase --autostash` (stackoverflow)](https://stackoverflow.com/a/68232192)
+- [git stash to prevent conflicts](https://stackoverflow.com/a/33281802)
+- [git stash (git-scm)](https://git-scm.com/docs/git-stash)
+- [Where are Git Stashes stored?](https://stackoverflow.com/questions/40653560/where-are-git-stashes-stored)
