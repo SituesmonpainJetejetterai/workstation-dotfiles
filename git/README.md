@@ -84,3 +84,7 @@ git push
 - [git stash to prevent conflicts](https://stackoverflow.com/a/33281802)
 - [git stash (git-scm)](https://git-scm.com/docs/git-stash)
 - [Where are Git Stashes stored?](https://stackoverflow.com/questions/40653560/where-are-git-stashes-stored)
+
+## Current git branch
+
+`git rev-parse --abbrev-ref HEAD`
