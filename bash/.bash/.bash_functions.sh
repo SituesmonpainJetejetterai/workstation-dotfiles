@@ -223,6 +223,28 @@ gam() {
 ## Adds the files specified (or everything), commits, and pushes automatically.
 ## Stages selected files if passed as arguments, or stages all changes if no argument is passed.
 gacp() {
+
+    printf "\n%s\n" "Do you want to rebase, stash and commit (no rebase), or rebase and stash?: "
+    printf "%s\n" "Enter \"r\" to rebase, \"s\" to stash, and \"rs\" to rebase and stash"
+    if read -r track; then
+        case "$track" in
+            r)
+                git pull --rebase
+                printf "\n%s" "Just rebasing, please handle conflicting commits if any"
+                ;;
+            s)
+                git stash
+                git pull
+                git stash apply
+                printf "\n%s" "Stashing, performing a pull request and applying stash"
+                ;;
+            rs|""|*)
+                git pull --rebase --autostash
+                printf "\n%s" "Rebasing and stashing"
+                ;;
+        esac
+    fi
+
     # Set the variable for the while loop
     res="Y"
     while [ "${res}" = "y" ] || [ "${res}" = "Y" ];
