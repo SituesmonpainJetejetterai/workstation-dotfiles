@@ -288,7 +288,7 @@ gacp() {
             if [ -z "${branch}" ];
             then
                 current_branch="$(git rev-parse --abbrev-ref HEAD)"
-                printf "\nPushing to origin and %s" "${current_branch}"
+                printf "\nPushing to origin and %s\n" "${current_branch}"
                 git push -u origin "${current_branch}"
             else
                 printf "\n%s\n" "Pushing changes..."
