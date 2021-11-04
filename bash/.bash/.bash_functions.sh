@@ -284,14 +284,15 @@ gacp() {
         read -r yn
         if [ "${yn}" = "y" ] || [ "${yn}" = "Y" ]; then
             printf "\n%s" "Enter the remote and the branch to push to. If not provided, the defaults of 'origin' and the current branch will be used: "
-            if read -r remote branch
+            read -r remote branch
+            if [ -z "${branch}" ];
             then
-                printf "\n%s\n" "Pushing changes..."
-                git push -u "${remote:-origin}" "${branch}"
-            else
                 current_branch="$(git rev-parse --abbrev-ref HEAD)"
                 printf "\nPushing to origin and %s" "${current_branch}"
                 git push -u origin "${current_branch}"
+            else
+                printf "\n%s\n" "Pushing changes..."
+                git push -u "${remote:-origin}" "${branch}"
             fi
         fi
 
