@@ -90,6 +90,12 @@ ff() {
     find . -type f -name "*${1}*"
 }
 
+# Find a directory
+
+fd() {
+    find . -type d -name "*${1}*"
+}
+
 # TMUX FUNCTIONS
 
 ## start 2 tmux sessions, one for work and another for config
@@ -277,10 +283,16 @@ gacp() {
         printf "\n%s" "Do you want to push the changes? Press 'y' or 'Y' to push: "
         read -r yn
         if [ "${yn}" = "y" ] || [ "${yn}" = "Y" ]; then
-            printf "\n%s" "Enter the remote and the branch to push to. If not provided, the defaults of 'origin' and 'main' will be used: "
-            read -r remote branch
-            printf "\n%s\n" "Pushing changes..."
-            git push -u "${remote:-origin}" "${branch:-main}"
+            printf "\n%s" "Enter the remote and the branch to push to. If not provided, the defaults of 'origin' and the current branch will be used: "
+            if read -r remote branch
+            then
+                printf "\n%s\n" "Pushing changes..."
+                git push -u "${remote:-origin}" "${branch}"
+            else
+                current_branch="$(git rev-parse --abbrev-ref HEAD)"
+                printf "\nPushing to origin and %s" "${current_branch}"
+                git push -u origin "${current_branch}"
+            fi
         fi
 
         printf "\n%s" "Do you want to go again? Enter 'y' or 'Y' to restart the process: "
