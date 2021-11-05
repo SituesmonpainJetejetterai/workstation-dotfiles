@@ -88,3 +88,13 @@ git push
 ## Current git branch
 
 `git rev-parse --abbrev-ref HEAD`
+
+## Delete recent commit
+
+If you just want to remove a commit and work with it later (unpushed),
+
+`git reset --soft HEAD~<number-of-commits>`
+
+If you want to remove a commit you have already pushed (changing history in the process),
+
+`git reset --hard HEAD~<number-of-commits>` and `git push -f`
