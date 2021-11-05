@@ -232,6 +232,7 @@ gam() {
 gacp() {
 
     # Pull repository before staging files to handle conflicts early
+    printf "\n%s" "Remember, rebase only if you have committed all changes. If not, use one of the other options to stash first"
     printf "\n%s\n" "Enter \"r\" to rebase, \"s\" to stash, and \"rs\" to rebase and stash: "
     if read -r track; then
         case "$track" in
