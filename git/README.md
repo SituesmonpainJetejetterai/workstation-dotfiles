@@ -98,3 +98,7 @@ If you just want to remove a commit and work with it later (unpushed),
 If you want to remove a commit you have already pushed (changing history in the process),
 
 `git reset --hard HEAD~<number-of-commits>` and `git push -f`
+
+## List staged files
+
+`git diff --name-only --cached`
