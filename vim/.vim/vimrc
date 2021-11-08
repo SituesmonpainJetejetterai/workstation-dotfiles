@@ -4,16 +4,15 @@
 nnoremap <F5> :call Shelltoggle()<CR>
 
 let g:shelltogglevariable = 0
-let b:shelltoggleword = "non-interactive"
 function! Shelltoggle()
     if g:shelltogglevariable
         setlocal shellcmdflag=-c
         let g:shelltogglevariable = 0
-        let b:shelltoggleword = "non-interactive"
+        echom "non-interactive"
     else
         setlocal shellcmdflag=-ic
         let g:shelltogglevariable = 1
-        let b:shelltoggleword = "interactive"
+        echom "interactive"
     endif
 endfunction
 
@@ -226,7 +225,6 @@ set statusline+=\ %t%y                           " Show the tail(filename), file
 set statusline+=\ %c%V:%L                        " Show current line and total lines
 set statusline+=\ %p\%%                          " Show percentage through file in lines as in CTRL-G
 set statusline+=\ %m%r                           " Show if file is modified and if in readonly mode
-set statusline+=\ [%{b:shelltoggleword}]         " Show nature of shell (interactive or not)
 
 " Enable the statusline
 set laststatus=2
