@@ -4,7 +4,15 @@
 let g:markdown_fenced_languages = ['javascript', 'python', 'c', 'ruby', 'sh', 'yaml', 'html', 'vim', 'json', 'diff']
 
 " Spellcheck in British English
-setlocal spell spelllang=en_gb complete+=kspell
+set spell spelllang=en_gb complete+=kspell
+
+" Corrects the spelling error
+" Jumps to the previous spelling mistake with [s
+" Picks the first suggestion with 1z=
+" Jumps back with `]a
+" Press u to undo
+" Link: https://castel.dev/post/lecture-notes-1/#correcting-spelling-mistakes-on-the-fly
+inoremap <C-l> <c-g>u<Esc>[s1z=`]a<c-g>u
 
 " Live word count: https://vim.fandom.com/wiki/Word_count
 let g:word_count=wordcount().words
