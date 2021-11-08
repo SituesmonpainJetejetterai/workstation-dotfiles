@@ -228,7 +228,6 @@ gam() {
 
 ## Pull the repository to handle conflicts before staging files
 ## Adds the files specified (or everything), commits, and pushes automatically.
-## Stages selected files if passed as arguments, or stages all changes if no argument is passed.
 gacp() {
 
     # Find files with merge conflicts
@@ -453,5 +452,13 @@ grp() {
 
 ## Restore a file from being staged
 gr() {
-    git restore --staged "${1}"
+    git status -sb
+    res="y"
+    while [ "${res}" = "y" ] || [ "${res}" = "Y" ]; do
+        printf "\n%s" "Enter the name of the file you want to restore from staging: "
+        read -r file_res
+        git restore --staged "${file_res}"
+        printf "\n%s" "Again?: "
+        read -r res
+    done
 }
