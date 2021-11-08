@@ -233,7 +233,8 @@ gacp() {
 
     # Pull repository before staging files to handle conflicts early
     printf "\n%s" "Remember, rebase only if you have committed all changes. If not, use one of the other options to stash first"
-    printf "\n%s\n" "Enter \"r\" to rebase, \"s\" to stash, and \"rs\" to rebase and stash: "
+    printf "\n%s" "Generally, you'd want to go with pulling and stashing (option \"s\"), unless you absolutely want a linear history, in which case go with \"rs\""
+    printf "\n%s" "Enter \"r\" to rebase, \"s\" to stash, and \"rs\" to rebase and stash: "
     if read -r track; then
         case "$track" in
             r)
@@ -253,6 +254,8 @@ gacp() {
         esac
     fi
 
+    git diff .
+
     # Set the variable for the while loop
     res="Y"
     while [ "${res}" = "y" ] || [ "${res}" = "Y" ];
@@ -267,42 +270,94 @@ gacp() {
         printf "\n%s\n" "These are the file(s) which have been changed: "
         leftover | nl -s: | sed -e "s/.*\s//"
 
-        # Choose line numbers to select files to commit. Alternatively, don't choose anything to commit everything
-        printf "\n\n%s" "Choose the files you want to stage: "
-        read -r files
+        printf "\n%s" "Do you want to edit any file (in case of a conflict), or do you want to start committing and pushing?"
+        printf "\n%s" "Press \"e\" to edit a file, or \"c\" to stage and commit: "
+        if read -r option; then
+            case "$option" in
+                e)
+                    printf "\n%s" "Enter the number of the file you want to edit: "
+                    read -r f
+                    # edit the file (generally only for merge conflicts)
+                    temp=$(leftover | sed -n "${f}p")
+                    vim "$temp"
+                    ;;
+                c)
+                    # Choose line numbers to select files to commit. Alternatively, don't choose anything to commit everything
+                    printf "\n\n%s" "Choose the files you want to stage: "
+                    read -r files
 
-        if [ -z "${files}" ]; then
-            # If no argument specified, add all files
-            printf "\n%s\n" "Staging all files"
-            git add -A
-            leftover
-        else
-            # Add specified files
-            printf "\n%s\n" "Staging specified files"
-            for f in ${files}
-            do
-                # A variable containing the name of the file to be staged
-                temp=$(leftover | sed -n "${f}p")
-                # Print the name of the file while staging it
-                printf "\n%s" "${temp}"
-                git add "${temp}"
-            done
+                    if [ -z "${files}" ]; then
+                        # If no argument specified, add all files
+                        printf "\n%s\n" "Staging all files"
+                        git add -A
+                        leftover
+                    else
+                        # Add specified files
+                        printf "\n%s\n" "Staging specified files"
+                        for f in ${files}
+                        do
+                            # A variable containing the name of the file to be staged
+                            temp=$(leftover | sed -n "${f}p")
+                            # Print the name of the file while staging it
+                            printf "\n%s" "${temp}"
+                            git add "${temp}"
+                        done
+                    fi
+
+                    printf "\n\n%s" "Time for the commit message"
+                    printf "\n%s" "If you want to use an editor (vim) for the commit message, press 'v'. Otherwise, simply type the commit message: "
+                    read -r op
+                    if [ "${op}" = "v" ]; then
+                        # Open the text editor (vim in my case) to type the commit message
+                        printf "\n%s\n\n" "Opening vim..."
+                        git commit
+                        printf "\n%s\n" "Closed vim. Check your commit message."
+                    else
+                        # Type the commit message directly
+                        printf "\n%s\n" "Using the given commit message."
+                        git commit -m "${op}"
+                        printf "\n%s\n" "Closed vim. Check your commit message."
+                    fi
+                    ;;
+            esac
         fi
 
-        printf "\n\n%s" "Time for the commit message"
-        printf "\n%s" "If you want to use an editor (vim) for the commit message, press 'v'. Otherwise, simply type the commit message: "
-        read -r op
-        if [ "${op}" = "v" ]; then
-            # Open the text editor (vim in my case) to type the commit message
-            printf "\n%s\n\n" "Opening vim..."
-            git commit
-            printf "\n%s\n" "Closed vim. Check your commit message."
-        else
-            # Type the commit message directly
-            printf "\n%s\n" "Using the given commit message."
-            git commit -m "${op}"
-            printf "\n%s\n" "Closed vim. Check your commit message."
-        fi
+        # # Choose line numbers to select files to commit. Alternatively, don't choose anything to commit everything
+        # printf "\n\n%s" "Choose the files you want to stage: "
+        # read -r files
+
+        # if [ -z "${files}" ]; then
+            # # If no argument specified, add all files
+            # printf "\n%s\n" "Staging all files"
+            # git add -A
+            # leftover
+        # else
+            # # Add specified files
+            # printf "\n%s\n" "Staging specified files"
+            # for f in ${files}
+            # do
+                # # A variable containing the name of the file to be staged
+                # temp=$(leftover | sed -n "${f}p")
+                # # Print the name of the file while staging it
+                # printf "\n%s" "${temp}"
+                # git add "${temp}"
+            # done
+        # fi
+
+        # printf "\n\n%s" "Time for the commit message"
+        # printf "\n%s" "If you want to use an editor (vim) for the commit message, press 'v'. Otherwise, simply type the commit message: "
+        # read -r op
+        # if [ "${op}" = "v" ]; then
+            # # Open the text editor (vim in my case) to type the commit message
+            # printf "\n%s\n\n" "Opening vim..."
+            # git commit
+            # printf "\n%s\n" "Closed vim. Check your commit message."
+        # else
+            # # Type the commit message directly
+            # printf "\n%s\n" "Using the given commit message."
+            # git commit -m "${op}"
+            # printf "\n%s\n" "Closed vim. Check your commit message."
+        # fi
 
         printf "\n%s" "Do you want to push the changes? Press 'y' or 'Y' to push: "
         read -r yn
