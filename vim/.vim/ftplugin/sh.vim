@@ -17,14 +17,6 @@ augroup END
 " shell for syntax highlighting purposes.
 let g:is_posix = 1
 
-" Press to comment
-vnoremap <F2> :norm I#<Space><CR>
-nnoremap <F2> :norm I#<Space><CR>
-
-" And, to uncomment
-vnoremap <F3> :norm ^xx<CR>
-nnoremap <F3> :norm ^xx<CR>
-
 " Key mapping to auto run bash scripts
 noremap <silent> <buffer> <F4> :w<CR>:below terminal++rows=15 sh "%"<CR>
 
