@@ -1,10 +1,4 @@
-#!/usr/bin/env sh
-
-# Setting functions
-## The "$1" parameter takes the first argument passed to the function in the shell as input
-
-# ---
-
+#!/bin/sh
 
 # SYSTEM FUNCTIONS
 
@@ -91,7 +85,6 @@ ff() {
 }
 
 # Find a directory
-
 fd() {
     find . -type d -name "*${1}*" | less -FX
 }
@@ -235,24 +228,27 @@ gacp() {
         git diff --name-only --diff-filter=U
     }
 
+    # Edit untracked files
+    check_untracked_files() {
+        git ls-files --others --exclude-standard | while read -r i; do git diff --color -- /dev/null "${1}"; done
+    }
+
     # Find files which are still to be committed
     still_to_be_committed(){
         git status -sb | sed "s/#.*//; s/M//; s/.*\s//; /^$/d"
     }
 
-    # Edit files
+    # Edit files part of a merge conflict
     go_edit() {
         file="$(merge_conflict_files | sed -n "${1}p")"
 
         if [ -n "$(git ls-files "${file}")" ]; then
             git diff "${file}"
-        else
-            # If the file is new
-            less -FX "${file}"
         fi
         vim "${file}"
     }
 
+    # Get the changes from the remote
     get_changes() {
         printf "\n%s\n" "We need to incorporate changes from the remote before pushing our own commits"
         printf "\n%s" "To simply rebase with the remote, press \"r\""
@@ -284,7 +280,6 @@ gacp() {
    }
 
     do_changes() {
-
         resume="y"
         while [ "${resume}" = "y" ] || [ "${resume}" = "Y" ];
         do
@@ -321,13 +316,20 @@ gacp() {
                         read -r numbers
 
                         if [ -z "${numbers}" ]; then
-                            # If no argument specified, add all numbers
+                            # If no argument specified, stage all files by including all numbers
                             printf "\n%s\n" "Staging all files"
                             still_to_be_committed
                             printf "\n%s" "Do you want to see the diff of the changes?: "
                             read -r sd
-                            if [ "${sd}" = "y" ] || [ "${sd}" = "Y" ]; then
+                            if [ "${sd}" = "y" ] || [ "${sd}" = "Y" ] || [ "${sd}" = "g" ] || [ "${sd}" = "d" ]; then
                                 git diff .
+
+                                i=1
+                                total=$(still_to_be_committed | wc -l)
+                                while [ ${i} -le "${total}" ]; do
+                                    check_untracked_files "$(still_to_be_committed | sed -n "${i}p")" 2>/dev/null
+                                    i=$(( i + 1 ))
+                                done
                             fi
                             git add -A
                         else
@@ -341,8 +343,12 @@ gacp() {
                                 printf "\n%s" "${file}"
                                 printf "\n%s" "do you want to see the diff of the changes?: "
                                 read -r sd
-                                if [ "${sd}" = "y" ] || [ "${sd}" = "y" ]; then
-                                    git diff "${file}"
+                                if [ "${sd}" = "y" ] || [ "${sd}" = "Y" ] || [ "${sd}" = "g" ] || [ "${sd}" = "d" ]; then
+                                    if [ -n "$(git ls-files "${file}")" ]; then
+                                        git diff "${file}"
+                                    else
+                                        check_untracked_files "${file}"
+                                    fi
                                 fi
                                 git add "${file}"
                             done
