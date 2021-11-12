@@ -6,11 +6,11 @@ let g:markdown_fenced_languages = ['javascript', 'python', 'c', 'ruby', 'sh', 'y
 " Spellcheck in British English
 set spell spelllang=en_gb complete+=kspell
 
-" Corrects the spelling error
+" Corrects spelling errors
 " Jumps to the previous spelling mistake with [s
 " Picks the first suggestion with 1z=
 " Jumps back with `]a
-" Press u to undo
+" Press 'u' to undo
 " Link: https://castel.dev/post/lecture-notes-1/#correcting-spelling-mistakes-on-the-fly
 inoremap <C-l> <c-g>u<Esc>[s1z=`]a<c-g>u
 
