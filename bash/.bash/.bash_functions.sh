@@ -19,7 +19,7 @@ rma() {
 
 ## grep the commands I've put into the shell using a pager to scroll
 hg() {
-    history | grep "${1}" | less -FX
+    history | grep "${1}" --color=always | less -FXR
 }
 
 ## check if name is already in use as a or an alias
@@ -27,13 +27,13 @@ hg() {
 ## returns file name and line number
 ckw() {
     type "${1}" 2>/dev/null | less -FX # Suppress errors, only show output if type "variable" exists
-    grep -HEn 'remap|command!' "$HOME/.vim/vimrc" | sed -e 's/\s*\".*//; /^$/d' | grep -w "${1}" | less -FX
+    grep -HEn 'remap|command!' "$HOME/.vim/vimrc" | sed -e 's/\s*\".*//; /^$/d' | grep -w "${1}" --color=always | less -FXR
 }
 
 ## search for text in files inside current folder
 ## `sed G` simply appends a newline character followed by the contents of the hold space to the pattern space.
 search() {
-        find "${2:-.}" -type f ! -iname ".bash_history" -print0 | xargs -0 -I {} grep -IHnrw "${1}" {} | sed G | less -FX
+        find "${2:-.}" -type f ! -path "*/\.git/*" ! -iname ".bash_history" -print0 | xargs -0 -I {} grep -IHnrw "${1}" {} --color=always | sed G | less -FXR
 }
 
 ## regex practice
@@ -45,14 +45,14 @@ rexp() {
     do
         printf "\n%s" "Reading input regex syntax: "
         read -r syntax
-        grep -hse "${syntax}" "${file}"
+        grep -hse "${syntax}" "${file}" --color=auto
     done
 }
 
 ## count number of lines in all files in a directory(including subdirectories)
 ## can specify directory, or will act in current directory
 cnl() {
-    find "${1:-.}" -type f -print | sed 's/.*/"&"/' | xargs  wc -l | less -FX
+    find "${1:-.}" -type f -print | sed 's/.*/"&"/' | xargs  wc -l | less -FXR
 }
 
 ## Move to a directory and show all contents
@@ -456,15 +456,20 @@ grp() {
     printf "\n%s" "Hint: use the function gdf to remove useless commits both locally and remotely"
 }
 
-## Restore a file from being staged
+## Restore a staged file
 gr() {
-    git status -sb
-    res="y"
-    while [ "${res}" = "y" ] || [ "${res}" = "Y" ]; do
-        printf "\n%s" "Enter the name of the file you want to restore from staging: "
-        read -r file_res
-        git restore --staged "${file_res}"
-        printf "\n%s" "Again?: "
-        read -r res
-    done
+    staged_files="$(git diff --name-only --cached)"
+    printf "\n"
+    printf "%s" "${staged_files}" | nl -s:
+    printf "\n%s" "Which files do you want to restore?"
+    printf "\n%s" "Enter the number(s) for individual file(s), or press Enter to unstage everything: "
+    read -r unstage_files
+    if [ -z "${unstage_files}" ]; then
+        git restore --staged .
+    else
+        for i in ${unstage_files};
+        do
+            git restore --staged "$(printf "%s" "${staged_files}" | sed -n "${i}p")"
+        done
+    fi
 }
