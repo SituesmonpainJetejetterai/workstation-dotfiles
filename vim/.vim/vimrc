@@ -39,14 +39,14 @@ let &t_EI = "\<Esc>]12;grey\x7"
 set cursorline
 set cursorcolumn
 
-" display incomplete commands
+" Display incomplete commands
 set showcmd
 
 " Set characters to signify tabs, whitespaces etc
 set list
 set lcs=tab:>~,trail:-,nbsp:%
 
-" set relative and static numbering for lines
+" Set relative and static numbering for lines
 set relativenumber
 set number
 set numberwidth=5
@@ -61,13 +61,13 @@ set scrolloff=999
 " Don't abandon buffers in the background even if they are unsaved
 set hidden
 
-" setting up colours (unwanted change, but whatever)
+" Setting up colours (unwanted change, but whatever)
 set t_Co=256
 
-" enter the current millenium
+" Enter the current millenium
 set nocompatible
 
-" enable syntax, plugins and indentation
+" Enable syntax, plugins and indentation
 syntax enable
 filetype plugin indent on
 set autoindent
@@ -78,16 +78,16 @@ set softtabstop=4
 set shiftwidth=4
 set expandtab
 
-" highlight matching [{()}]
+" Highlight matching [{()}]
 set showmatch
 
-" improve text search inside a file
+" Improve text search inside a file
 set incsearch
 
 " Don't keep the higlight on after searching by default
 set nohlsearch
 
-" code folding
+" Code folding
 set foldenable
 set foldlevelstart=10
 set foldmethod=syntax
@@ -188,7 +188,7 @@ augroup END
 " Gives Vim access to a broader range of colours
 set termguicolors
 
-" set a default colour scheme
+" Set a default colour scheme
 colorscheme desert
 
 
