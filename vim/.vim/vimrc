@@ -359,7 +359,7 @@ inoremap <buffer>* **<ESC>i
 
 augroup brackets
     autocmd!
-    autocmd FileType markdown,python,sh inoremap <buffer> " ""<ESC>i
+    autocmd FileType gitcommit,markdown,python,sh inoremap <buffer> " ""<ESC>i
     autocmd FileType vim,python,sh inoremap <buffer> ' ''<ESC>i
 augroup END
 
