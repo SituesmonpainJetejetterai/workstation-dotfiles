@@ -106,5 +106,6 @@ If you want to remove a commit you have already pushed (changing history in the 
 ## List untracked files
 
 `git ls-files -z --other --exclude-standard`
+
 By extension, to display the "changed" contents of these untracked files,
 `git ls-files -z --other --exclude-standard | xargs -0 -I {} git diff --color -- /dev/null {} | less -FXR 2>/dev/null`
