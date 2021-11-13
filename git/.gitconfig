@@ -9,4 +9,4 @@
 [status]
     showuntrackedfiles = all
 [merge]
-	conflictstyle = diff3
+    conflictstyle = diff3
