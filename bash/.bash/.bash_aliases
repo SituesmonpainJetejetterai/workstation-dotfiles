@@ -9,7 +9,7 @@ alias sl="ls" ## Type sl instead of ls; no problem
 alias mst="cd $HOME/git-repos/setups && git status -sb" ## Move to my favourite directory, and show git status
 alias cl='clear && echo -e "$PWD" && ls -a && printf "\n" && find . -maxdepth 1 | wc -l' ## Clear and list all objects, with the total number of objects
 alias la="ls -alt" ## Check all files with permissions
-alias l="clear && ls -ap" ## Clear the screen and check all contents of current directory
+alias l="clear && ls -apF --color=auto" ## Clear the screen and check all contents of current directory
 alias shrug='echo "¯\_(ツ)_/¯"' ## Shrug; add | pbcopy to copy to clipboard automatically
 alias b="cd .." ## Go up one directory
 alias cdl='cd "$(ls -rt | head -n1)" && ls -a' ## Move to most recently updated directory and show all contents
