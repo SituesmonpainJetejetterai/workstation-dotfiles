@@ -120,12 +120,14 @@ gd() {
     # If the first argument does not exist
     if [ -z "${1}" ]; then
         git diff .
+        git ls-files -z --other --exclude-standard | xargs -0 -I {} git diff --color -- /dev/null {} | less -FXR 2>/dev/null
     else
-        # If the file is not new
         if [ -n "$(git ls-files "${1}")" ]; then
+            # Tracked file (part of git repo)
             git diff "${1}"
         else
-            less -FX "${1}"
+            # Untracked file (not part of git repo yet)
+            git diff --color -- /dev/null "${1}"
         fi
     fi
 }
