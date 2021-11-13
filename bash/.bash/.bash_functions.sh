@@ -324,12 +324,16 @@ gacp() {
                             if [ "${sd}" = "y" ] || [ "${sd}" = "Y" ] || [ "${sd}" = "g" ] || [ "${sd}" = "d" ]; then
                                 git diff .
 
-                                i=1
                                 total=$(still_to_be_committed | wc -l)
-                                while [ ${i} -le "${total}" ]; do
-                                    check_untracked_files "$(still_to_be_committed | sed -n "${i}p")" 2>/dev/null
-                                    i=$(( i + 1 ))
-                                done
+                                if [ "${total}" -eq "0" ]; then
+                                    printf "\n%s" "No untracked files"
+                                else
+                                    i=1
+                                    while [ ${i} -le "${total}" ]; do
+                                        check_untracked_files "$(still_to_be_committed | sed -n "${i}p")" 2>/dev/null
+                                        i=$(( i + 1 ))
+                                    done
+                                fi
                             fi
                             git add -A
                         else
