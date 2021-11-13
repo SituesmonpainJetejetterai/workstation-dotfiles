@@ -104,6 +104,7 @@ If you want to remove a commit you have already pushed (changing history in the 
 `git diff --name-only --cached`
 
 ## List untracked files
+*Reference*: https://stackoverflow.com/a/3801554
 
 `git ls-files -z --other --exclude-standard`
 
