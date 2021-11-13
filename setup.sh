@@ -13,7 +13,7 @@ printf "\n"
 # if [[ $PWD == ~ ]]; then
     # echo 'Running this script from your home dir is pointless.'
     # exit 1
-# fi 
+# fi
 
 # variable
 setup_path="$HOME/git-repos/setups"
@@ -21,7 +21,7 @@ setup_path="$HOME/git-repos/setups"
 # vim setup
 
 printf "\nupdating config in ~/.vim\n"
-cd "$HOME" && ln -sf "$setup_path/vim/.vim" "$HOME" && cd - || return
+ln -sf "$setup_path/vim/.vim" "$HOME"
 
 # tmux setup
 
@@ -36,7 +36,7 @@ ln -sf "$setup_path/git/.gitconfig" "$HOME"
 # bash setup
 
 printf "\ncopying over the scripts for bash configuration\n"
-cd "$HOME" && ln -sf "$setup_path/bash/.bash" "$HOME" && cd - || return
+ln -sf "$setup_path/bash/.bash" "$HOME"
 
 printf "\nadding lines to ~/.bashrc to source the scripts\n\n"
 
