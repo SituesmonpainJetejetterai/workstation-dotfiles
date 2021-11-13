@@ -228,11 +228,6 @@ gacp() {
         git diff --name-only --diff-filter=U
     }
 
-    # Edit untracked files
-    check_untracked_files() {
-        git ls-files --others --exclude-standard | while read -r i; do git diff --color -- /dev/null "${1}"; done
-    }
-
     # Find files which are still to be committed
     still_to_be_committed(){
         git status -sb | sed "s/#.*//; s/M//; s/.*\s//; /^$/d"
@@ -323,17 +318,7 @@ gacp() {
                             read -r sd
                             if [ "${sd}" = "y" ] || [ "${sd}" = "Y" ] || [ "${sd}" = "g" ] || [ "${sd}" = "d" ]; then
                                 git diff .
-
-                                total=$(still_to_be_committed | wc -l)
-                                if [ "${total}" -eq "0" ]; then
-                                    printf "\n%s" "No untracked files"
-                                else
-                                    i=1
-                                    while [ ${i} -le "${total}" ]; do
-                                        check_untracked_files "$(still_to_be_committed | sed -n "${i}p")" 2>/dev/null
-                                        i=$(( i + 1 ))
-                                    done
-                                fi
+                                git ls-files -z --other --exclude-standard | xargs -0 -I {} git diff --color -- /dev/null {} | less -FXR 2>/dev/null
                             fi
                             git add -A
                         else
@@ -351,7 +336,7 @@ gacp() {
                                     if [ -n "$(git ls-files "${file}")" ]; then
                                         git diff "${file}"
                                     else
-                                        check_untracked_files "${file}"
+                                        git diff --color -- /dev/null "${file}"
                                     fi
                                 fi
                                 git add "${file}"
