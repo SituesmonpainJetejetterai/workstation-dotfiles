@@ -218,7 +218,7 @@ gam() {
     printf "\n%s" "Press y/Y/g/p to push: "
     if read -r push; then
         case ${push} in
-            y|Y|g|p)
+            y|Y|g|p|"")
                 if read -r branch; then
                     if [ "${commit}" = "r" ]; then
                         # If the git commit --amend option was used
@@ -247,6 +247,11 @@ gacp() {
     # Find files with merge conflicts
     merge_conflict_files(){
         git diff --name-only --diff-filter=U
+    }
+
+    # Edit untracked files
+    check_untracked_files() {
+        git ls-files --others --exclude-standard | while read -r i; do git diff --color -- /dev/null "${1}"; done
     }
 
     # Find files which are still to be committed
