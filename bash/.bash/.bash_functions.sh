@@ -2,41 +2,42 @@
 
 # SYSTEM FUNCTIONS
 
-## File and folder removal all-in-one
+# File and folder removal all-in-one
 rma() {
-    if [ "${1}" = "f" ];
-    then
-        shift
-        rm -rf "$@" 2>/dev/null
-        rm -f "$@" 2>/dev/null
-    else
-        rm -rf "$@" 2>/dev/null
-        rm -f "$@" 2>/dev/null
-    fi
+
+    # Delete both files and folders, and suppress any errors
+    rm -rf "$@" 2>/dev/null
+    rm -f "$@" 2>/dev/null
     printf "\n%s\n" "Attempted to delete all files and folders mentioned as arguments"
-    ls -a && printf "\n" && find . -maxdepth 1 | wc -l
+    # Show the contents of the directory and their number (both files and directories)
+    ls -apF && printf "\n" && find . -maxdepth 1 | wc -l
 }
 
-## grep the commands I've put into the shell using a pager to scroll
+# Grep the commands I've put into the shell using a pager to scroll
+# Show coloured grep output through less
 hg() {
     history | grep "${1}" --color=always | less -FXR
 }
 
-## check if name is already in use as a or an alias
-## needs an argument to check the name
-## returns file name and line number
+# Check definition of keyword
+# It checks if the keyword is defined in the interactive shell and in the vimrc
 ckw() {
-    type "${1}" 2>/dev/null | less -FX # Suppress errors, only show output if type "variable" exists
+    # Bash functions defined in the interactive shell
+    # Supress all errors, display through less if output doesn't fit the screen
+    type "${1}" 2>/dev/null | less -FX
+
+    # Show matches from vimrc
     grep -HEn 'remap|command!' "$HOME/.vim/vimrc" | sed -e 's/\s*\".*//; /^$/d' | grep -w "${1}" --color=always | less -FXR
 }
 
-## search for text in files inside current folder
-## `sed G` simply appends a newline character followed by the contents of the hold space to the pattern space.
+# Search for text in files inside current folder
+# sed G simply appends a newline character followed by the contents of the hold space to the pattern space.
+# To search in another directory, give the full path as the second argument
 search() {
         find "${2:-.}" -type f ! -path "*/\.git/*" ! -iname ".bash_history" -print0 | xargs -0 -I {} grep -IHnrw "${1}" {} --color=always | sed G | less -FXR
 }
 
-## regex practice
+# Regex practice
 rexp() {
     # grep -hse "\'.*\'" "temp.md"
     printf "\n%s" "Welcome to the regex practice session!\nEnter the path of the file you want to practice on: "
@@ -49,34 +50,38 @@ rexp() {
     done
 }
 
-## count number of lines in all files in a directory(including subdirectories)
-## can specify directory, or will act in current directory
+# Count number of lines in all files in a directory(including subdirectories)
+# Can specify directory, or will act in current directory
 cnl() {
     find "${1:-.}" -type f -print | sed 's/.*/"&"/' | xargs  wc -l | less -FXR
 }
 
-## Move to a directory and show all contents
-## If no directory is mentioned, show the $HOME directory
-## Link: https://opensource.com/article/19/7/bash-aliases
+# Move to a directory and show all contents
+# If no directory is mentioned, show the $HOME directory
+# Link: https://opensource.com/article/19/7/bash-aliases
 c() {
     DIR="$*";
-    # if no DIR given, go home
+    # If no DIR given, go home
     if [ $# -lt 1 ]; then
         DIR=$HOME;
     fi;
-    builtin cd "${DIR}" && ls -Fa --color=auto
+    cd "${DIR}" && ls -Fa --color=auto
 }
 
-## Change to a directory from anywhere in the FS
+# Change to a directory from anywhere in the FS
 cdf() {
+    # Find all directories
     finder() {
         find "$HOME" -name ".git" -prune -o -type d -print
     }
+    # List all the directories with less
     finder | nl -w 1 -s: | less -FX
 
     printf "\n%s" "Number for directory: "
     read -r directory
-    cd "$(finder | sed -n """$directory"" p")" || return
+
+    # Switch to directory
+    cd "$(finder | sed -n """${directory}"" p")" || return
 }
 
 # Find a file
@@ -91,19 +96,27 @@ fd() {
 
 # TMUX FUNCTIONS
 
-## start 2 tmux sessions, one for work and another for config
-## split the window in the config session horizontally
+# Start 2 tmux sessions, one for work and another for config
+# Split the window in the config session horizontally
 ts() {
+    # Check for the tmux variable (set when inside tmux)
     if [ -z "$TMUX" ]; then
         if tmux has-session 2>/dev/null; then
+            # Attach to session
             tmux a
         else
             printf "\n%s" "session doesn't exist"
+            # Switch to directory with git repos
             cd ~/git-repos/setups || return
+            # Start tmux and name the window as "config" but don't attach
             tmux new -t config -d
+            # Split a window in tmux
             tmux split-window -t config -h
+            # Come back to current directory
             cd - || return
+            # Create new tmux window called "work"
             tmux new -t work -d
+            # Attach to tmux session called config
             tmux a -t config
         fi
     else
@@ -114,12 +127,17 @@ ts() {
 
 # GIT FUNCTIONS
 
-## Show the git diff in a colourful pager
-## If a file is not in the git list of files, use less to show its contents
+# Show the git diff in a colourful pager
+# Show both tracked and untracked files
 gd() {
     # If the first argument does not exist
     if [ -z "${1}" ]; then
+        # Show a diff for the tracked files
         git diff .
+        # Show a diff for all the untracked files
+        # The first command lists all of the untracked files
+        # Which is then piped to another git command which shows the changes in the untracked files
+        # Which is piped to less in case the output doesn't fit the screen
         git ls-files -z --other --exclude-standard | xargs -0 -I {} git diff --color -- /dev/null {} | less -FXR 2>/dev/null
     else
         if [ -n "$(git ls-files "${1}")" ]; then
@@ -132,97 +150,99 @@ gd() {
     fi
 }
 
-## Merge remote changes with the local branch
-## Needs argument specifying the branch
+# Merge remote changes with the local branch
+# Can merge with remote on current branch, or a specific branch
 gfm() {
-    git fetch origin "${1}" && git merge -s recursive -X theirs origin "${1}"
+    printf "\n%s\n" "Merging remote changes with local branch"
+    if [ -z "${1}" ]; then
+        current_branch="$(git rev-parse --abbrev-ref HEAD)"
+        git fetch origin "${current_branch}" && git merge -s recursive -X theirs origin "${current_branch}"
+    else
+        git fetch origin "${1}" && git merge -s recursive -X theirs origin "${1}"
+    fi
 }
 
-## Forcibly pull remote changes and override local changes
-## Needs argument specifying the branch
+# Forcibly pull remote changes and override local changes
+# Optional argument to specify the branch, otherwise will act on current branch
 gdf() {
-    printf "\n%s" "Enter branch to reset from. Default is main: "
-    read -r branch
-    git fetch --all && git reset --hard origin/"${branch:-main}"
+    printf "\n%s" "Enter branch to reset from. Default is current branch: "
+    if read -r branch; then
+        git fetch --all && git reset --hard origin/"${branch}"
+    else
+        current_branch="$(git rev-parse --abbrev-ref HEAD)"
+        git fetch --all && git reset --hard origin/"${current_branch:-main}"
+    fi
 }
 
-## Perform the git action on all subdirectories with .git/ in them.
-## Help: https://stackoverflow.com/questions/3497123/run-git-pull-over-all-subdirectories
+# Perform the git action on all subdirectories with .git/ in them.
+# Help: https://stackoverflow.com/questions/3497123/run-git-pull-over-all-subdirectories
 gall() {
     find . -type d -name ".git" -printf "%h: " -prune -exec git --git-dir={} "${1}" \;
     # find . -name ".git" -type d -print | xargs -P10 -I{} git --git-dir={} "${1}"
 }
 
-## Delete branch locally and remotely
+# Delete branch locally and remotely
 gdel() {
     git branch -d "${1}" && git push origin --delete "${1}"
 }
 
-## Amend commit messages
-## Can amend any arbitrary message
-## Optionally pushes changes
-## Two optional arguments
-## Use a number for ${1} to point out which commit message to change
-## Use a branch name for ${2} to push to specific branch
+# Function to edit commit messages and push them
 gam() {
     # Show the git commits
     git log --oneline
 
     # Take input
     printf "\n%s" "Change recent, or older commits? Type \"r\" for recent, \"o\" for older: "
-    read -r commit
-
-    if [ "${commit}" = "r" ]; then
-
-        # Change the most recent commit
-        git commit --amend
-
-    elif [ "${commit}" = "o" ]; then
-
-        # Change an arbitrary number of previous commits
-        printf "\n%s" "Number of commits: "
-
-        # Read the number of commit messages to be changed. This number acts as an index for the commits.
-        # i.e. We can change the last "n" commit messages
-
-        read -r n
-
-        # Rebase the last "n" commits
-        git rebase -i HEAD~"${n}"
-    else
-        printf "\n%s" "I don't even know what to change\n"
-
-        # Exit the function
-        return
+    if read -r commit; then
+        case ${commit} in
+            r)
+                # Change the most recent commit
+                git commit --amend
+                ;;
+            o)
+                # Change a bunch of commits
+                printf "\n%s" "How many commits do you want to change?: "
+                if read -r n; then
+                    git rebase -i HEAD~"${n}"
+                fi
+                ;;
+            *)
+                printf "\n%s\n" "I don't even know what to change"
+                return
+                ;;
+        esac
     fi
 
-    printf "\n%s" "Do you want to push?: "
-    read -r push
-    if [ "${push}" = "y" ] || [ "${push}" = "Y" ]; then
-        printf "\n%s" "Tell me the remote and branch: "
-
-        # Take multiple inputs for remote and branch
-        # In bash, there is an alternative, which is to use the -p flag
-        read -r remote branch
-
-        if [ "${commit}" = "r" ]; then
-
-            # The {:-} essentially means that if the argument is not passed/set, use the default value provided
-            git push --force-with-lease "${remote:-origin}" "${branch:-main}"
-
-        elif [ "${commit}" = "o" ]; then
-
-            # The {:-} essentially means that if the argument is not passed/set, use the default value provided
-            git push --force "${remote:-origin}" "${branch:-main}"
-        fi
-    else
-        printf "\n%s\n" "Not pushed"
-        return
+    printf "\n%s" "Note that this function will push to remote:- origin"
+    printf "\n%s" "If you don't want that, exit the function and push manually"
+    printf "\n%s" "Press y/Y/g/p to push: "
+    if read -r push; then
+        case ${push} in
+            y|Y|g|p)
+                printf "\n%s" "Note that this function will push to remote origin"
+                if read -r branch; then
+                    if [ "${commit}" = "r" ]; then
+                        # If the git commit --amend option was used
+                        git push --force-with-lease origin "${branch:-main}"
+                    elif [ "${commit}" = "o" ]; then
+                        # If multiple commits were changed
+                        git push --force origin "${branch:-main}"
+                    fi
+                else
+                    # If branch was not specified
+                    git push --force origin "$(git rev-parse --abbrev-ref HEAD)"
+                fi
+                ;;
+            *)
+                printf "\n%s" "Not pushing"
+                return
+                ;;
+        esac
     fi
 }
 
-## Pull the repository to handle conflicts before staging files
-## Adds the files specified (or everything), commits, and pushes automatically.
+# Pull the repository to handle conflicts before staging files
+# Adds the files specified (or everything), commits, and pushes automatically.
 gacp() {
 
     # Find files with merge conflicts
@@ -254,7 +274,7 @@ gacp() {
         printf "\n%s\n" "To continue without doing anything, press Enter (carriage return)"
 
         if read -r track; then
-            case "$track" in
+            case "${track}" in
                 r)
                     printf "\n%s\n" "Just rebasing..."
                     git pull --rebase
@@ -400,9 +420,9 @@ push_changes
 }
 
 
-## Git switch function
-## Either switch to a new branch with the f argument
-## Or switch to an existing branch
+# Git switch function
+# Either switch to a new branch with the "f" argument
+# Or switch to an existing branch
 gw() {
     if [ -z "${2}" ]; then
         git switch "${1}"
@@ -413,7 +433,7 @@ gw() {
     fi
 }
 
-## View logs and optionally clear screen
+# View logs and optionally clear screen
 gl() {
     git log --oneline
     printf "\n%s" "Clear?: "
@@ -426,8 +446,8 @@ gl() {
     fi
 }
 
-## Remove commit(s) already pushed to remote repository
-## Can be used to reset history till particular commit
+# Remove commit(s) already pushed to remote repository
+# Can be used to reset history till particular commit
 grp() {
     printf "\n%s" "Enter the commit till which you want to delete history: "
     read -r commit
@@ -447,7 +467,7 @@ grp() {
     printf "\n%s" "Hint: use the function gdf to remove useless commits both locally and remotely"
 }
 
-## Restore a staged file
+# Restore a staged file
 gr() {
     staged_files="$(git diff --name-only --cached)"
     printf "\n"
