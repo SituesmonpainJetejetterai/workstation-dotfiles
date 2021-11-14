@@ -249,11 +249,6 @@ gacp() {
         git diff --name-only --diff-filter=U
     }
 
-    # Edit untracked files
-    check_untracked_files() {
-        git ls-files --others --exclude-standard | while read -r i; do git diff --color -- /dev/null "${1}"; done
-    }
-
     # Find files which are still to be committed
     still_to_be_committed(){
         git status -sb | sed "s/#.*//; s/M//; s/.*\s//; /^$/d"
