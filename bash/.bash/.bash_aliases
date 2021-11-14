@@ -7,12 +7,12 @@ alias sob="clear && source ~/.bashrc" ## Sourcing the .bashrc after update
 alias dc="cd" ## Type dc instead of cd; no problem
 alias sl="ls" ## Type sl instead of ls; no problem
 alias mst="cd $HOME/git-repos/setups && git status -sb" ## Move to my favourite directory, and show git status
-alias cl='clear && echo -e "$PWD" && ls -a && printf "\n" && find . -maxdepth 1 | wc -l' ## Clear and list all objects, with the total number of objects
+alias cl='clear && printf "%s\n\n" "$PWD" && ls -apF && printf "\n" && find . -maxdepth 1 | wc -l' ## Clear and list all objects, with the total number of objects
 alias la="ls -alt" ## Check all files with permissions
 alias l="clear && ls -apF --color=auto" ## Clear the screen and check all contents of current directory
 alias shrug='echo "¯\_(ツ)_/¯"' ## Shrug; add | pbcopy to copy to clipboard automatically
 alias b="cd .." ## Go up one directory
-alias cdl='cd "$(ls -rt | head -n1)" && ls -a' ## Move to most recently updated directory and show all contents
+alias cdl='cd "$(ls -rt | head -n1)" && ls -apF' ## Move to most recently updated directory and show all contents
 alias i='sudo apt install "${1}" -y' ## Install an application
 alias d='sudo apt purge "${1}" -y && sudo apt autoremove -y' ## Delete and application and cleanup after
 alias busy="cat /dev/urandom | hexdump -C | grep 'ca fe'" ## Use this to look busy when boss comes around
