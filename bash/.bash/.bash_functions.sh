@@ -393,7 +393,7 @@ gacp() {
         printf "\n%s\n" "Do you want to push? Press \"y\" or \"Y\" to do so: "
         if read -r push; then
             case "${push}" in
-                y|Y)
+                y|Y|"")
                     printf "\n%s" "Enter the remote and the branch to push to. If not provided, the defaults of 'origin' and the current branch will be used: "
                     read -r remote branch
                     if [ -z "${branch}" ];
