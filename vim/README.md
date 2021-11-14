@@ -177,7 +177,7 @@ I have also commented out some key mappings in the `vimrc` in case I get vim wit
 `:s/search/replace/g` to search and replace text in selected lines.
 
 *Example*;\
-**To uppercase the first letter of the first word in a sentence**: `'<,'>:s/^./\U&/`
+**To capitalise the first letter of the first word in a sentence**: `'<,'>:s/^./\U&/`
 - The `^.` signifies the first letter of the first word at the beginning of the line.
     - Say I wanted to capitalise the first letter of the first word in a comment (signified with a `#\s`), I'd do `'<,'>:s/^#\s./\U&/`.
 - The `U&` is the code to capitalise the part highlighted in the search. I escape it because stackoverflow said so.
