@@ -219,7 +219,6 @@ gam() {
     if read -r push; then
         case ${push} in
             y|Y|g|p)
-                printf "\n%s" "Note that this function will push to remote origin"
                 if read -r branch; then
                     if [ "${commit}" = "r" ]; then
                         # If the git commit --amend option was used
