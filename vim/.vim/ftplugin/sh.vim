@@ -17,11 +17,14 @@ augroup END
 " shell for syntax highlighting purposes.
 let g:is_posix = 1
 
-" Key mapping to auto run bash scripts
+" Key map to auto run bash scripts
 noremap <silent> <buffer> <F4> :w<CR>:below terminal++rows=15 sh "%"<CR>
 
 " Key map to insert a function
 nnoremap <Leader>f i()<Space>{<CR><CR>}<ESC>2ki
 
-" Key map to write a printf statement
-nnoremap <Leader>; iprintf<Space>"\n%s"<Space>""<ESC>3hi
+" Key map to comment and uncomment
+nnoremap <F2> :s/^/# /<CR>
+nnoremap <F3> :s/^# //<CR>
+vnoremap <F2> :s/^/# /<CR>
+vnoremap <F3> :s/^# //<CR>
