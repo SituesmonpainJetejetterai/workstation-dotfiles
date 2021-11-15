@@ -3,6 +3,10 @@
 - A primary resource that, perhaps everyone learning `bash` should read: [Bash Reference Manual](https://www.gnu.org/savannah-checkouts/gnu/bash/manual/bash)
 - [A very useful `.bashrc` file](https://www.reddit.com/r/commandline/comments/9md3pp/a_very_useful_bashrc_file/)
 - [What is your favourite alias that you made?](https://www.reddit.com/r/commandline/comments/pmtnwj/what_is_your_favorite_alias_that_you_made/)
+- [Safety shortcomings in the POSIX shell](https://github.com/matu3ba/dotfiles_skeleton/blob/main/POSIXunsafe)
+- [Common and not-so-common `*nix` shell footguns](https://an3223.github.io/blog/20210907_shelldonts.html)
+
+Very informative.
 ---
 
 # [Quotes and escaping](https://wiki.bash-hackers.org/syntax/quoting)
@@ -15,19 +19,14 @@ In summary:
 
 > Bash provides another quoting mechanism: Strings that contain ANSI C-like escape sequences.
 
-# [How to Use $() and ${} Expansions in a Shell Script](https://linuxhint.com/use_expansions_shell_script/)
+# [How to Use `$()` and `${}` Expansions in a Shell Script](https://linuxhint.com/use_expansions_shell_script/)
 
 Basically, use `$()` to substitute bash commands (or functions), and `${}` to substitute a bash variable/parameter.
 
-# [Safety shortcomings in the POSIX shell](https://github.com/matu3ba/dotfiles_skeleton/blob/main/POSIXunsafe)
-
-# [Common and not-so-common `*nix` shell footguns](https://an3223.github.io/blog/20210907_shelldonts.html)
-
-Very informative.
 
 # [What does "{} \;" mean in the find command?](https://askubuntu.com/questions/339015/what-does-mean-in-the-find-command)
 
-`find` has been very important for me, I just pushed a commit where I used it. The `\;` just tells `find` that you have executed the command and `find` can now exit.\
+`find` has been very important for me, I just pushed a commit where I used it. The `\;` just tells `find` that you have executed the command and `find` can now exit.  
 There is another suffix, i.e. `+`, but I haven't used it yet.
 
 ## Extra resources:
@@ -51,6 +50,7 @@ This is because on sourcing `.bashrc`, it can only update existing aliases and f
 # [How to make less paginate only when the input is larger than the screen size?](https://stackoverflow.com/questions/45221266/how-to-make-less-paginate-only-when-the-input-is-larger-than-the-screen-size)
 
 > `mycmd | less -F`
+
 > The `-F` option is nicely combined with `-X` which will skip clearing of the screen before listing (can also have it as a default with `LESS='-FX'`).
 
 # How to suppress errors in bash
@@ -77,15 +77,6 @@ And more.
 
 > just need to iterate over the `$@` array
 
-# `getopts`
-
-- [parameters and switches in bash script](https://stackoverflow.com/questions/33760956/parameters-and-switches-in-bash-script#33761327)
-- [BASH “switch case” in Linux with practical example](https://linuxcent.com/bash-switch-case-in-linux-with-practical-example/)
-- [How do I handle switches in a shell script?](https://unix.stackexchange.com/questions/20975/how-do-i-handle-switches-in-a-shell-script)
-- [`getopts` - parse utility options](https://pubs.opengroup.org/onlinepubs/9699919799/utilities/getopts.html)
-- [Small `getopts` tutorial](https://wiki.bash-hackers.org/howto/getopts_tutorial)
-- [An example of how to use `getopts` in bash](https://stackoverflow.com/questions/16483119/an-example-of-how-to-use-getopts-in-bash)
-
 # Change the `PS1`
 
 - [How to Change / Set up bash custom prompt (PS1) in Linux](https://www.cyberciti.biz/tips/howto-linux-unix-bash-shell-setup-prompt.html)
@@ -100,3 +91,75 @@ And more.
 
 - To select different elements in the input with `sed`, use `\(.*\)` to partition the input. Then, substitute it with something like `\1`.
     - Example: If I have a string like `origin main`, and I wanted `origin:main`, I'd do `s/\(.*\)\s\(.*\)/\1:\2/`.
+
+# Using flags in shell (POSIX)
+
+`getopts` is a POSIX defined utility to utilise flags (or switches) with a shell script/command/function and the like.  
+`getopts` is generally run in a while loop to iterate over the provided flags and check for each one separately.  
+Its behaviour would be easier to explain with an example:
+```sh
+while getopts ":hb:o:" opt; do
+    case ${opt} in
+        h)
+            help
+            ;;
+        b)
+            name="$OPTARG"
+            printf "\n%s" "${name}"
+            ;;
+        o)
+            name="$OPTARG"
+            printf "\n%s" "${name}"
+            ;;
+        :)
+            printf "\n%s" "Missing argument: source file to copy"
+            exit 1
+            ;;
+        \?)
+            printf "\n%s%s" "Invalid option: " "${OPTARG}"
+            exit 1
+            ;;
+        *)
+            printf "\n%s" "You are useless. Try again"
+            help
+            exit 1
+            ;;
+    esac
+done
+```
+
+## Syntax
+- The basic syntax of `getopts` is: `getopts optstring name [arg...]`.
+- In this example, `optstring` is `:hb:o:`.
+- `name` is `opt`.
+- The arguments are generally defined while executing the script in the shell (like, name of a file).
+- `help` is a function I had used in the original script to show the usage of the script.
+
+## Usage
+I will be using this resource (it is honestly amazing how `getopts` is explained in such detail in just one page): [getopts](https://pubs.opengroup.org/onlinepubs/9699919799/utilities/getopts.html)
+- The various options in the `case-esac` statement are the choice of flags available to the user.
+- The first three options, i.e. `h`, `o` and `b` are the accepted (and defined) flags for this script.
+- The rest of the options, i.e. `:`, `\?` and `*` are cases to handle scenarios like "No argument specified", "Invalid option" and "The rest" (in that order).
+    - I realise that this part will need some explanation.
+    - The case of `$name` (`$opt` in the case of this example) being set to `:` means that, ff after parsing the available flags, `getopts` encounters a case of missing option-argument, it will set `$OPTARG` to the argument found, which is NONE. This is not an error, however if you try to print `$OPTARG` you will get a blank line. The relevant quotes from the page mentioned above are:
+        - > If an option-argument is missing:
+        - > If the first character of optstring is a <colon>, the shell variable specified by name shall be set to the <colon> character and the shell variable OPTARG shall be set to the option character found.
+    - If `$name` (`$opt` in this case) is set to `?`, it means that the option character used while executing the script was not found; i.e. it is an illegal character. Note that we need to "escape" the `?`, using `\?` in the `case-esac` statement. The relevant quotes are:
+        - > If an option character not contained in the optstring operand is found where an option character is expected, the shell variable specified by name shall be set to the <question-mark> ( '?' ) character. In this case, if the first character in optstring is a <colon> ( ':' ), the shell variable OPTARG shall be set to the option character found, but no output shall be written to standard error
+        - > This condition shall be considered to be an error detected in the way arguments were presented to the invoking application, but shall not be an error in `getopts` processing.
+    - And for any other case, the `*` is a `case-esac` specific option to handle cases not already defined.
+- And on the `$OPTIND` variable;
+    - > When the end of options is encountered, the `getopts` utility shall exit with a return value greater than zero; the shell variable `OPTIND` shall be set to the index of the first operand, or the value "$#" +1 if there are no operands; the name variable shall be set to the <question-mark> character. Any of the following shall identify the end of options: the first "--" argument that is not an option-argument, finding an argument that is not an option-argument and does not begin with a '-', or encountering an error.
+
+The search for `getopts` was encouraged by [this](https://www.reddit.com/r/bash/comments/qtmbtg/small_script_to_make_a_backup_file_can_somebody/) Reddit post (and the GitHub gist mentioned in it).
+
+*A few other resources*;
+
+## `getopts`
+
+- [parameters and switches in bash script](https://stackoverflow.com/questions/33760956/parameters-and-switches-in-bash-script#33761327)
+- [BASH “switch case” in Linux with practical example](https://linuxcent.com/bash-switch-case-in-linux-with-practical-example/)
+- [How do I handle switches in a shell script?](https://unix.stackexchange.com/questions/20975/how-do-i-handle-switches-in-a-shell-script)
+- [`getopts` - parse utility options](https://pubs.opengroup.org/onlinepubs/9699919799/utilities/getopts.html)
+- [Small `getopts` tutorial](https://wiki.bash-hackers.org/howto/getopts_tutorial)
+- [An example of how to use `getopts` in bash](https://stackoverflow.com/questions/16483119/an-example-of-how-to-use-getopts-in-bash)
