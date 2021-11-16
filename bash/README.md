@@ -142,7 +142,7 @@ I will be using this resource (it is honestly amazing how `getopts` is explained
 - The first three options, i.e. `h`, `o` and `b` are the accepted (and defined) flags for this script.
 - The rest of the options, i.e. `:`, `\?` and `*` are cases to handle scenarios like "No argument specified", "Invalid option" and "The rest" (in that order).
     - I realise that this part will need some explanation.
-    - The case of `$name` (`$opt` in the case of this example) being set to `:` means that, ff after parsing the available flags, `getopts` encounters a case of missing option-argument, it will set `$OPTARG` to the argument found, which is NONE. This is not an error, however if you try to print `$OPTARG` you will get a blank line. The relevant quotes from the page mentioned above are:
+    - The case of `$name` (`$opt` in the case of this example) being set to `:` means that, after parsing the available flags, `getopts` encounters a case of missing option-argument, it will set `$OPTARG` to the argument found (note that there is no argument, which means that `$OPTARG` becomes blank). This is not an error, however if you try to print `$OPTARG` you will get a blank line. The relevant quotes from the page mentioned above are:
         - > If an option-argument is missing:
         - > If the first character of optstring is a <colon>, the shell variable specified by name shall be set to the <colon> character and the shell variable OPTARG shall be set to the option character found.
     - If `$name` (`$opt` in this case) is set to `?`, it means that the option character used while executing the script was not found; i.e. it is an illegal character. Note that we need to "escape" the `?`, using `\?` in the `case-esac` statement. The relevant quotes are:
