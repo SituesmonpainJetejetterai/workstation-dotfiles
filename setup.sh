@@ -2,7 +2,7 @@
 
 # Updating the system and installing some applications.
 
-printf "\nUpdating the system, removing vim and installing applications\n\n"
+printf "\n%s\n\n" "Updating the system, removing vim and installing applications"
 sudo apt update -y && sudo apt upgrade -y
 printf "\n"
 sudo apt purge vim -y && sudo apt autoremove -y
@@ -20,35 +20,37 @@ setup_path="$HOME/git-repos/setups"
 
 # vim setup
 
-printf "\nupdating config in ~/.vim\n"
+printf "\n%s\n" "updating config in ~/.vim"
 ln -sf "$setup_path/vim/.vim" "$HOME"
 
 # tmux setup
 
-printf "\ncopying over the tmux configuration file\n"
+printf "\n%s\n" "copying over the tmux configuration file"
 ln -sf "$setup_path/tmux/.tmux.conf" "$HOME"
 
 # git setup
 
-printf "\ncopying over the global git config file\n"
+printf "\n%s\n" "copying over the global git config file"
 ln -sf "$setup_path/git/.gitconfig" "$HOME"
 
 # bash setup
 
-printf "\ncopying over the scripts for bash configuration\n"
-ln -sf "$setup_path/bash/.bash" "$HOME"
+printf "\n%s\n" "copying over the scripts for bash configuration"
+ln -sf "$setup_path/bash/bin" "$HOME/bin"
 
-printf "\nadding lines to ~/.bashrc to source the scripts\n\n"
+printf "\n%s\n\n" "adding lines to ~/.bashrc to source the scripts"
 
 ## Escaping the character ${f} with \ helps to keep its literal value, i.e. outputs it as the string: "${f}"
 
 string=$(cat <<EOT
 # ---
 ## Sourcing fucking everything
-for f in $HOME/.bash/.*
+for f in $HOME/bin/.bash/.*
 do
     if [ ! -d "\${f}" ]; then source "\${f}"; fi
 done
+export PATH="$PATH:$HOME/bin/"
+export PATH="$PATH:$HOME/bin/git/"
 EOT
 )
 
