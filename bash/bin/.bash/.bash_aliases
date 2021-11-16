@@ -33,6 +33,7 @@ alias vst="vim ~/bin/.bash/.bash_startup.sh" ## Use vim to edit the bash startup
 
 alias vg="vim ~/.gitconfig" ## Edit gitconfig with vim
 alias gs="git status -sb" ## Checking the git status.
+alias gw="git switch" ## Switch to a branch (if new, use the "-c" flag)
 
 ## Vim
 
