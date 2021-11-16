@@ -24,10 +24,11 @@ hg() {
 ckw() {
     # Bash functions defined in the interactive shell
     # Supress all errors, display through less if output doesn't fit the screen
-    type "${1}" 2>/dev/null | less -FX
+    type "${1}" 2>/dev/null | less -FXR
+    grep -Hwne "${1}" "$HOME/.bash/.bash_functions.sh" --color=always | tr -d "{"
 
     # Show matches from vimrc
-    grep -HEn 'remap|command!' "$HOME/.vim/vimrc" | sed -e 's/\s*\".*//; /^$/d' | grep -w "${1}" --color=always | less -FXR
+    grep -HEn "remap|command!" "$HOME/.vim/vimrc" | sed -e 's/\s*\".*//; /^$/d' | grep -w "${1}" --color=always | less -FXR
 }
 
 # Search for text in files inside current folder
@@ -155,7 +156,9 @@ gd() {
 gfm() {
     printf "\n%s\n" "Merging remote changes with local branch"
     if [ -z "${1}" ]; then
+        # Get the current branch
         current_branch="$(git rev-parse --abbrev-ref HEAD)"
+        # Fetch the remote changes from origin and merge recursively with remote changes over local edits
         git fetch origin "${current_branch}" && git merge -s recursive -X theirs origin "${current_branch}"
     else
         git fetch origin "${1}" && git merge -s recursive -X theirs origin "${1}"
@@ -167,8 +170,10 @@ gfm() {
 gdf() {
     printf "\n%s" "Enter branch to reset from. Default is current branch: "
     if read -r branch; then
+        # Override local edits and reset hard with remote changes
         git fetch --all && git reset --hard origin/"${branch}"
     else
+        # Get the current branch
         current_branch="$(git rev-parse --abbrev-ref HEAD)"
         git fetch --all && git reset --hard origin/"${current_branch:-main}"
     fi
@@ -178,7 +183,6 @@ gdf() {
 # Help: https://stackoverflow.com/questions/3497123/run-git-pull-over-all-subdirectories
 gall() {
     find . -type d -name ".git" -printf "%h: " -prune -exec git --git-dir={} "${1}" \;
-    # find . -name ".git" -type d -print | xargs -P10 -I{} git --git-dir={} "${1}"
 }
 
 # Delete branch locally and remotely
@@ -438,7 +442,7 @@ gl() {
     printf "\n%s" "Clear?: "
     if read -r input; then
         case "$input" in
-            y|Y|"")
+            y|Y|q|"")
                 clear
                 ;;
         esac
