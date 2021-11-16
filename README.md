@@ -6,7 +6,7 @@ Intended for personal use, however it's free to the world, if anybody is looking
 
 ## Basic setup
 
-Simply `symlink` all the relevant files and directories to the correct locations, and viola! Everything works.
+Simply `symlink` all the relevant files and directories to the correct locations, and voilà! Everything works.
 
 I've written a script called `setup.sh` which is at the root of this directory. It has the symlink locations hard-coded for now, because that works for me. I'll think about improving it when I get the time.
 
@@ -15,6 +15,6 @@ I've written a script called `setup.sh` which is at the root of this directory. 
 - `.vim/` to `$HOME`
 - `.tmux.conf` to `$HOME`
 - `.gitconfig` to `$HOME`
-- `.bash/` to `$HOME`
+- `bin/` to `$HOME`
 
 No need to worry, `setup.sh` will `symlink` everything and append the text at the end of `~/.bashrc` so that all the relevant files are sourced properly.
