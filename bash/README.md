@@ -131,6 +131,7 @@ done
 ## Syntax
 - The basic syntax of `getopts` is: `getopts optstring name [arg...]`.
 - In this example, `optstring` is `:hb:o:`.
+- Any flag in the `optstring` which needs an input should be followed by a `:`. For example, `h` is not followed by a colon, while `b` and `o` are, thus they require option-arguments.
 - `name` is `opt`.
 - The arguments are generally defined while executing the script in the shell (like, name of a file).
 - `help` is a function I had used in the original script to show the usage of the script.
