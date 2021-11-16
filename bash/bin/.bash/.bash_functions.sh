@@ -1,0 +1,57 @@
+#!/bin/sh
+
+# SYSTEM FUNCTIONS
+
+# Grep the commands I've put into the shell using a pager to scroll
+# Show coloured grep output through less
+hg() {
+    history | grep "${1}" --color=always | less -FXR
+}
+
+# Search for text in files inside current folder
+# sed G simply appends a newline character followed by the contents of the hold space to the pattern space.
+# To search in another directory, give the full path as the second argument
+search() {
+        find "${2:-.}" -type f ! -path "*/\.git/*" ! -iname ".bash_history" -print0 | xargs -0 -I {} grep -IHnrw "${1}" {} --color=always | sed G | less -FXR
+}
+
+# Count number of lines in all files in a directory(including subdirectories)
+# Can specify directory, or will act in current directory
+cnl() {
+    find "${1:-.}" -type f -print | sed 's/.*/"&"/' | xargs  wc -l | less -FXR
+}
+
+# Find a file
+ff() {
+    find . -type f -name "*${1}*" | less -FX
+}
+
+# Find a directory
+fd() {
+    find . -type d -name "*${1}*" | less -FX
+}
+
+# Move to a directory and show all contents
+# If no directory is mentioned, show the $HOME directory
+# Link: https://opensource.com/article/19/7/bash-aliases
+c() {
+    DIR="$*";
+    # If no DIR given, go home
+    if [ $# -lt 1 ]; then
+        DIR=$HOME;
+    fi;
+    cd "${DIR}" && ls -Fa --color=auto
+}
+
+# GIT FUNCTIONS
+
+# Perform the git action on all subdirectories with .git/ in them.
+# Help: https://stackoverflow.com/questions/3497123/run-git-pull-over-all-subdirectories
+gall() {
+    find . -type d -name ".git" -printf "%h: " -prune -exec git --git-dir={} "${1}" \;
+}
+
+# Delete branch locally and remotely
+gdel() {
+    git branch -d "${1}" && git push origin --delete "${1}"
+}

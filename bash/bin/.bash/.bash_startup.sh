@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/bin/sh
 
 # Set the terminal to show colours
 export TERM=xterm-256color

@@ -22,12 +22,12 @@ alias tp="top && clear" ## Show the system monitor and clear when done
 
 ## Bash
 
-alias al='grep -w "alias" ~/.bash/.bash_aliases | less -FX' ## List all aliases
-alias fn='cat ~/.bash/.bash_functions.sh | sed "s/\s*#.*//g; /^$/ d" | less -FX' ## List all user-defined functions
-alias vb="vim ~/.bash/" ## Open the folder to edit bash configuration
-alias val="vim ~/.bash/.bash_aliases" ## Use vim to edit bash aliases
-alias vfn="vim ~/.bash/.bash_functions.sh" ## Use vim to edit bash functions
-alias vst="vim ~/.bash/.bash_startup.sh" ## Use vim to edit the bash startup script
+alias al='grep -w "alias" ~/bin/.bash/.bash_aliases | less -FX' ## List all aliases
+alias fn='cat ~/bin/.bash/.bash_functions.sh | sed "s/\s*#.*//g; /^$/ d" | less -FX' ## List all user-defined functions
+alias vb="vim ~/bin/.bash/" ## Open the folder to edit bash configuration
+alias val="vim ~/bin/.bash/.bash_aliases" ## Use vim to edit bash aliases
+alias vfn="vim ~/bin/.bash/.bash_functions.sh" ## Use vim to edit bash functions
+alias vst="vim ~/bin/.bash/.bash_startup.sh" ## Use vim to edit the bash startup script
 
 ## Git
 
