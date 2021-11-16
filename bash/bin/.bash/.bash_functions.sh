@@ -55,3 +55,16 @@ gall() {
 gdel() {
     git branch -d "${1}" && git push origin --delete "${1}"
 }
+
+# View logs and optionally clear screen
+gl() {
+    git log --oneline
+    printf "\n%s" "Clear?: "
+    if read -r input; then
+        case "$input" in
+            y|Y|q|"")
+                clear
+                ;;
+        esac
+    fi
+}
