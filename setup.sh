@@ -16,7 +16,7 @@ printf "\n"
 # fi
 
 # variable
-setup_path="$HOME/git-repos/setups"
+setup_path="$HOME/git-repos/workstation-dotfiles"
 
 # vim setup
 
