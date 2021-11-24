@@ -49,8 +49,6 @@ for f in $HOME/bin/.bash/.*
 do
     if [ ! -d "\${f}" ]; then source "\${f}"; fi
 done
-export PATH="$PATH:$HOME/bin/"
-export PATH="$PATH:$HOME/bin/git/"
 EOT
 )
 
