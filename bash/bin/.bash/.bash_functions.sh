@@ -2,6 +2,14 @@
 
 # SYSTEM FUNCTIONS
 
+
+# Shrug
+shrug() {
+    printf "\\n%s" "¯\\_(ツ)_/¯"
+#     pbcopy
+#     printf "\\n%s" "¯\\_(ツ)_/¯ copied to your clipboard"
+}
+
 # Grep the commands I've put into the shell using a pager to scroll
 # Show coloured grep output through less
 hg() {
@@ -12,7 +20,7 @@ hg() {
 # sed G simply appends a newline character followed by the contents of the hold space to the pattern space.
 # To search in another directory, give the full path as the second argument
 search() {
-        find "${2:-.}" -type f ! -path "*/\.git/*" ! -iname ".bash_history" -print0 | xargs -0 -I {} grep -IHnrw "${1}" {} --color=always | sed G | less -FXR
+    find "${2:-.}" -type f ! -path "*/\\.git/*" ! -iname ".bash_history" -print0 | xargs -0 -I {} grep -IHnrw "${1}" {} --color=always | sed G | less -FXR
 }
 
 # Count number of lines in all files in a directory(including subdirectories)
@@ -59,7 +67,7 @@ gdel() {
 # View logs and optionally clear screen
 gl() {
     git log --oneline
-    printf "\n%s" "Clear?: "
+    printf "\\n%s" "Clear?: "
     if read -r input; then
         case "$input" in
             y|Y|q|"")
