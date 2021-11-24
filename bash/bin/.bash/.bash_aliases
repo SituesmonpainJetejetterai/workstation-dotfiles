@@ -10,7 +10,6 @@ alias mst="cd $HOME/git-repos/workstation-dotfiles && git status -sb" ## Move to
 alias cl="clear && printf "\"%s\\n\\n\"" "\"$PWD\"" && ls -apF && printf "\"\\n\"" && find . -maxdepth 1 | wc -l" ## Clear and list all objects, with the total number of objects
 alias la="ls -alt" ## Check all files with permissions
 alias l="clear && ls -apF --color=auto" ## Clear the screen and check all contents of current directory
-alias shrug="printf "\"%s\"" "\"¯\_(ツ)_/¯\""" ## Shrug; add "| pbcopy" to copy to clipboard automatically
 alias b="cd .." ## Go up one directory
 alias cdl='cd "$(ls -rt | head -n1)" && ls -apF' ## Move to most recently updated directory and show all contents
 alias i='sudo apt install "${1}" -y' ## Install an application
