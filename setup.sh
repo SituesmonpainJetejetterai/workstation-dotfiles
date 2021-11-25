@@ -7,7 +7,7 @@ sudo apt update -y && sudo apt upgrade -y
 printf "\n"
 sudo apt purge vim -y && sudo apt autoremove -y
 printf "\n"
-sudo apt install screen vim-gtk tree htop git shellcheck pylint python3 less curl -y
+sudo apt install tmux vim-gtk tree htop git shellcheck pylint python3 less curl -y
 printf "\n"
 
 # if [[ $PWD == ~ ]]; then
@@ -16,7 +16,8 @@ printf "\n"
 # fi
 
 # variable
-setup_path="$HOME/git-repos/workstation-dotfiles"
+# setup_path="$HOME/git-repos/workstation-dotfiles"
+setup_path="$(dirname "$(readlink -f "$0")")"
 
 # vim setup
 
@@ -28,11 +29,6 @@ ln -sf "${setup_path}/vim/.vim" "$HOME"
 printf "\n%s\n" "copying over the tmux configuration file"
 ln -sf "${setup_path}/tmux/.tmux.conf" "$HOME"
 
-# screen setup
-
-printf "\n%s\n" "copying over the screen onfiguration file"
-ln -sf "${setup_path}/screen/.screenrc"
-
 # git setup
 
 printf "\n%s\n" "copying over the global git config file"
@@ -41,7 +37,7 @@ ln -sf "${setup_path}/git/.gitconfig" "$HOME"
 # bash setup
 
 printf "\n%s\n" "copying over the scripts for bash configuration"
-ln -sf "${setup_path}/bash/bin" "$HOME/bin"
+ln -sf "${setup_path}/bash/bin" "$HOME"
 
 printf "\n%s\n\n" "adding lines to ~/.bashrc to source the scripts"
 
@@ -57,4 +53,4 @@ done
 EOT
 )
 
-grep -qx "$string" "$HOME/.bashrc" || echo "$string" >> "$HOME/.bashrc"
+grep -qx "${string}" "$HOME/.bashrc" || echo "${string}" >> "$HOME/.bashrc"
