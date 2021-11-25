@@ -6,7 +6,7 @@ This will be a repository documenting how I set up/will be setting up customisat
 
 Simply `symlink` all the relevant files and directories to the correct locations, and voilà! Everything works.
 
-I've written a script called `setup.sh` which is at the root of this directory. ~~It has the symlink locations hard-coded for now, because that works for me. I'll think about improving it when I get the time.~~ Whilst the destination for the `symlink`s are still hardcoded (and I don't know how I can *not harcode* those), `setup.sh` will now use its absolute path (tested from the `/home` directory), and does not need a hardcoded path.
+I've written a script called `setup.sh` which is at the root of this directory. ~~It has the symlink locations hard-coded for now, because that works for me. I'll think about improving it when I get the time.~~ Whilst the destination for the `symlink`s are still hardcoded (and I don't know how I can *not hardcode* those), `setup.sh` will now use its absolute path (tested from the `/home` directory), and does not need a hardcoded path.
 
 ***Where do I `symlink` everything?***
 
