@@ -45,12 +45,6 @@ alias vial="sed -e 's/\s*\".*//; /^$/d' ~/.vim/vimrc | grep -E 'remap|command!' 
 alias vt="vim ~/.tmux.conf" ## Use vim to edit the tmux config
 alias t="tmux -2" ## Start with 256 colours as default
 
-
-## Screen
-
-alias vs="vim ~/.screenrc" ## Use vim to edit the screen config
-alias scren="screen" ## Accept typo for screen
-
 ## Tree
 
 alias tree="tree --dirsfirst -F" ## Show directories first, with the '/' to represent them
