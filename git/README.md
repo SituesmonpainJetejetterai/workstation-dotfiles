@@ -19,6 +19,7 @@
 - `test` - changes related to adding or refactoring existing tests.
 - `chore` or `build` - changes related to build tasks or package configs.
 - `perf` - performance-related enhancements to the code.
+- `misc` - a personal addition to explain "miscellaneous" edits which don't fit.
 
 *Eg*: `git commit -m "feat: add likePost()"`
 
