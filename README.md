@@ -16,3 +16,5 @@ I've written a script called `setup.sh` which is at the root of this directory. 
 - `bin/` to `$HOME`
 
 No need to worry, `setup.sh` will `symlink` everything and append the text at the end of `~/.bashrc` so that all the relevant files are sourced properly.
+
+*Note: These scripts have been tested on Debian 10 and Ubuntu 20.04, so I assume that these should work well for Debian and its derivatives. I'll include other distros if I need them, later on*.
