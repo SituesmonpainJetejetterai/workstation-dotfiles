@@ -16,7 +16,6 @@ printf "\n"
 # fi
 
 # variable
-# setup_path="$HOME/git-repos/workstation-dotfiles"
 setup_path="$(dirname "$(readlink -f "$0")")"
 
 # vim setup
