@@ -327,7 +327,7 @@ nnoremap ,p "0p
 nnoremap ,P "0P
 
 " Remap to undo break points (really important)
-" Instead of undoing the entire change (which can really such), undo till a last recongnised mark, like a '.', ',', '!' and '?'.
+" Instead of undoing the entire change (which can really suck), undo till a last recongnised mark, like a '.', ',', '!' and '?'.
 inoremap , ,<c-g>u
 inoremap . .<c-g>u
 inoremap ! !<c-g>u
