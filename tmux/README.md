@@ -7,7 +7,7 @@ A collection of `tmux` tutorials: [Awesome Tmux](https://github.com/rothgar/awes
 This is big, because I often need to copy and paste between websites and vim.
 
 ```
-<prefix-key> + [ 
+<prefix-key> + [
 <space>
 <CR>
 <prefix-key> + ]
@@ -16,11 +16,9 @@ This is big, because I often need to copy and paste between websites and vim.
 Explanation\
 The first commands puts `tmux` in copy mode.\
 Then, we need to navigate to the text we want to copy (this is easy for me as `tmux` is set to use `vim` bindings).\
-When we reach the text, press <space> to begin selection (akin to `v` in vim).\
+When we reach the text, press `<space>` to begin selection (akin to `v` in vim).\
 After selecting the text (by navigating with keys, `h`, `j`, `k` and `l` for me), press <CR> to copy it to the clipboard.\
 Finally, go to a new file (or wherever), and paste with `<prefix-key> + ]`.
-
-Not bad. Will take a little getting used to, but that's alright.
 
 ## The status bar
 
@@ -32,3 +30,6 @@ It seems that the best way to customise it would be to write separate scripts (w
 Here are a few resources to do just that, for when I have a system on which I can actually test this:
 - [Make Your Tmux Status Bar 100% Better With Bash](https://dev.to/brandonwallace/make-your-tmux-status-bar-100-better-with-bash-2fne)
 
+# List all the key bindings in `tmux`
+
+`tmux list-keys`
