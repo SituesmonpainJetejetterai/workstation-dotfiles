@@ -86,6 +86,11 @@ git push
 - [git stash (git-scm)](https://git-scm.com/docs/git-stash)
 - [Where are Git Stashes stored?](https://stackoverflow.com/questions/40653560/where-are-git-stashes-stored)
 
+*Clear git stash(es)*:
+- If you want to clear all of your stashes: `git stash clear`.
+- If you want to remove only a specific git stash: `git stash drop <stash-id>`.
+- To list all git stashes: `git stash list`.
+
 ## Current git branch
 
 `git rev-parse --abbrev-ref HEAD`
