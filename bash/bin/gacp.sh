@@ -150,7 +150,7 @@ gacp() {
     }
 
     push_changes() {
-        printf "\n%s\n" "Do you want to push? Press \"y\" or \"Y\" to do so: "
+        printf "\n%s\n" "Do you want to push? Press \"y\", \"Y\" or \"enter\" (carriage return) to do so: "
         if read -r push; then
             case "${push}" in
                 y|Y|"")
