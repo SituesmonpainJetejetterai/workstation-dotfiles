@@ -80,8 +80,17 @@ gl() {
 # Show the git diff in a colourful pager
 # Show both tracked and untracked files
 gd() {
-    # If the first argument does not exist
-    if [ -z "${1}" ]; then
+    # Find files which are still to be committed
+    still_to_be_committed() {
+        git status -sb | sed "s/#.*//; s/M//; s/.*\\s//; /^$/d"
+    }
+
+    still_to_be_committed | nl -s:
+
+    printf "\\n%s" "Enter the number(s) of the file(s) you want to see the diff for, or press \"enter\" to see the diff for all uncommitted files: "
+    read -r numbers
+
+    if [ -z "${numbers}" ]; then
         # Show a diff for the tracked files
         git diff .
         # Show a diff for all the untracked files
@@ -90,12 +99,17 @@ gd() {
         # Which is piped to less in case the output doesn't fit the screen
         git ls-files -z --other --exclude-standard | xargs -0 -I {} git diff --color -- /dev/null {} | less -FXR 2>/dev/null
     else
-        if [ -n "$(git ls-files "${1}")" ]; then
-            # Tracked file (part of git repo)
-            git diff "${1}"
-        else
-            # Untracked file (not part of git repo yet)
-            git diff --color -- /dev/null "${1}"
-        fi
+        for f in ${numbers}
+        do
+            # A variable containing the name of the file to be staged
+            file=$(still_to_be_committed | sed -n "${f}p")
+            if [ -n "$(git ls-files "${file}")" ]; then
+                # Tracked file (part of git repo)
+                git diff "${file}"
+            else
+                # Untracked file (not part of git repo yet)
+                git diff --color -- /dev/null "${file}" | less -FXR
+            fi
+        done
     fi
 }
