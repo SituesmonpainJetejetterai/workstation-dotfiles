@@ -2,10 +2,8 @@
 
 ## System
 
-alias upds='echo -e "\nUpdating package lists\n" && sudo apt update -y && echo -e "\nLooking to upgrade packages\n" && sudo apt upgrade -y && echo -e "\nCleaning up redundant packages/applications\n" && sudo apt autoremove -y' ## updating the system
+alias upds="sudo apt-get update -y && sudo apt-get full-upgrade -y && sudo apt-get autoremove -y" ## Update the system
 alias sob="clear && source ~/.bashrc" ## Sourcing the .bashrc after update
-alias dc="cd" ## Type dc instead of cd; no problem
-alias sl="ls" ## Type sl instead of ls; no problem
 alias mst="cd $HOME/git-repos/workstation-dotfiles && git status -sb" ## Move to my favourite directory, and show git status
 alias cl="clear && printf "\"%s\\n\\n\"" "\"$PWD\"" && ls -apF && printf "\"\\n\"" && find . -maxdepth 1 | wc -l" ## Clear and list all objects, with the total number of objects
 alias la="ls -alt" ## Check all files with permissions
@@ -38,7 +36,7 @@ alias gw="git switch" ## Switch to a branch (if new, use the "-c" flag)
 
 alias v="vim" ## Start vim with one letter
 alias vv="vim ~/.vim/vimrc" ## Edit the vimrc
-alias vial="sed -e 's/\s*\".*//; /^$/d' ~/.vim/vimrc | grep -E 'remap|command!' | less -FX" ## Show all vim key remaps
+alias vial="sed 's/\s*\".*//; /^$/d' ~/.vim/vimrc | grep -E 'remap|command!' | less -FX" ## Show all vim key remaps
 
 ## Tmux
 
