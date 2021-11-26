@@ -7,15 +7,16 @@ export TERM=xterm-256color
 clear
 
 # Showing system information
-printf "PUBLIC IP: %s\n" "$(curl -sS ifconfig.me)"
-printf "USER: %s\n" "$USER"
-printf "TIME: %s\n" "$(date '+%a %d %b %T %Y %Z')"
-printf "UPTIME: %s\n" "$(uptime -p)"
-printf "CPU: %s\n" "$(lscpu | grep "Model\sname" | sed "s/.*:\s*//")"
-printf "CPU Usage: %s\n" "$(top -bn1 | grep load | awk '{printf "%.2f%%\t\t\n", $(NF-2)}')"
-printf "KERNEL: %s\n" "$(uname -rms)"
-printf "PACKAGES: %s\n" "$(dpkg --get-selections | wc -l)"
-printf "MEMORY: %s\n" "$(free -m -h | awk '/Mem/{print $3"/"$2}')"
+printf "%s%s\n" "PUBLIC IP: " "$(curl -sS ifconfig.me)"
+printf "%s%s\n" "USER: " "$USER"
+printf "%s%s\n" "TIME: " "$(date '+%a %d %b %T %Y %Z')"
+printf "%s%s\n" "UPTIME: " "$(uptime -p)"
+printf "%s%s\n" "CPU: " "$(lscpu | grep "Model\sname" | sed "s/.*:\s*//")"
+printf "%s%s\n" "CPU USAGE: " "$(top -bn1 | grep load | awk '{printf "%.2f%%\t\t\n", $(NF-2)}')"
+printf "%s%s\n" "KERNEL: " "$(uname -rms)"
+printf "%s%s\n" "PACKAGES: " "$(dpkg --get-selections | wc -l)"
+printf "%s%s\n" "MEMORY: " "$(free -m -h | awk '/Mem/{print $3"/"$2}')"
+printf "%s%s\n" "CURRENT PATH: " "$PATH"
 
 # Show a custom PS1
 output_PS1() {
