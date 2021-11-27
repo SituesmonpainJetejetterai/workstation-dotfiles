@@ -1,7 +1,7 @@
 " Toggles
 
 " Function to toggle interactive shell
-nnoremap <F5> :call Shelltoggle()<CR>
+nnoremap <C-i> :call Shelltoggle()<CR>
 
 let g:shelltogglevariable = 0
 function! Shelltoggle()
@@ -18,11 +18,11 @@ endfunction
 
 " Toggle hlsearch
 " Link: https://stackoverflow.com/a/54938524
-nnoremap <silent> <F6> :set invhlsearch<CR>
+nnoremap <silent> <C-h> :set invhlsearch<CR>
 
 " Toggle line numbers and relative line numbers
 " Link: https://stackoverflow.com/a/14975679
-nnoremap <silent> <F7> :set invnu invrnu<CR>
+nnoremap <silent> <C-m> :set invnu invrnu<CR>
 
 
 " ---
