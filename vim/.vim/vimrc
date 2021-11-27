@@ -356,6 +356,7 @@ inoremap <buffer>{ {}<ESC>i
 inoremap <buffer>[ []<ESC>i
 inoremap <buffer>` ``<ESC>i
 inoremap <buffer>* **<ESC>i
+inoremap <buffer>\" \"\"<ESC>hi
 
 augroup brackets
     autocmd!
