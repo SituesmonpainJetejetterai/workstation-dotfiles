@@ -49,4 +49,4 @@ EOT
 )
 
 grep -qx "${string}" "$HOME/.bashrc" || echo "${string}" >> "$HOME/.bashrc"
-printf "\n%s%s" "This is the current path: " "$PATH"
+printf "\n%s%s\n" "This is the current path: " "$PATH"
