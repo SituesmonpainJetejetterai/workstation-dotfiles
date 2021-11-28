@@ -6,6 +6,16 @@ export TERM=xterm-256color
 # Clear the screen when executing the bash shell. Useful when I'm sourcing the .bashrc
 clear
 
+# Start TMUX if not in it already
+if [ -z "$TMUX" ]; then
+    if tmux has-session 2>/dev/null; then
+        # Attach to session
+        tmux a
+    else
+        tmux new
+    fi
+fi
+
 # Showing system information
 printf "%s%s\n" "PUBLIC IP: " "$(curl -sS ifconfig.me)"
 printf "%s%s\n" "USER: " "$USER"
