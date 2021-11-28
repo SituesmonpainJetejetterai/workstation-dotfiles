@@ -18,7 +18,7 @@ endfunction
 
 " Toggle hlsearch
 " Link: https://stackoverflow.com/a/54938524
-nnoremap <silent> <C-h> :set invhlsearch<CR>
+cnoremap nh set invhlsearch
 
 " Toggle line numbers and relative line numbers
 " Link: https://stackoverflow.com/a/14975679
