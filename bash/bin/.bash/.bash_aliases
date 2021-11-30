@@ -16,6 +16,8 @@ alias busy="cat /dev/urandom | hexdump -C | grep 'ca fe'" # Use this to look bus
 alias als="alias | less -FX" # Show the system list of running aliases with less
 alias fns="declare -f | less -FX" # Show the system list of functions with less
 alias tp="top && clear" # Show the system monitor and clear when done
+alias shut="sudo shutdown now" # Shutdown the machine
+alias reboot="sudo reboot now" # Reboot the machine
 
 ## Aliases to invoke scripts
 alias cdf="cdf.sh" # Call "cdf.sh"
