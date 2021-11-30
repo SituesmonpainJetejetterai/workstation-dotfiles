@@ -181,6 +181,46 @@ augroup END
 " Link: https://stackoverflow.com/a/50336469
 autocmd BufNewFile *.sh,*.py let ftype = &ft | execute 'silent! 1s:.*:#!/bin/' . ftype
 
+" Comments, aggregated
+" Link: https://vim.fandom.com/wiki/Comment_%26_Uncomment_multiple_lines_in_Vim
+
+function! Comment()
+    let ft = &filetype
+    if ft == 'php' || ft == 'ruby' || ft == 'sh' || ft == 'make' || ft == 'python' || ft == 'perl'
+        silent s/^/\# /
+    elseif ft == 'javascript' || ft == 'c' || ft == 'cpp' || ft == 'java' || ft == 'objc' || ft == 'scala' || ft == 'go'
+        silent s:^:\/\/:g
+    elseif ft == 'tex'
+        silent s:^:%:g
+    elseif ft == 'vim'
+        silent s:^:\" :g
+    endif
+endfunction
+
+function! Uncomment()
+    let ft = &filetype
+    if ft == 'php' || ft == 'ruby' || ft == 'sh' || ft == 'make' || ft == 'python' || ft == 'perl'
+        silent s/^\# //
+    elseif ft == 'javascript' || ft == 'c' || ft == 'cpp' || ft == 'java' || ft == 'objc' || ft == 'scala' || ft == 'go'
+        silent s:^\/\/::g
+    elseif ft == 'tex'
+        silent s:^%::g
+    elseif ft == 'vim'
+        silent s:^\" ::g
+    endif
+endfunction
+
+function! Comment_Toggle()
+    try
+        call Uncomment()
+    catch
+        call Comment()
+    endtry
+endfunction
+
+nnoremap <C-\> :call Comment_Toggle()<CR>
+
+
 
 " ---------
 
