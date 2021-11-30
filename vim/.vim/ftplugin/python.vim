@@ -20,9 +20,3 @@ nnoremap <silent> <buffer> <F4> :update<CR>:below terminal++rows=15 python3 "%"<
 
 " Remap to auto-write a function
 nnoremap <silent> <Leader>f idef<Space><Space>():<ESC>3hi
-
-" Key map to comment and uncomment
-nnoremap <F2> :s/^/# /<CR>
-nnoremap <F3> :s/^# //<CR>
-vnoremap <F2> :s/^/# /<CR>
-vnoremap <F3> :s/^# //<CR>

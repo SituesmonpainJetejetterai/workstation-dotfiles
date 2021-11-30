@@ -22,9 +22,3 @@ noremap <silent> <buffer> <F4> :w<CR>:below terminal++rows=15 sh "%"<CR>
 
 " Key map to insert a function
 nnoremap <Leader>f i()<Space>{<CR><CR>}<ESC>2ki
-
-" Key map to comment and uncomment
-nnoremap <F2> :s/^/# /<CR>
-nnoremap <F3> :s/^# //<CR>
-vnoremap <F2> :s/^/# /<CR>
-vnoremap <F3> :s/^# //<CR>
