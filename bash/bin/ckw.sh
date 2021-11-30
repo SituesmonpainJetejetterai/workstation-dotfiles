@@ -26,7 +26,7 @@ ckw() {
     }
 
     search_all_fuzzy=0              # Corresponds to "-a"
-    search_all=0                    # Corresponds to "-S"
+    search_all_specific=0           # Corresponds to "-S"
     search_vim=0                    # Corresponds to "-v"
     search_vim_specific=0           # Corresponds to "-V"
     search_scripts=0                # Corresponds to "-s"
@@ -40,7 +40,7 @@ ckw() {
                 search_all_fuzzy=1
                 ;;
             S)
-                search_all=1
+                search_all_specific=1
                 ;;
             v)
                 search_vim=1
@@ -65,7 +65,7 @@ ckw() {
                 printf "\n%s" "Invalid character. Exiting..."
                 return
                 ;;
-            ""|*)
+            *)
                 printf "\n%s" "That's not how it works"
                 help
                 return
@@ -75,17 +75,23 @@ ckw() {
 
     # If no flags are mentioned, go with the default option: search_all=1.
     if [ $OPTIND = 1 ]; then
-        search_all=1
+        search_all_specific=1
     fi
 
     shift $(($OPTIND - 1))
 
     search_term="$(for list in "$@"; do : ; done ; printf "%s" "${list}")"
+
+    # Add some extra modules to handle multiple switches.
+    # 1. If "${search_all_fuzzy}" and "${search_all}" are used together, use "type" and fuzzy "find".
+    # 2. If "${search_vim}" and "${search_vim_specific}" are used together, only use "${search_vim}".
+    # Do not overlap these conditions with other flags.
+
     if [ "${search_all_fuzzy}" = 1 ]; then
         # If a script with those characters in its name exists.
         find "$HOME" -path "*/bin/*" -type f -name "*${search_term}*" -exec less -FXR {} \;
     fi
-    if [ "${search_all}" = 1 ]; then
+    if [ "${search_all_specific}" = 1 ]; then
         # If the search query yields a function, alias or file, use type to show it.
         type "${search_term}" | less -FXR 2>/dev/null
         # If a script with the name in the search query exists, display the contents.
