@@ -2,7 +2,6 @@
 
 # SYSTEM FUNCTIONS
 
-
 # Shrug
 shrug() {
     printf "\n%s" "¯\\_(ツ)_/¯"
