@@ -177,6 +177,9 @@ augroup RETURN_TO_POSITION
         \ endif
 augroup END
 
+" Automatically put a shebang at the top of a file
+" Link: https://stackoverflow.com/a/50336469
+autocmd BufNewFile *.sh,*.py let ftype = &ft | execute 'silent! 1s:.*:#!/bin/' . ftype
 
 
 " ---------
