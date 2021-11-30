@@ -32,7 +32,6 @@ printf "%s%s\n" "PATH: " "$PATH"
 output_PS1() {
     git_info() {
         git_branch() {
-            # git rev-parse --abbrev-ref HEAD 2>/dev/null | sed -e "s/\(.*\)/(\1)/"
             git rev-parse --abbrev-ref HEAD 2>/dev/null
         }
 
