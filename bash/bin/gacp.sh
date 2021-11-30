@@ -1,6 +1,5 @@
 #!/bin/sh
 
-
 # Pull the repository to handle conflicts before staging files
 # Adds the files specified (or everything), commits, and pushes automatically.
 gacp() {
