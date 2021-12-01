@@ -59,15 +59,14 @@ gacp() {
         resume="y"
         while [ "${resume}" = "y" ] || [ "${resume}" = "Y" ];
         do
+            total=$(merge_conflict_files | wc -l)
+            printf "\n%s" "The number of merge conflicts is: " "${total}"
             printf "\n%s" "If you want to edit a file (in case of a conflict), press \"e\""
             printf "\n%s\n" "If you want to start committing and pushing, press \"c\""
             if read -r option; then
                 case "${option}" in
                     e)
-                        total=$(merge_conflict_files | wc -l)
-                        if [ "${total}" -eq "0" ]; then
-                            printf "\n%s\n" "Seems like there are no files with conflicts"
-                        else
+                        if [ "${total}" -gt 0 ]; then
                             merge_conflict_files | nl -s:
                             printf "\n%s" "Press enter to edit each file one by one, in the order shown."
                             printf "\n%s" "Otherwise, specify the number(s) of the file(s) you want to edit: "
@@ -83,6 +82,8 @@ gacp() {
                                     go_edit "${n}"
                                 done
                             fi
+                        else
+                            printf "\n%s" "There don't seem to be any merge conflicts"
                         fi
                         ;;
                     c)
