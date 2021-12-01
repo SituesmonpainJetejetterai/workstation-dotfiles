@@ -60,6 +60,7 @@ alias vial="sed 's/\s*\".*//; /^$/d' ~/.vim/vimrc | grep -E 'remap|command!' | l
 
 alias vt="vim ~/.tmux.conf" # Use vim to edit the tmux config
 alias t="tmux -2" # Start with 256 colours as default
+alias th="th.sh" # Call "th.sh" (help-text for tmux)
 
 # Tree
 
