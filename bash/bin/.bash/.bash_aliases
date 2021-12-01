@@ -48,6 +48,7 @@ alias gr="gr.sh" # Call "gr.sh"
 alias grp="grp.sh" # Call "grp.sh"
 alias gdf="gdf.sh" # Call "gdf.sh"
 alias gurl="gurl.sh" # Call "gurl.sh"
+alias gd="gd.sh" # Call "gd.sh"
 
 # Vim
 
