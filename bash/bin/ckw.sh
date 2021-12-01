@@ -12,6 +12,7 @@ ckw() {
             "Note that not passing any flags is the same as using \"-A\""
     }
 
+    # Invoke the "help" function when used without flags and arguments
     if [ $# -eq 0 ]; then
         help
         return
@@ -22,6 +23,7 @@ ckw() {
     function_search=0
     alias_search=0
 
+    # Get the argument specified (the logic is that the word required will be the last argument)
     word="$(for list in "$@"; do : ; done ; printf "%s" "${list}")"
 
     while getopts "vsfaAh" opts
@@ -59,6 +61,7 @@ ckw() {
         esac
     done
 
+    # The same behaviour as using "-A" if no flags specified
     if [ $OPTIND -eq 1 ]; then
         script_search=1
         function_search=1
