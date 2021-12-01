@@ -2,14 +2,20 @@
 ckw() {
 
     help() {
-        printf "\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n" "There are various flags which can be invoked, and can change the output as desired" \
+        printf "\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n" "There are various flags which can be invoked, and can change the output as desired" \
             "The flag \"-v\" is to search for the word in vim" \
             "The flag \"-s\" is to search for the word in scripts" \
             "The flag \"-f\" is to search for the word in defined functions" \
             "The flag \"-a\" is to search for the word in defined aliases" \
             "The flag \"-A\" is to search for the word in scripts, functions and aliases" \
-            "The flag \"-h\" is to show the \"help\" function"
+            "The flag \"-h\" is to show the \"help\" function" \
+            "Note that not passing any flags is the same as using \"-A\""
     }
+
+    if [ $# -eq 0 ]; then
+        help
+        return
+    fi
 
     vim_search=0
     script_search=0
