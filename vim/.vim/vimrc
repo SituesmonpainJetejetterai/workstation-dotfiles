@@ -183,6 +183,8 @@ autocmd BufNewFile *.sh,*.py let ftype = &ft | execute 'silent! 1s:.*:#!/bin/' .
 
 " Comments, aggregated
 " Link: https://vim.fandom.com/wiki/Comment_%26_Uncomment_multiple_lines_in_Vim
+" Easy, just execute the relevant regex according to filetype
+" And try to uncomment first, if not then comment - this is important, because uncomment will not work for already uncommented lines.
 
 function! Comment()
     let ft = &filetype
