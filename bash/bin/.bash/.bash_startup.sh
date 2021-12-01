@@ -18,6 +18,7 @@ fi
 
 # Showing system information
 printf "%s%s\n" "PUBLIC IP: " "$(curl -sS ifconfig.me)"
+printf "%s%s\n" "PRIVATE IP: " "$(hostname -I | awk '{print $1}')"
 printf "%s%s\n" "USER: " "$USER"
 printf "%s%s\n" "TIME: " "$(date '+%a %d %b %T %Y %Z')"
 printf "%s%s\n" "UPTIME: " "$(uptime -p)"
