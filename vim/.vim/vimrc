@@ -113,6 +113,9 @@ endif
 let &undodir=s:undodir
 set undofile
 
+" Shortcut to escape from insert mode
+inoremap jj <ESC>
+
 
 " ---------
 
