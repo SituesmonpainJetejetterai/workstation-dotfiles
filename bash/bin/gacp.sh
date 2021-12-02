@@ -11,7 +11,7 @@ gacp() {
 
     # Find files which are still to be committed
     still_to_be_committed(){
-        git status -sb | sed "s/#.*//; s/M//; s/.*\s//; /^$/d"
+        git status -sb | sed "s/#.*//; /^$/d"
     }
 
     # Edit files part of a merge conflict
