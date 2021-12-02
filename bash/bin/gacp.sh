@@ -60,7 +60,7 @@ gacp() {
         while [ "${resume}" = "y" ] || [ "${resume}" = "Y" ];
         do
             total=$(merge_conflict_files | wc -l)
-            printf "\n%s" "The number of merge conflicts is: " "${total}"
+            printf "\n%s%s" "The number of merge conflicts is: " "${total}"
             printf "\n%s" "If you want to edit a file (in case of a conflict), press \"e\""
             printf "\n%s\n" "If you want to start committing and pushing, press \"c\""
             if read -r option; then
