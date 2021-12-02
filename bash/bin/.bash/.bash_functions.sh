@@ -15,13 +15,6 @@ hg() {
     history | grep "${1}" --color=always | less -FXR
 }
 
-# Search for text in files inside current folder
-# sed G simply appends a newline character followed by the contents of the hold space to the pattern space.
-# To search in another directory, give the full path as the second argument
-search() {
-    find "${2:-.}" -type f ! -path "*/\.git/*" ! -iname ".bash_history" -print0 | xargs -0 -I {} grep -IHnrw "${1}" {} --color=always | sed G | less -FXR
-}
-
 # Count number of lines in all files in a directory(including subdirectories)
 # Can specify directory, or will act in current directory
 cnl() {

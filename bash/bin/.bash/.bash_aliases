@@ -24,6 +24,7 @@ alias cdf="cdf.sh" # Call "cdf.sh"
 alias ckw="ckw.sh" # Call "ckw.sh"
 alias rma="rma.sh" # Call "rma.sh"
 alias ts="ts.sh" # Call "ts.sh"
+alias search="search.sh" # Call "search.sh"
 
 # Bash
 
