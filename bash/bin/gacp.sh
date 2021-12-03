@@ -109,7 +109,7 @@ gacp() {
                             for f in ${numbers}
                             do
                                 # A variable containing the name of the file to be staged
-                                file=$(still_to_be_committed | sed -n "${f}p")
+                                file=$(still_to_be_committed | sed -n "${f}p" | sed "s/.*\s//")
                                 # Print the name of the file while staging it
                                 printf "\n%s" "${file}"
                                 printf "\n%s" "do you want to see the diff of the changes?: "
