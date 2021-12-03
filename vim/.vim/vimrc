@@ -1,3 +1,6 @@
+" Enter the current millenium
+set nocompatible
+
 " Toggles
 
 " Function to toggle interactive shell
@@ -39,6 +42,14 @@ let &t_EI = "\<Esc>]12;grey\x7"
 set cursorline
 set cursorcolumn
 
+" No error bells
+" Link: https://web.cs.dal.ca/~johnston/unix/myfiles.html#.vimrc
+set noerrorbells
+
+" Show the current mode
+" Link: https://web.cs.dal.ca/~johnston/unix/myfiles.html#.vimrc
+set showmode
+
 " Display incomplete commands
 set showcmd
 
@@ -63,9 +74,6 @@ set hidden
 
 " Setting up colours (unwanted change, but whatever)
 set t_Co=256
-
-" Enter the current millenium
-set nocompatible
 
 " Enable syntax, plugins and indentation
 syntax enable
@@ -104,6 +112,16 @@ set breakindent
 set breakindentopt=shift:2
 set showbreak=///
 
+" abBREVIATIONS
+" typos
+" Link: https://web.cs.dal.ca/~johnston/unix/myfiles.html#.vimrc
+iab anf and
+iab adn and
+iab ans and
+iab teh the
+iab thre there
+iab jst just
+
 " Persistent undo
 " Link: https://bluz71.github.io/2021/09/10/vim-tips-revisited.html
 let s:undodir = "/tmp/.undodir_" . $USER
@@ -115,6 +133,7 @@ set undofile
 
 " Shortcut to escape from insert mode
 inoremap jj <ESC>
+
 
 
 " ---------
