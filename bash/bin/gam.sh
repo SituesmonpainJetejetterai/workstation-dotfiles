@@ -34,17 +34,19 @@ gam() {
     if read -r push; then
         case ${push} in
             y|Y|g|p|"")
-                if read -r branch; then
-                    if [ "${commit}" = "r" ]; then
-                        # If the git commit --amend option was used
-                        git push --force-with-lease origin "${branch:-main}"
-                    elif [ "${commit}" = "o" ]; then
-                        # If multiple commits were changed
-                        git push --force origin "${branch:-main}"
-                    fi
-                else
+                printf "\n%s" "Enter a branch name, or press \"Enter\" to push to the current branch: "
+                read -r branch
+                if [ "${branch}" = "" ]; then
                     # If branch was not specified
                     git push --force origin "$(git rev-parse --abbrev-ref HEAD)"
+                else
+                    if [ "${commit}" = "r" ]; then
+                        # If the git commit --amend option was used
+                        git push --force-with-lease origin "${branch}"
+                    elif [ "${commit}" = "o" ]; then
+                        # If multiple commits were changed
+                        git push --force origin "${branch}"
+                    fi
                 fi
                 ;;
             *)
