@@ -31,7 +31,7 @@ ln -sf "${setup_path}/git/.gitconfig" "$HOME"
 # bash setup
 
 printf "\n%s\n" "symlinking the scripts for bash configuration"
-ln -sf "${setup_path}/bash/bin" "$HOME"
+ln -sf "${setup_path}/sh/bin" "$HOME"
 
 printf "\n%s\n" "adding lines to ~/.bashrc to source the scripts"
 
