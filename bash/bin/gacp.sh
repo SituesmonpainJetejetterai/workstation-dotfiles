@@ -95,7 +95,7 @@ gacp() {
                         if [ -z "${numbers}" ]; then
                             # If no argument specified, stage all files by including all numbers
                             printf "\n%s\n" "Staging all files"
-                            still_to_be_committed
+                            still_to_be_committed | sed "s/.*\s//"
                             printf "\n%s" "Do you want to see the diff of the changes?: "
                             read -r sd
                             if [ "${sd}" = "y" ] || [ "${sd}" = "Y" ] || [ "${sd}" = "g" ] || [ "${sd}" = "d" ]; then
