@@ -164,3 +164,7 @@ The search for `getopts` was encouraged by [this](https://www.reddit.com/r/bash/
 - [`getopts` - parse utility options](https://pubs.opengroup.org/onlinepubs/9699919799/utilities/getopts.html)
 - [Small `getopts` tutorial](https://wiki.bash-hackers.org/howto/getopts_tutorial)
 - [An example of how to use `getopts` in bash](https://stackoverflow.com/questions/16483119/an-example-of-how-to-use-getopts-in-bash)
+
+# Get the last directory from a bunch
+
+`find . -type d | sort | tail -1`
