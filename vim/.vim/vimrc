@@ -115,6 +115,7 @@ set showbreak=///
 " abBREVIATIONS
 " typos
 " Link: https://web.cs.dal.ca/~johnston/unix/myfiles.html#.vimrc
+iab while whilst
 iab anf and
 iab adn and
 iab ans and
@@ -201,7 +202,10 @@ augroup END
 
 " Automatically put a shebang at the top of a file
 " Link: https://stackoverflow.com/a/50336469
-autocmd BufNewFile *.sh,*.py let ftype = &ft | execute 'silent! 1s:.*:#!/bin/' . ftype
+augroup SHEBANG
+    autocmd!
+    autocmd BufNewFile *.sh,*.py let ftype = &ft | execute 'silent! 1s:.*:#!/bin/' . ftype
+augroup END
 
 " Comments, aggregated
 " Link: https://vim.fandom.com/wiki/Comment_%26_Uncomment_multiple_lines_in_Vim
