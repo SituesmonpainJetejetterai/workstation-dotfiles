@@ -168,3 +168,7 @@ The search for `getopts` was encouraged by [this](https://www.reddit.com/r/bash/
 # Get the last directory from a bunch
 
 `find . -type d | sort | tail -1`
+    
+# `regex` info dump
+
+[regular-expressions.info](https://www.regular-expressions.info/tutorial.html)
