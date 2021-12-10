@@ -26,6 +26,7 @@ alias rma="rma.sh" # Call "rma.sh"
 alias ts="ts.sh" # Call "ts.sh"
 alias search="search.sh" # Call "search.sh"
 alias keybr="keybr.sh" # Call "keybr.sh", my personal take on keybr.com
+alias tld="tld.sh" # Call "tld.sh"
 
 # Bash
 
@@ -39,7 +40,7 @@ alias vst="vim ~/bin/.bash/.bash_startup.sh" # Use vim to edit the bash startup 
 # Git
 
 alias vg="vim ~/.gitconfig" # Edit gitconfig with vim
-alias gs="git status -sb | less -FXR" # Checking the git status.
+alias gs="git status -sb" # Checking the git status.
 alias gw="git switch" # Switch to a branch (if new, use the "-c" flag)
 
 ## Aliases to invoke scripts
