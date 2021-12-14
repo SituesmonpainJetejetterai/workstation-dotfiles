@@ -281,7 +281,7 @@ function! Gitbranch() abort
         " return trim(system("git -C " . expand("%:h") . " branch --show-current 2>/dev/null"))
         return trim(system("cd " . expand("%:h") . "&& git rev-parse --abbrev-ref HEAD 2>/dev/null && cd - 1>/dev/null"))
     catch
-        return " Unkown"
+        return " Unknown"
     endtry
 endfunction
 
