@@ -115,13 +115,17 @@ set showbreak=///
 " abBREVIATIONS
 " typos
 " Link: https://web.cs.dal.ca/~johnston/unix/myfiles.html#.vimrc
-iab while whilst
-iab anf and
-iab adn and
-iab ans and
-iab teh the
-iab thre there
-iab jst just
+
+augroup ABB
+    autocmd!
+    autocmd FileType markdown iab while whilst
+    autocmd FileType markdown iab anf and
+    autocmd FileType markdown iab adn and
+    autocmd FileType markdown iab ans and
+    autocmd FileType markdown iab teh the
+    autocmd FileType markdown iab thre there
+    autocmd FileType markdown iab jst just
+augroup END
 
 " Persistent undo
 " Link: https://bluz71.github.io/2021/09/10/vim-tips-revisited.html
