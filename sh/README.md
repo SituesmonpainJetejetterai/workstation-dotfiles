@@ -172,3 +172,7 @@ The search for `getopts` was encouraged by [this](https://www.reddit.com/r/bash/
 # `regex` info dump
 
 [regular-expressions.info](https://www.regular-expressions.info/tutorial.html)
+
+# Alternative command to get total memory in system
+
+`vmstat -s | grep -G "total\smemory" | sed -e "s/\(.*\)\s\(.\)\s\(.*\)\s\(.*\)/\1/; s/.*\s//"`
