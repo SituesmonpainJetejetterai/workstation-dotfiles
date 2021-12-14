@@ -40,7 +40,6 @@ alias vst="vim ~/bin/.bash/.bash_startup.sh" # Use vim to edit the bash startup 
 # Git
 
 alias vg="vim ~/.gitconfig" # Edit gitconfig with vim
-alias gs="git status -sb" # Checking the git status.
 alias gw="git switch" # Switch to a branch (if new, use the "-c" flag)
 
 ## Aliases to invoke scripts
@@ -52,6 +51,7 @@ alias grp="grp.sh" # Call "grp.sh"
 alias gdf="gdf.sh" # Call "gdf.sh"
 alias gurl="gurl.sh" # Call "gurl.sh"
 alias gd="gd.sh" # Call "gd.sh"
+alias gs="gs.sh" # Call "gs.sh"
 
 # Vim
 
