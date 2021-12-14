@@ -27,7 +27,7 @@ printf "%s%s\n" "CPU USAGE: " "$(top -bn1 | grep load | awk '{printf "%.2f%%\t\t
 printf "%s%s\n" "KERNEL: " "$(uname -rms)"
 printf "%s%s\n" "PACKAGES: " "$(dpkg --get-selections | wc -l)"
 printf "%s%s\n" "MEMORY: " "$(free -m -h | awk '/Mem/{print $3"/"$2}')"
-printf "%s%s\n" "PATH: " "$PATH"
+printf "%s%s%s\n" "\$PATH contains " "$HOME/bin: " "$(if $(printf "%s" "$PATH" | grep -q "$HOME/bin"); then printf "%s" "Yes"; else printf "%s" "No"; fi)"
 
 # Show a custom PS1
 output_PS1() {
