@@ -14,6 +14,7 @@ dt() {
     # Variables
     date=0
     time=0
+    both=0
 
     # Declaring options
     while getopts "dtbh" opts;
@@ -26,8 +27,7 @@ dt() {
                 time=1
                 ;;
             b)
-                date=1
-                time=1
+                both=1
                 ;;
             h)
                 help
@@ -45,6 +45,9 @@ dt() {
     fi
     if [ "${time}" = 1 ]; then
         date --rfc-3339=seconds | sed -e "s/\(.*\)\s\(.*\)+\(.*\)/\2 +\3/"
+    fi
+    if [ "${both}" = 1 ]; then
+        printf "%s%s%s" "$(date --rfc-3339=date)" " | " "$(date --rfc-3339=seconds | sed -e "s/\(.*\)\s\(.*\)+\(.*\)/\2 +\3/")"
     fi
 
 
