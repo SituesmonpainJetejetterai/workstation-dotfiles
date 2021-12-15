@@ -28,6 +28,7 @@ alias search="search.sh" # Call "search.sh"
 alias keybr="keybr.sh" # Call "keybr.sh", my personal take on keybr.com
 alias tld="tld.sh" # Call "tld.sh"
 alias mns="mns.sh" # Call "mns.sh"
+alias dt="dt.sh" # Call "dt.sh"
 
 # Bash
 
