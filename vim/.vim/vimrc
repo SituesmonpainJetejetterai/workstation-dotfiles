@@ -251,6 +251,7 @@ function! Comment_Toggle()
 endfunction
 
 nnoremap <C-\> :call Comment_Toggle()<CR>
+vnoremap <C-\> :call Comment_Toggle()<CR>
 
 
 
