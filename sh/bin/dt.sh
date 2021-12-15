@@ -7,7 +7,7 @@ dt() {
         printf "\n%s\n%s\n%s\n%s\n%s" "The flags are: " \
             "\"-d\" for the date" \
             "\"-t\" for the time" \
-            "\"-b\" for both" \
+            "\"-b\" for both date and time" \
             "\"-h\" for help"
     }
 
