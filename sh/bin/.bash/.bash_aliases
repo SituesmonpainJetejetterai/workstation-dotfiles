@@ -19,6 +19,15 @@ alias tp="top && clear" # Show the system monitor and clear when done
 alias shut="sudo shutdown now" # Shutdown the machine
 alias reboot="sudo reboot now" # Reboot the machine
 
+# Bash
+
+alias al='grep -w "alias" ~/bin/.bash/.bash_aliases | less -FX' # List all aliases
+alias fn='cat ~/bin/.bash/.bash_functions.sh | sed "s/\s*#.*//g; /^$/ d" | less -FX' # List all user-defined functions
+alias vb="vim ~/bin/.bash/" # Open the folder to edit bash configuration
+alias val="vim ~/bin/.bash/.bash_aliases" # Use vim to edit bash aliases
+alias vfn="vim ~/bin/.bash/.bash_functions.sh" # Use vim to edit bash functions
+alias vst="vim ~/bin/.bash/.bash_startup.sh" # Use vim to edit the bash startup script
+
 ## Aliases to invoke scripts
 alias cdf="cdf.sh" # Call "cdf.sh"
 alias ckw="ckw.sh" # Call "ckw.sh"
@@ -29,15 +38,7 @@ alias keybr="keybr.sh" # Call "keybr.sh", my personal take on keybr.com
 alias tld="tld.sh" # Call "tld.sh"
 alias mns="mns.sh" # Call "mns.sh"
 alias dt="dt.sh" # Call "dt.sh"
-
-# Bash
-
-alias al='grep -w "alias" ~/bin/.bash/.bash_aliases | less -FX' # List all aliases
-alias fn='cat ~/bin/.bash/.bash_functions.sh | sed "s/\s*#.*//g; /^$/ d" | less -FX' # List all user-defined functions
-alias vb="vim ~/bin/.bash/" # Open the folder to edit bash configuration
-alias val="vim ~/bin/.bash/.bash_aliases" # Use vim to edit bash aliases
-alias vfn="vim ~/bin/.bash/.bash_functions.sh" # Use vim to edit bash functions
-alias vst="vim ~/bin/.bash/.bash_startup.sh" # Use vim to edit the bash startup script
+alias e="e.sh" # Call "e.sh"
 
 # Git
 
