@@ -23,7 +23,7 @@ search() {
     do
         case ${opts} in
             w)
-                grep -IHnrw "${word}" --color=always | less -FXR
+                grep --exclude-dir=".git/" -IHnrw "${word}" --color=always | less -FXR
                 ;;
             h)
                 help
@@ -41,7 +41,7 @@ search() {
     done
 
     if [ $OPTIND -eq 1 ]; then
-        grep -IHnr "${word}" --color=always | less -FXR
+        grep --exclude-dir=".git/" -IHnr "${word}" --color=always | less -FXR
     fi
     shift $((OPTIND-1))
 }
