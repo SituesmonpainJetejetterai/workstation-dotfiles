@@ -48,5 +48,5 @@ export PATH=$PATH:$HOME/bin
 EOT
 )
 
-grep -qx "${string}" "$HOME/.bashrc" || echo "${string}" >> "$HOME/.bashrc"
+grep -qx "${string}" "$HOME/.bashrc" || printf "%s" "${string}" >> "$HOME/.bashrc"
 printf "\n%s%s\n" "This is the current path: " "$PATH"
