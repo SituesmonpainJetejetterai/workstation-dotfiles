@@ -18,6 +18,7 @@ alias fns="declare -f | less -FX" # Show the system list of functions with less
 alias tp="top && clear" # Show the system monitor and clear when done
 alias shut="sudo shutdown now" # Shutdown the machine
 alias reboot="sudo reboot now" # Reboot the machine
+alias tld="cd \"$(date --rfc-3339=date)\"" # Move to the directory named the current date
 
 # Bash
 
@@ -35,7 +36,7 @@ alias rma="rma.sh" # Call "rma.sh"
 alias ts="ts.sh" # Call "ts.sh"
 alias search="search.sh" # Call "search.sh"
 alias keybr="keybr.sh" # Call "keybr.sh", my personal take on keybr.com
-alias tld="tld.sh" # Call "tld.sh"
+alias mtd="mtd.sh" # Call "mtd.sh"
 alias mns="mns.sh" # Call "mns.sh"
 alias dt="dt.sh" # Call "dt.sh"
 alias e="e.sh" # Call "e.sh"
