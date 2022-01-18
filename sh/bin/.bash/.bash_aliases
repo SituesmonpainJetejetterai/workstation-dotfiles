@@ -18,7 +18,7 @@ alias fns="declare -f | less -FX" # Show the system list of functions with less
 alias tp="top && clear" # Show the system monitor and clear when done
 alias shut="sudo shutdown now" # Shutdown the machine
 alias reboot="sudo reboot now" # Reboot the machine
-alias tld="cd \"$(date --rfc-3339=date)\"" # Move to the directory named the current date
+alias tld="cd \"$(date --rfc-3339=date)\" && ls -apF" # Move to the directory named the current date
 
 # Bash
 
