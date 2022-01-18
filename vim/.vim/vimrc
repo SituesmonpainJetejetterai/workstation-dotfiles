@@ -4,8 +4,6 @@ set nocompatible
 " Toggles
 
 " Function to toggle interactive shell
-nnoremap <C-i> :call Shelltoggle()<CR>
-
 let g:shelltogglevariable = 0
 function! Shelltoggle()
     if g:shelltogglevariable
@@ -18,6 +16,8 @@ function! Shelltoggle()
         echom "interactive"
     endif
 endfunction
+
+nnoremap <C-i> :call Shelltoggle()<CR>
 
 " Toggle hlsearch
 " Link: https://stackoverflow.com/a/54938524
@@ -118,7 +118,6 @@ set showbreak=///
 
 augroup ABB
     autocmd!
-    autocmd FileType markdown iab while whilst
     autocmd FileType markdown iab anf and
     autocmd FileType markdown iab adn and
     autocmd FileType markdown iab ans and
@@ -330,6 +329,7 @@ nnoremap <silent> <Leader>t :below terminal++rows=15<CR>
 nnoremap <C-k> :m-2<CR>
 inoremap <C-k> :m-2<CR>
 vnoremap <C-k> :m '<-2<CR>gv
+
 " Move lines down
 nnoremap <C-j> :m+1<CR>
 inoremap <C-j> :m+1<CR>
@@ -436,7 +436,7 @@ inoremap <buffer>\" \"\"<ESC>hi
 
 augroup brackets
     autocmd!
-    autocmd FileType gitcommit,markdown,python,sh inoremap <buffer> " ""<ESC>i
+    autocmd FileType gitcommit,markdown,python,sh,yaml inoremap <buffer> " ""<ESC>i
     autocmd FileType vim,python,sh inoremap <buffer> ' ''<ESC>i
 augroup END
 
