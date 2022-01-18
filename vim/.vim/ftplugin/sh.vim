@@ -1,16 +1,22 @@
 " Bash Specific customisation
 
+" Link: https://vim.fandom.com/wiki/Errorformat_and_makeprg
+if exists("current_compiler")
+  finish
+endif
+let current_compiler = "shellcheck"
+
 " Bash linting
 set makeprg=shellcheck
 set errorformat=In\ %f\ line\ %l:
 
-augroup bashSpecific
+" Make and lint shell files
+augroup Lintsh
     autocmd!
     " Automatic execution on :write
-    autocmd BufWritePost *.sh silent make! <afile> | silent redraw!
+    autocmd BufWritePost *.sh silent make! | silent redraw!
     " Automatic opening of the quickfix window
     autocmd QuickFixCmdPost make vertical cwindow|vertical resize +35
-
 augroup END
 
 " When the type of shell script is /bin/sh, assume a POSIX-compatible
