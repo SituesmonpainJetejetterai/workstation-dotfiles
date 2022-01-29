@@ -17,15 +17,15 @@ function! Shelltoggle()
     endif
 endfunction
 
-nnoremap <C-i> :call Shelltoggle()<CR>
+cnoremap ni call Shelltoggle()<CR>
 
 " Toggle hlsearch
 " Link: https://stackoverflow.com/a/54938524
-cnoremap nh set invhlsearch
+cnoremap nh set invhlsearch<CR>
 
 " Toggle line numbers and relative line numbers
 " Link: https://stackoverflow.com/a/14975679
-nnoremap <silent> <C-m> :set invnu invrnu<CR>
+cnoremap nl set invnu invrnu<CR>
 
 
 " ---
