@@ -335,6 +335,9 @@ nnoremap <C-j> :m+1<CR>
 inoremap <C-j> :m+1<CR>
 vnoremap <C-j> :m '>+1<CR>gv
 
+" Delete in insert mode
+inoremap <C-b> <del>
+
 " Ability to indent repeatedly without changing modes
 " This will re-select the last visual selection after you use > while in Visual mode
 xnoremap > >gv
