@@ -7,7 +7,7 @@ sudo apt update -y && sudo apt-get full-upgrade -y
 printf "\n"
 sudo apt purge vim -y && sudo apt autoremove -y
 printf "\n"
-sudo apt install tmux vim-gtk tree htop git shellcheck pylint python3 less curl -y
+sudo apt install tmux vim tree htop git shellcheck pylint python3 less curl ed -y
 printf "\n"
 
 # variable
