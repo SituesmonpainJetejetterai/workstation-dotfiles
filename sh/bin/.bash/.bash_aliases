@@ -4,7 +4,7 @@
 
 alias upds="sudo apt-get update -y && sudo apt-get full-upgrade -y && sudo apt-get autoremove -y" # Update the system
 alias sob="clear && source ~/.bashrc" # Sourcing the .bashrc after update
-alias mst="cd $HOME/git-repos/workstation-dotfiles && git status -sb" # Move to my favourite directory, and show git status
+alias mst="cd $HOME/repos/workstation-dotfiles && git status -sb" # Move to my favourite directory, and show git status
 alias cl="clear && printf "\"%s\\n\\n\"" "\"$PWD\"" && ls -apF && printf "\"\\n\"" && find . -maxdepth 1 | wc -l" # Clear and list all objects, with the total number of objects
 alias la="ls -alt" # Check all files with permissions
 alias l="clear && ls -apF --color=auto" # Clear the screen and check all contents of current directory
