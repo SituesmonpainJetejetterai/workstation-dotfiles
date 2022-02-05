@@ -72,3 +72,7 @@ alias th="th.sh" # Call "th.sh" (help-text for tmux)
 # Tree
 
 alias tree="tree --dirsfirst -F" # Show directories first, with the '/' to represent them
+
+# Ed
+
+alias ed="ed -p:" # Show the semicolon for ed to distinguish between command and insert mode
