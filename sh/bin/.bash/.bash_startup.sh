@@ -61,5 +61,22 @@ output_PS1() {
 }
 output_PS1
 
+set_tab_stops() {
+
+    tab_width=4
+    terminal_width="$(stty size | awk '{print $2}')"
+    tab_stops=''
+    i=$((${tab_width}+1))
+
+    while [ ${i} -le ${terminal_width} ]; do
+        tab_stops=$(printf "%s%s," "${tab_stops}" "${i}")
+        i=$((${i} + ${tab_width}))
+    done
+
+    tabs ${tab_stops}
+}
+
+set_tab_stops
+
 # Set vim keys for bash
 set -o vi
