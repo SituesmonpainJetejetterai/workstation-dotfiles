@@ -45,6 +45,7 @@ alias e="e.sh" # Call "e.sh"
 
 alias vg="vim ~/.gitconfig" # Edit gitconfig with vim
 alias gw="git switch" # Switch to a branch (if new, use the "-c" flag)
+alias gh="git show" # Show the changes in a specific commit
 
 ## Aliases to invoke scripts
 alias gacp="gacp.sh" # Call "gacp.sh"
