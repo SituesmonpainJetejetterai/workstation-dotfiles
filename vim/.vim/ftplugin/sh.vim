@@ -6,17 +6,18 @@ if exists("current_compiler")
 endif
 let current_compiler = "shellcheck"
 
-" Bash linting
-set makeprg=shellcheck
-set errorformat=In\ %f\ line\ %l:
+" Linting with shellcheck the vanilla wanting with shellcheck the vanilla way
+" Link: https://www.reddit.com/r/vim/comments/slvd13/comment/hvtlkb4/?utm_source=share&utm_medium=web2x&context=3
+set makeprg=shellcheck\ -fgcc
+let &errorformat = '%f:%l:%c: %trror: %m [SC%n],%f:%l:%c: %tarning: %m [SC%n],%I%f:%l:%c: Note: %m [SC%n]'
 
-" Make and lint shell files
+" Show shell errors upon make
 augroup Lintsh
     autocmd!
     " Automatic execution on :write
-    autocmd BufWritePost *.sh silent make! | silent redraw!
+    autocmd BufWritePost *.sh silent make! <afile> | silent redraw!
     " Automatic opening of the quickfix window
-    autocmd QuickFixCmdPost make vertical cwindow|vertical resize +35
+    autocmd QuickFixCmdPost [^l]* vertical cwindow | vert resize +40
 augroup END
 
 " When the type of shell script is /bin/sh, assume a POSIX-compatible
