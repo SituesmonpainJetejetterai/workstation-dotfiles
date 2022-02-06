@@ -95,7 +95,7 @@ gacp() {
                         if [ -z "${numbers}" ]; then
                             # If no argument specified, stage all files by including all numbers
                             printf "\n%s\n\n" "Staging all files"
-                            still_to_be_committed | sed "s/.*\s//"
+                            still_to_be_committed | sed "s/.*\s/-> /"
                             printf "\n%s" "Do you want to see the diff of the changes?: "
                             read -r sd
                             if [ "${sd}" = "y" ] || [ "${sd}" = "Y" ] || [ "${sd}" = "g" ] || [ "${sd}" = "d" ]; then
@@ -105,13 +105,13 @@ gacp() {
                             git add -A
                         else
                             # Add specified numbers
-                            printf "\n%s\n" "Staging specified files"
+                            printf "\n%s\n\n" "Staging specified files"
                             for f in ${numbers}
                             do
                                 # A variable containing the name of the file to be staged
-                                file=$(still_to_be_committed | sed -n "${f}p" | sed "s/.*\s//")
+                                file="$(still_to_be_committed | sed -n "${f}p" | sed "s/.*\s//")"
                                 # Print the name of the file while staging it
-                                printf "\n%s" "${file}"
+                                printf "%s\n" "${file}" | sed "s/\(.*\)/-> \1/"
                                 printf "\n%s" "do you want to see the diff of the changes?: "
                                 read -r sd
                                 if [ "${sd}" = "y" ] || [ "${sd}" = "Y" ] || [ "${sd}" = "g" ] || [ "${sd}" = "d" ]; then
@@ -126,7 +126,7 @@ gacp() {
                         fi
 
                         printf "\n\n%s" "Time for the commit message"
-                        printf "\n%s" "If you want to use an editor (vim) for the commit message, press 'v'. Otherwise, simply type the commit message: "
+                        printf "\n\n%s" "If you want to use an editor (vim) for the commit message, press 'v'. Otherwise, simply type the commit message: "
                         read -r op
                         if [ "${op}" = "v" ]; then
                             # Open the text editor (vim in my case) to type the commit message
