@@ -112,7 +112,7 @@ gacp() {
                                 file="$(still_to_be_committed | sed -n "${f}p" | sed "s/.*\s//")"
                                 # Print the name of the file while staging it
                                 printf "%s\n" "${file}" | sed "s/\(.*\)/-> \1/"
-                                printf "\n%s" "do you want to see the diff of the changes?: "
+                                printf "\n%s\n" "do you want to see the diff of the changes?: "
                                 read -r sd
                                 if [ "${sd}" = "y" ] || [ "${sd}" = "Y" ] || [ "${sd}" = "g" ] || [ "${sd}" = "d" ]; then
                                     if [ -n "$(git ls-files "${file}")" ]; then
