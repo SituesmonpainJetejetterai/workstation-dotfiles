@@ -2,10 +2,8 @@
 
 # Updating the system and installing some applications.
 
-printf "\n%s\n\n" "Updating the system, removing vim and installing applications"
+printf "\n%s\n\n" "Updating the system and installing applications"
 sudo apt update -y && sudo apt-get full-upgrade -y
-printf "\n"
-sudo apt purge vim -y && sudo apt autoremove -y
 printf "\n"
 sudo apt install tmux vim tree htop git shellcheck pylint python3 less curl ed -y
 printf "\n"
@@ -44,7 +42,13 @@ for f in $HOME/bin/.bash/.*
 do
     if [ ! -d "\${f}" ]; then source "\${f}"; fi
 done
-export PATH=$PATH:$HOME/bin
+BIN="$HOME/bin"
+if printf "%s" "\${PATH}" | grep -q "\${BIN}"
+then
+    return 0
+else
+    export PATH=\${PATH}:\${BIN}
+fi
 EOT
 )
 
