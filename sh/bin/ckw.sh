@@ -3,12 +3,13 @@
 ckw() {
 
     help() {
-        printf "\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n" "There are various flags which can be invoked, and can change the output as desired" \
+        printf "\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n" "There are various flags which can be invoked, and can change the output as desired" \
             "The flag \"-v\" is to search for the word in vim" \
             "The flag \"-s\" is to search for the word in scripts" \
             "The flag \"-f\" is to search for the word in defined functions" \
             "The flag \"-a\" is to search for the word in defined aliases" \
             "The flag \"-A\" is to search for the word in scripts, functions and aliases" \
+            "The flag \"-p\" is to show the \$PATH in a easy-to-read manner, in different lines" \
             "The flag \"-h\" is to show the \"help\" function" \
             "Note that not passing any flags is the same as using \"-A\""
     }
@@ -27,7 +28,7 @@ ckw() {
     # Get the argument specified (the logic is that the word required will be the last argument)
     word="$(for list in "$@"; do : ; done ; printf "%s" "${list}")"
 
-    while getopts "vsfaAh" opts
+    while getopts "vsfaAph" opts
     do
         case ${opts} in
             v)
@@ -46,6 +47,9 @@ ckw() {
                 script_search=1
                 function_search=1
                 alias_search=1
+                ;;
+            p)
+                printf "%s" "${PATH}" | sed "s/:/\n/g"
                 ;;
             h)
                 help
