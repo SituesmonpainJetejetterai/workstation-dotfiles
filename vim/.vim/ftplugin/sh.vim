@@ -6,10 +6,8 @@ if exists("current_compiler")
 endif
 let current_compiler = "shellcheck"
 
-" Linting with shellcheck the vanilla wanting with shellcheck the vanilla way
-" Link: https://www.reddit.com/r/vim/comments/slvd13/comment/hvtlkb4/?utm_source=share&utm_medium=web2x&context=3
-set makeprg=shellcheck\ -fgcc
-let &errorformat = '%f:%l:%c: %trror: %m [SC%n],%f:%l:%c: %tarning: %m [SC%n],%I%f:%l:%c: Note: %m [SC%n]'
+" Using the in-built compiler for shellcheck to lint shell scripts
+compiler shellcheck
 
 " Show shell errors upon make
 augroup Lintsh

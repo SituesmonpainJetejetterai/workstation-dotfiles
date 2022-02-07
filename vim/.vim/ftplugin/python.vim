@@ -6,15 +6,14 @@ if exists("current_compiler")
 endif
 let current_compiler = "pylint"
 
-" Linting python, the vanilla way
-set makeprg=pylint\ --reports=n\ --msg-template=\"{path}:{line}:\ {msg_id}\ {symbol},\ {obj}\ {msg}\"\ %:p
-set errorformat=%f:%l:\ %m
+" Using the in-built compiler support for pylint to lint python
+compiler pylint
 
 " Make and display errors for Python
 augroup Lintpy
     autocmd!
     " Automatic execution on :write
-    autocmd BufWritePost *.py silent make! | silent redraw!
+    autocmd BufWritePost *.py silent make! <afile> | silent redraw!
     " Automatic opening of the quickfix window
     autocmd QuickFixCmdPost [^l]* vertical cwindow | vert resize +40
 augroup END
