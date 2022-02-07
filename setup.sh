@@ -33,7 +33,9 @@ ln -sf "${setup_path}/sh/bin" "$HOME"
 
 printf "\n%s\n" "adding lines to ~/.bashrc to source the scripts"
 
-## Escaping the character ${f} with \ helps to keep its literal value, i.e. outputs it as the string: "${f}"
+# Escaping the character ${f} with \ helps to keep its literal value, i.e. outputs it as the string: "${f}"
+# Prevent duplicate entries in the $PATH variable with this logic
+# Source: https://stackoverflow.com/a/15506990
 
 string=$(cat <<EOT
 # ---
