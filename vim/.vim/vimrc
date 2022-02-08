@@ -330,11 +330,6 @@ nnoremap <C-k> :m-2<CR>
 inoremap <C-k> :m-2<CR>
 vnoremap <C-k> :m '<-2<CR>gv
 
-" Move lines down
-nnoremap <C-j> :m+1<CR>
-inoremap <C-j> :m+1<CR>
-vnoremap <C-j> :m '>+1<CR>gv
-
 " Delete in insert mode
 inoremap <C-b> <del>
 
