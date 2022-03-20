@@ -7,6 +7,7 @@
 - [Common and not-so-common `*nix` shell footguns](https://an3223.github.io/blog/20210907_shelldonts.html)
 
 Very informative.
+
 ---
 
 # [Quotes and escaping](https://wiki.bash-hackers.org/syntax/quoting)
@@ -26,7 +27,7 @@ Basically, use `$()` to substitute bash commands (or functions), and `${}` to su
 
 # [What does "{} \;" mean in the find command?](https://askubuntu.com/questions/339015/what-does-mean-in-the-find-command)
 
-`find` has been very important for me, I just pushed a commit where I used it. The `\;` just tells `find` that you have executed the command and `find` can now exit.  
+`find` has been very important for me, I just pushed a commit where I used it. The `\;` just tells `find` that you have executed the command and `find` can now exit.\
 There is another suffix, i.e. `+`, but I haven't used it yet.
 
 ## Extra resources:
@@ -64,12 +65,11 @@ Append the command with `2>/dev/null`. Directing to `1>/dev/null` will suppress 
 Can also be used with pipes.
 
 # [Add Line Numbers to Output on Linux Command Line](https://www.putorius.net/nl-command-basic-usage.html)
-
-`nl`  
-`nl -s:`  
-`nl -s:" "`  
-`nl -n ln`  
-`nl -n rz`
+- `nl`
+- `nl -s:`
+- `nl -s:" "`
+- `nl -n ln`
+- `nl -n rz`
 
 And more.
 
@@ -92,12 +92,12 @@ And more.
 - To select different elements in the input with `sed`, use `\(.*\)` to partition the input. Then, substitute it with something like `\1`.
     - Example: If I have a string like `origin main`, and I wanted `origin:main`, I'd do `s/\(.*\)\s\(.*\)/\1:\2/`.
 
-# Using flags in shell (POSIX)
+# Using flags in shell (`POSIX`)
 
-`getopts` is a POSIX defined utility to utilise flags (or switches) with a shell script/command/function and the like.  
+`getopts` is a `POSIX` defined utility to utilise flags (or switches) with a shell script/command/function and the like.  
 `getopts` is generally run in a while loop to iterate over the provided flags and check for each one separately.  
 Its behaviour would be easier to explain with an example:
-```sh
+```bash
 while getopts ":hb:o:" opt; do
     case ${opt} in
         h)
@@ -168,7 +168,7 @@ The search for `getopts` was encouraged by [this](https://www.reddit.com/r/bash/
 # Get the last directory from a bunch
 
 `find . -type d | sort | tail -1`
-    
+
 # `regex` info dump
 
 [regular-expressions.info](https://www.regular-expressions.info/tutorial.html)
@@ -176,3 +176,7 @@ The search for `getopts` was encouraged by [this](https://www.reddit.com/r/bash/
 # Alternative command to get total memory in system
 
 `vmstat -s | grep -G "total\smemory" | sed -e "s/\(.*\)\s\(.\)\s\(.*\)\s\(.*\)/\1/; s/.*\s//"`
+
+# List all files, each in a new line with hyphens replaced by underscores
+
+`ls -a | sed "s/\s+/\n/" | sed "s/\-/\_/g"`
