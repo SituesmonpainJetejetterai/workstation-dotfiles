@@ -10,8 +10,6 @@ alias la="ls -alt" # Check all files with permissions
 alias l="clear && ls -apF --color=auto" # Clear the screen and check all contents of current directory
 alias b="cd .." # Go up one directory
 alias cdl='cd "$(ls -rt | head -n1)" && ls -apF' # Move to most recently updated directory and show all contents
-alias i='sudo apt install "${1}" -y' # Install an application
-alias d='sudo apt purge "${1}" -y && sudo apt autoremove -y' # Delete and application and cleanup after
 alias busy="cat /dev/urandom | hexdump -C | grep 'ca fe'" # Use this to look busy when boss comes around
 alias als="alias | less -FX" # Show the system list of running aliases with less
 alias fns="declare -f | less -FX" # Show the system list of functions with less

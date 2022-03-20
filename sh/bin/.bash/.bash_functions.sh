@@ -43,6 +43,14 @@ c() {
     cd "${DIR}" && ls -Fa --color=auto
 }
 
+i() {
+    sudo apt install "${@}" -y
+}
+
+d() {
+    sudo apt purge "${@}" -y && sudo apt autoremove -y
+}
+
 # GIT FUNCTIONS
 
 # Perform the git action on all subdirectories with .git/ in them.
