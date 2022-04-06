@@ -49,7 +49,7 @@ output_PS1() {
         }
 
         if [ -n "$(git_branch)" ] && [ -n "$(git_commits_ahead)" ]; then
-            printf "%s%s%s%s%s%s" "B=" "$(git_branch)" "; F=" "$(git_changed)" "; C=" "$(git_commits_ahead)"
+            printf "%s%s%s%s%s%s%s%s" "{" "B=" "$(git_branch)" "; F=" "$(git_changed)" "; C=" "$(git_commits_ahead)" "}"
         fi
     }
 
