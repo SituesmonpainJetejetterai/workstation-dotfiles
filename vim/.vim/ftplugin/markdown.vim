@@ -12,6 +12,7 @@ set spell spelllang=en_gb complete+=kspell
 " Jumps back with `]a
 " Press 'u' to undo
 " Link: https://castel.dev/post/lecture-notes-1/#correcting-spelling-mistakes-on-the-fly
+" Press <C+l> to activate
 inoremap <C-l> <c-g>u<Esc>[s1z=`]a<c-g>u
 
 " Live word count: https://vim.fandom.com/wiki/Word_count
