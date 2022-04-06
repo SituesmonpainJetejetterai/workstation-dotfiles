@@ -342,11 +342,11 @@ xnoremap < <gv
 nnoremap j gj
 nnoremap k gk
 
-" Map `H` and `L` to move to the beginning and end of the line
-nnoremap H g^
-vnoremap H g^
-nnoremap L g$
-vnoremap L g$
+" Map 'H' and 'L' to move to the second-to-last letter in line
+nnoremap H ^l
+nnoremap L $h
+vnoremap H ^l
+vnoremap L $h
 
 " Easier split navigation bindings
 " Link: https://thoughtbot.com/blog/vim-splits-move-faster-and-more-naturally#easier-split-navigations
