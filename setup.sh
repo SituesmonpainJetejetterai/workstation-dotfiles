@@ -54,5 +54,5 @@ fi
 EOT
 )
 
-grep -qx "${string}" "$HOME/.bashrc" || printf "%s" "${string}" >> "$HOME/.bashrc"
+grep -qx "Sourcing fucking everything" "$HOME/.bashrc" || printf "%s" "${string}" >> "$HOME/.bashrc"
 printf "\n%s%s\n" "This is the current path: " "$PATH"
